@@ -1,0 +1,399 @@
+[
+  {
+    "work_id": 198279,
+    "mp_name": "DR.MALLU RAVI",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP18192/2025-2026/198279-Construction of rooms and halls in school and colleges",
+    "hybrid_risk_score": 52.75,
+    "risk_level": "HIGH",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 2,
+    "detector_scores": {
+      "rule": 25.0,
+      "statistical": 40.0,
+      "isolation_forest": 100.0
+    },
+    "why_flagged": "The work was flagged because the sanctioned cost is 40 times the peer‑group median, which the system classifies as a high‑severity extreme peer cost anomaly, and the overall hybrid risk score is high with strong detector agreement.",
+    "key_evidence": [
+      "Extreme peer cost finding: sanctioned cost is 40.0x the peer median (high severity).",
+      "Hybrid risk score 52.75 (HIGH) with STRONG detector agreement across three detectors.",
+      "Isolation Forest detector score of 100, indicating a statistical outlier."
+    ],
+    "investigation_checks": [
+      "Compare the sanctioned amount (10,000,000) with the actual amount spent (2,966,883) and request missing disbursement records.",
+      "Validate the peer‑group cost benchmark used to calculate the 40x ratio.",
+      "Review vendor selection and contract details for the single vendor involved.",
+      "Obtain completion documentation and dates, since completion_date is unavailable.",
+      "Confirm the timeline between recommendation (2025‑05‑09) and sanction (2025‑05‑21) and calculate the elapsed days."
+    ],
+    "assessment": "The case presents an anomaly candidate with high risk indicators that warrants further verification but does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Constituency is listed as \"Unknown\".",
+      "Completion date, disbursed amount, and days between recommendation and sanction are missing.",
+      "Peer Z‑score and statistical evidence are unavailable.",
+      "Only one transaction and one vendor are recorded, limiting comparative analysis."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 196895,
+    "mp_name": "DR.MALLU RAVI",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP18192/2025-2026/196895-Construction of rooms and halls in school and colleges",
+    "hybrid_risk_score": 52.65,
+    "risk_level": "HIGH",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 2,
+    "detector_scores": {
+      "rule": 33.0,
+      "statistical": 40.0,
+      "isolation_forest": 90.34
+    },
+    "why_flagged": "The work was flagged because the sanctioned amount is 40 times the peer‑group median (extreme_peer_cost) and the project records four separate expenditure transactions, both of which are identified as risk indicators; detector agreement is strong with a high isolation‑forest score, reinforcing the anomaly status.",
+    "key_evidence": [
+      "Sanctioned cost is 40.0× the peer‑group median (high severity)",
+      "Four expenditure transactions were recorded for the work (medium severity)",
+      "Isolation Forest detector contributed a score of 90.34 indicating strong deviation"
+    ],
+    "investigation_checks": [
+      "Obtain and verify the actual amount spent and disbursed amounts",
+      "Review invoices and contracts to justify the 10×+ cost relative to peers",
+      "Examine the single vendor’s qualifications and pricing for the four transactions",
+      "Cross‑check recommendation (2025‑05‑05) and sanction (2025‑05‑15) dates and calculate the interval",
+      "Confirm completion status and any pending payments"
+    ],
+    "assessment": "The candidate exhibits an unusual cost pattern and multiple transactions, resulting in a HIGH risk level; it warrants verification and further investigation but does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Actual amount and disbursed amount are unavailable",
+      "Completion date and calculated day intervals are missing",
+      "Peer Z‑score is not provided",
+      "Constituency information is unknown"
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 250877,
+    "mp_name": "VAMSI KRISHNA GADDAM",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP18388/2025-2026/250877-Purchase of vans and buses for educational institutions",
+    "hybrid_risk_score": 51.01,
+    "risk_level": "HIGH",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 2,
+    "detector_scores": {
+      "rule": 28.0,
+      "statistical": 40.0,
+      "isolation_forest": 90.69
+    },
+    "why_flagged": "The work was flagged because the sanctioned cost is 32 times higher than the peer‑group median, which is recorded as a high‑severity extreme peer cost anomaly, and the detection models show strong agreement with a high isolation‑forest score.",
+    "key_evidence": [
+      "Sanctioned cost is at least 10× the peer‑group median (ratio 32.0) – high severity extreme_peer_cost finding",
+      "Isolation Forest detector score of 90.69 indicating a strong deviation from typical patterns",
+      "Detector agreement marked as STRONG across three detectors"
+    ],
+    "investigation_checks": [
+      "Obtain and review the actual amount spent and disbursed amounts for the purchase",
+      "Verify that the vendor invoices and contracts justify the sanctioned amount",
+      "Confirm completion status and obtain the completion date of the work",
+      "Compare the cost against a broader set of comparable projects to validate the peer median",
+      "Examine procurement procedures for vendor selection and approval"
+    ],
+    "assessment": "The case is an anomaly candidate with a HIGH risk level; the evidence warrants further verification but does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Actual amount, disbursed amount, and completion date are unavailable",
+      "Days between recommendation and sanction, and sanction to completion, are not provided",
+      "Peer Z‑score is missing, limiting statistical context",
+      "Constituency information is listed as Unknown"
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 200885,
+    "mp_name": "Asaduddin Owaisi",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP762/2025-2026/200885-Construction of community centers and community halls",
+    "hybrid_risk_score": 50.68,
+    "risk_level": "HIGH",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 2,
+    "detector_scores": {
+      "rule": 30.0,
+      "statistical": 40.0,
+      "isolation_forest": 87.26
+    },
+    "why_flagged": "The work was flagged because the sanctioned cost is 20.48 times higher than the peer‑group median (extreme_peer_cost, high severity) and the work involves multiple expenditure transactions, which together raise a high hybrid risk score and trigger a strong detector agreement.",
+    "key_evidence": [
+      "Sanctioned cost is 20.48× the peer‑group median (high severity extreme_peer_cost).",
+      "Two expenditure transactions are recorded for the work (low severity multiple_transactions).",
+      "Hybrid risk score 50.68 with HIGH risk level and STRONG detector agreement (3 detectors)."
+    ],
+    "investigation_checks": [
+      "Obtain and verify the actual amount spent and disbursed amount.",
+      "Review invoices and contracts to justify the 20.48× cost relative to peers.",
+      "Identify the single vendor and examine the two transaction details for completeness and legitimacy.",
+      "Calculate the days between recommendation (2025‑05‑19) and sanction (2025‑07‑11) and assess if the interval is typical.",
+      "Confirm the completion status and obtain any missing completion date.",
+      "Cross‑check implementation records and on‑ground progress of the community centers."
+    ],
+    "assessment": "The candidate exhibits an unusual cost pattern and multiple transactions that, combined with a high risk score, warrant further verification and detailed investigation, but no conclusion of wrongdoing can be drawn from the available data.",
+    "data_limitations": [
+      "Actual amount and disbursed amount are unavailable.",
+      "Completion date and derived timeline metrics are missing.",
+      "Peer Z‑score is not provided.",
+      "Constituency information is listed as Unknown.",
+      "Vendor details beyond count are not supplied."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 184093,
+    "mp_name": "VAMSI KRISHNA GADDAM",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP18388/2025-2026/184093-Construction of buildings for community cultural activities",
+    "hybrid_risk_score": 50.35,
+    "risk_level": "HIGH",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 2,
+    "detector_scores": {
+      "rule": 27.0,
+      "statistical": 40.0,
+      "isolation_forest": 89.68
+    },
+    "why_flagged": "The work was flagged because the sanctioned cost is 20 times higher than the peer‑group median, which is identified as a high‑severity extreme peer cost anomaly, and because the isolation‑forest detector assigned a very high score (89.68). Additional indicators include multiple expenditure transactions and a high overall hybrid risk score (50.35) with a HIGH risk level and strong detector agreement.",
+    "key_evidence": [
+      "Sanctioned cost is 20.0x the peer‑group median (high severity extreme_peer_cost)",
+      "Isolation‑forest detector score of 89.68 (very high)",
+      "Hybrid risk score 50.35 and risk level HIGH with STRONG detector agreement",
+      "Two expenditure transactions recorded (multiple_transactions, low severity)",
+      "Recommended and sanctioned amounts are equal (5,000,000) with actual amount 4,989,891"
+    ],
+    "investigation_checks": [
+      "Obtain and review detailed invoices, contracts and cost breakdown to verify the justification for the 20× peer cost.",
+      "Confirm the identity, qualifications and selection process of the single vendor used for the two transactions.",
+      "Cross‑check disbursement records and reconcile the actual amount spent (4,989,891) with the sanctioned amount (5,000,000).",
+      "Calculate the exact number of days between recommendation (2025-03-20) and sanction (2025-06-18) and assess if the interval is typical for similar works.",
+      "Compare implementation progress and completion status with peer projects to see if the high cost aligns with scope.",
+      "Validate the peer‑group median calculation and ensure the comparison set is appropriate."
+    ],
+    "assessment": "The case presents strong anomaly indicators and a high risk rating, warranting focused verification and further investigation but does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Disbursed amount is unavailable.",
+      "Completion date and related timeline intervals are missing.",
+      "Peer Z‑score is not provided, limiting statistical context.",
+      "Constituency information is listed as Unknown.",
+      "Days between recommendation and sanction are not calculated."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 200884,
+    "mp_name": "Asaduddin Owaisi",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP762/2025-2026/200884-Providing supply pipelines for drinking water",
+    "hybrid_risk_score": 50.07,
+    "risk_level": "HIGH",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 2,
+    "detector_scores": {
+      "rule": 25.0,
+      "statistical": 40.0,
+      "isolation_forest": 91.08
+    },
+    "why_flagged": "The work was flagged because the sanctioned cost is 22.63 times higher than the peer‑group median, which the system classifies as a high‑severity extreme_peer_cost anomaly.",
+    "key_evidence": [
+      "Sanctioned cost is 22.6264× the peer‑group median (type: extreme_peer_cost, severity: high).",
+      "Risk level is HIGH with strong detector agreement (3 detectors).",
+      "Only one transaction and one vendor for the full amount of 5,656,600.0."
+    ],
+    "investigation_checks": [
+      "Verify the basis of the cost estimate and compare it with market rates for similar water‑pipeline projects.",
+      "Obtain and review detailed invoices, bills of quantities, and contracts from the vendor.",
+      "Confirm whether the full sanctioned amount has been disbursed and, if so, obtain disbursement records.",
+      "Check the completion status and request any progress or completion reports.",
+      "Validate the recommendation and sanction dates and calculate the actual days between them.",
+      "Assess the vendor's qualifications, past performance, and any prior engagements with MPLADS."
+    ],
+    "assessment": "The candidate exhibits an unusual cost pattern that warrants verification and further investigation, but it does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Disbursed amount is unavailable (null).",
+      "Completion date and related duration metrics are missing.",
+      "Peer Z‑score is not provided.",
+      "Constituency information is listed as Unknown.",
+      "Only a single transaction and vendor are recorded, limiting comparative analysis."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 305195,
+    "mp_name": "Asaduddin Owaisi",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "NA-Purchase of fire tenders for Government run institutions",
+    "hybrid_risk_score": 49.28,
+    "risk_level": "MEDIUM",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 3,
+    "detector_scores": {
+      "rule": 28.0,
+      "statistical": 40.0,
+      "isolation_forest": 84.92
+    },
+    "why_flagged": "The sanctioned cost of 13,149,854 is 52.6 times higher than the peer‑group median, which the system flags as a high‑severity extreme peer cost anomaly. Combined with strong detector agreement (rule, statistical, and isolation‑forest scores) and the absence of any recorded transactions or vendors, the work is identified as an anomaly candidate requiring verification.",
+    "key_evidence": [
+      "Extreme peer cost finding: sanctioned cost is 52.599416× the peer median (high severity).",
+      "Isolation Forest detector score of 84.92 (strong outlier indication).",
+      "Rule and statistical detector scores of 28.0 and 40.0 respectively.",
+      "Zero transaction count and zero vendor count despite a large sanctioned amount."
+    ],
+    "investigation_checks": [
+      "Obtain and review actual expenditure invoices and payment vouchers for the fire tenders.",
+      "Confirm the existence and legitimacy of vendors that supplied the fire tenders.",
+      "Cross‑check the sanctioned amount against peer projects to assess justification for the cost differential.",
+      "Verify why no transactions are recorded in the system (e.g., data entry lag or missing documentation).",
+      "Examine the sanction approval workflow and any missing sanction or completion dates."
+    ],
+    "assessment": "Medium‑risk anomaly candidate; unusual cost magnitude and missing transaction data warrant further investigation but do not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Actual amount and disbursed amount are unavailable (null).",
+      "No transaction or vendor details are recorded.",
+      "Sanction and completion dates are missing, preventing timeline analysis.",
+      "Peer Z‑score is null, limiting statistical comparison."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 239391,
+    "mp_name": "Asaduddin Owaisi",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "NA-Providing supply pipelines for drinking water",
+    "hybrid_risk_score": 49.24,
+    "risk_level": "MEDIUM",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 3,
+    "detector_scores": {
+      "rule": 28.0,
+      "statistical": 40.0,
+      "isolation_forest": 84.81
+    },
+    "why_flagged": "The sanctioned amount (12,522,210) is 50.09 times higher than the peer‑group median, flagged as an extreme_peer_cost with high severity, which the detectors strongly agreed on.",
+    "key_evidence": [
+      "Sanctioned cost is at least 10x the peer‑group median (ratio 50.08884).",
+      "Detector agreement is STRONG across 3 detectors with a medium risk level."
+    ],
+    "investigation_checks": [
+      "Obtain and review the detailed cost breakdown and supporting quotations for the water pipeline work.",
+      "Confirm the actual amount spent and any disbursements against the sanctioned amount.",
+      "Verify vendor identities, contracts, and the number of transactions associated with this work.",
+      "Check the timeline for recommendation, sanction, and completion dates to assess delays or gaps.",
+      "Compare the cost with similar projects in comparable constituencies to assess justification."
+    ],
+    "assessment": "The work is an anomaly candidate due to an unusually high sanctioned cost relative to peers; this unusual pattern warrants verification but does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Actual amount and disbursed amount are unavailable.",
+      "No transaction or vendor data is recorded (transaction_count = 0).",
+      "Timeline details beyond the recommendation date are missing.",
+      "Peer Z‑score and statistical evidence are not provided.",
+      "Constituency information is listed as Unknown."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 232923,
+    "mp_name": "Kishan Reddy Gangapuram",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP765/2025-2026/232923-Construction of rooms and halls in school and colleges",
+    "hybrid_risk_score": 48.6,
+    "risk_level": "MEDIUM",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 3,
+    "detector_scores": {
+      "rule": 30.0,
+      "statistical": 40.0,
+      "isolation_forest": 80.34
+    },
+    "why_flagged": "The work is flagged as an anomaly candidate because the sanctioned cost is 12 times higher than the peer‑group median (high‑severity cost outlier) and the work involves multiple expenditure transactions, which together form an unusual pattern requiring verification.",
+    "key_evidence": [
+      "Sanctioned cost is 12.0 × the peer‑group median (high severity extreme_peer_cost).",
+      "Two expenditure transactions are recorded for the work (low severity multiple_transactions)."
+    ],
+    "investigation_checks": [
+      "Obtain and review invoices and supporting documents to justify the 3,000,000 ₹ cost.",
+      "Compare the unit costs of the constructed rooms and halls with market rates and peer projects.",
+      "Confirm the identity, registration, and past performance of the single vendor involved.",
+      "Verify whether the two transactions together cover the full sanctioned amount and reconcile with actual disbursements.",
+      "Determine the actual amount spent and disbursed, which are currently unavailable.",
+      "Check the completion status and obtain the completion date to assess timeline adherence."
+    ],
+    "assessment": "Medium risk level with strong detector agreement; the high cost relative to peers is the strongest risk indicator, while the multiple transactions add a secondary signal. The case warrants further investigation but does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Actual amount spent and disbursed are not provided.",
+      "Completion date and days between recommendation and sanction are unavailable.",
+      "Peer Z‑score is missing, limiting statistical context.",
+      "Constituency information is listed as \"Unknown\"."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  },
+  {
+    "work_id": 204089,
+    "mp_name": "DR.MALLU RAVI",
+    "constituency": "Unknown",
+    "work_category": "Normal/Others",
+    "activity_name": "WS/MP18192/2025-2026/204089-Construction of rooms and halls in school and colleges",
+    "hybrid_risk_score": 48.05,
+    "risk_level": "MEDIUM",
+    "detector_agreement": "STRONG",
+    "detector_agreement_count": 3,
+    "investigation_priority": 3,
+    "detector_scores": {
+      "rule": 28.0,
+      "statistical": 40.0,
+      "isolation_forest": 80.83
+    },
+    "why_flagged": "The sanctioned amount for the construction work is 40 times higher than the median cost of comparable peer projects, flagged as a high‑severity extreme peer cost anomaly.",
+    "key_evidence": [
+      "Evidence type \"extreme_peer_cost\" with severity \"high\" and ratio 40.0 indicating the sanctioned cost is at least 10x the peer‑group median."
+    ],
+    "investigation_checks": [
+      "Obtain and review actual expenditure records and invoices to confirm the true cost incurred.",
+      "Identify the vendor(s) and examine procurement documents for justification of the high cost.",
+      "Validate the peer‑group definition and ensure the median cost comparison is appropriate.",
+      "Check for any missing transaction entries or undisclosed payments related to this work.",
+      "Confirm the timeline between recommendation (2025-05-27) and sanction (2025-06-27) and investigate any delays in project completion."
+    ],
+    "assessment": "The work is an anomaly candidate with a medium risk level; the extreme cost deviation warrants further verification but does not constitute proof of wrongdoing.",
+    "data_limitations": [
+      "Actual amount spent and disbursed amount are unavailable.",
+      "No transaction or vendor details are recorded.",
+      "Peer Z‑score and days between recommendation and sanction are missing.",
+      "Completion date and related timeline metrics are not provided."
+    ],
+    "disclaimer": "This system identifies anomaly/risk candidates for investigation. It does not establish fraud or wrongdoing.",
+    "model": "openai/gpt-oss-120b"
+  }
+]
