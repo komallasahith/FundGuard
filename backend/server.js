@@ -3017,26 +3017,6 @@ app.post(
 );
 
 // ============================================================
-// 404
-// ============================================================
-
-app.use(
-    (req, res) => {
-
-        res.status(
-            404
-        ).json({
-
-            error:
-                "Endpoint not found",
-
-            path:
-                req.originalUrl
-        });
-    }
-);
-
-// ============================================================
 // ERROR HANDLER
 // ============================================================
 
@@ -3053,7 +3033,6 @@ app.use(
             error
         );
 
-
         res.status(
             500
         ).json({
@@ -3068,26 +3047,29 @@ app.use(
 );
 
 // ============================================================
-// START
+// PRODUCTION STATIC FRONTEND SERVING
 // ============================================================
 
-try {
+const distPath = path.join(
+    __dirname,
+    "..",
+    "frontend",
+    "dist"
+);
 
-    loadData();
+if (fs.existsSync(distPath)) {
 
-    // ============================================================
-    // PRODUCTION STATIC FRONTEND SERVING
-    // ============================================================
+    app.use(
+        express.static(distPath)
+    );
 
-    const distPath = path.join(__dirname, "..", "frontend", "dist");
+    app.get(
+        "/{*splat}",
+        (req, res, next) => {
 
-    if (fs.existsSync(distPath)) {
-
-        app.use(express.static(distPath));
-
-        app.get("/{*splat}", (req, res, next) => {
-
-            if (req.path.startsWith("/api/")) {
+            if (
+                req.path.startsWith("/api/")
+            ) {
                 return next();
             }
 
@@ -3097,68 +3079,50 @@ try {
                     "index.html"
                 )
             );
-        });
-    }
-
-    // ============================================================
-    // 404
-    // ============================================================
-
-    app.use(
-        (req, res) => {
-
-            res.status(404).json({
-
-                error:
-                    "Endpoint not found",
-
-                path:
-                    req.originalUrl
-            });
         }
     );
+}
 
-    // ============================================================
-    // START SERVER
-    // ============================================================
+// ============================================================
+// 404
+// ============================================================
+
+app.use(
+    (req, res) => {
+
+        res.status(404).json({
+            error: "Endpoint not found",
+            path: req.originalUrl
+        });
+    }
+);
+
+// ============================================================
+// START
+// ============================================================
+
+try {
+
+    loadData();
 
     app.listen(
         PORT,
         () => {
-
             console.log(
-                "============================================================"
-            );
-
-            console.log(
-                "FUNDGUARD AI BACKEND"
-            );
-
-            console.log(
-                "============================================================"
-            );
-
-            console.log(
-                `Server running on http://localhost:${PORT}`
-            );
-
-            console.log(
-                "============================================================"
+                `Server running on port ${PORT}`
             );
         }
     );
 
 } catch (error) {
 
-    console.error("");
     console.error(
         "FAILED TO START FUNDGUARD AI BACKEND"
     );
-    console.error("");
+
     console.error(
         error.message
     );
-    console.error("");
 
     process.exit(1);
 }
