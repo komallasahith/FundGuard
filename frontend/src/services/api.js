@@ -1,5 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
-
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '/api';
 async function safeJson(res) {
   if (!res.ok) {
     let errorMsg = `HTTP Error ${res.status}: ${res.statusText}`;
