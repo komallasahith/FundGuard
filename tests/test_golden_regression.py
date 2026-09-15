@@ -39,6 +39,17 @@ class TestGoldenRegression(unittest.TestCase):
         for p in top_priorities:
             self.assertEqual(p, "P1", "All top-10 works must be categorized as P1 priority")
 
+    def test_golden_all_consensus_in_p1(self):
+        """Hard constraint: all 597 three-engine consensus works must be P1."""
+        queue_cands = self.queue  # queue only contains investigation candidates
+        consensus = queue_cands[queue_cands["DETECTOR_AGREEMENT"] == "RULE + STATISTICAL + ML"]
+        non_p1_consensus = consensus[consensus["INVESTIGATION_PRIORITY"] != "P1"]
+        self.assertEqual(
+            len(non_p1_consensus),
+            0,
+            f"Found {len(non_p1_consensus)} consensus works NOT in P1: {non_p1_consensus['WORK_ID'].tolist()[:5]}"
+        )
+
     def test_golden_candidate_and_consensus_counts(self):
         # Verify 7,521 total investigation candidates
         self.assertEqual(len(self.queue), 7521)
@@ -51,13 +62,14 @@ class TestGoldenRegression(unittest.TestCase):
         """
         Frozen golden snapshot of investigation priority tier distribution
         across all 7,521 candidates to catch calibration regressions.
+        Batch 4 Pyramid Calibration: P1~9%, P2~17%, P3~32%, P4~41%.
         """
         priority_counts = self.queue["INVESTIGATION_PRIORITY"].value_counts().to_dict()
         expected_tiers = {
-            "P1": 1818,
-            "P2": 2049,
-            "P3": 3588,
-            "P4": 66
+            "P1": 684,
+            "P2": 1302,
+            "P3": 2415,
+            "P4": 3120,
         }
         self.assertEqual(
             priority_counts,

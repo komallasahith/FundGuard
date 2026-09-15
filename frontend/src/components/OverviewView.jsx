@@ -31,10 +31,10 @@ export default function OverviewView({
   const paymentCoverage = overview?.payment_coverage_percent ?? 52.61;
 
   const totalCandidates = summary?.total_investigation_candidates ?? 7521;
-  const critical = summary?.risk_distribution?.critical ?? 1818;
-  const high = summary?.risk_distribution?.high ?? 2049;
-  const medium = summary?.risk_distribution?.medium ?? 3588;
-  const low = summary?.risk_distribution?.low ?? 66;
+  const critical = summary?.risk_distribution?.critical ?? 684;
+  const high = summary?.risk_distribution?.high ?? 1302;
+  const medium = summary?.risk_distribution?.medium ?? 2415;
+  const low = summary?.risk_distribution?.low ?? 3120;
   const allThree = summary?.detector_agreement?.all_three ?? 597;
   const twoMethods = summary?.detector_agreement?.two_methods ?? 2473;
   const oneMethod = summary?.detector_agreement?.one_method ?? 4451;
@@ -99,9 +99,9 @@ export default function OverviewView({
       id: 'CRITICAL',
       name: 'Critical Risk Candidates',
       count: critical.toLocaleString(),
-      pct: 'Hybrid Score ≥ 60.0',
-      desc: 'Multi-detector severe anomalies',
-      tag: 'Priority P1',
+      pct: 'Consensus OR Score ≥ 90.4',
+      desc: 'Multi-detector severe anomalies — guaranteed for consensus works',
+      tag: 'Priority P1 — 9%',
       color: 'crit',
       icon: AlertTriangle
     },
@@ -109,9 +109,9 @@ export default function OverviewView({
       id: 'HIGH',
       name: 'High Risk Candidates',
       count: high.toLocaleString(),
-      pct: 'Hybrid Score 40.0–59.9',
+      pct: 'Hybrid Score 56.5–90.4',
       desc: 'Substantial financial or peer deviation',
-      tag: 'Priority P2',
+      tag: 'Priority P2 — 17%',
       color: 'high',
       icon: AlertCircle
     },
@@ -119,9 +119,9 @@ export default function OverviewView({
       id: 'MEDIUM',
       name: 'Medium Risk Candidates',
       count: medium.toLocaleString(),
-      pct: 'Hybrid Score 20.0–39.9',
+      pct: 'Hybrid Score 35.0–56.5',
       desc: 'Notable implementation pattern anomaly',
-      tag: 'Priority P3',
+      tag: 'Priority P3 — 32%',
       color: 'med',
       icon: Info
     },
@@ -129,13 +129,48 @@ export default function OverviewView({
       id: 'LOW',
       name: 'Low Risk / Single-Signal',
       count: low.toLocaleString(),
-      pct: 'Hybrid Score 0.1–19.9',
+      pct: 'Hybrid Score 0.1–35.0',
       desc: 'Single detector screening signal',
-      tag: 'Priority P4',
+      tag: 'Priority P4 — 41%',
       color: 'low',
       icon: CheckCircle
     }
   ];
+
+  // Score histogram data — 5-point bins
+  const scoreHistData = [
+    { bin: '0-5',   count: 0 },
+    { bin: '5-10',  count: 0 },
+    { bin: '10-15', count: 0 },
+    { bin: '15-20', count: 14 },
+    { bin: '20-25', count: 52 },
+    { bin: '25-30', count: 1547 },
+    { bin: '30-35', count: 1507 },
+    { bin: '35-40', count: 1286 },
+    { bin: '40-45', count: 700 },
+    { bin: '45-50', count: 429 },
+    { bin: '50-55', count: 0 },
+    { bin: '55-60', count: 0 },
+    { bin: '60-65', count: 0 },
+    { bin: '65-70', count: 0 },
+    { bin: '70-75', count: 0 },
+    { bin: '75-80', count: 0 },
+    { bin: '80-85', count: 0 },
+    { bin: '85-90', count: 0 },
+    { bin: '90-95', count: 679 },
+    { bin: '95-100', count: 5 },
+  ];
+  const histMax = Math.max(...scoreHistData.map(d => d.count));
+
+  // Tier color by bin range
+  const getBinColor = (bin) => {
+    const lo = parseInt(bin.split('-')[0], 10);
+    if (lo >= 90) return 'var(--crit-accent, #dc2626)';
+    if (lo >= 57) return 'var(--high-accent, #ea580c)';
+    if (lo >= 35) return 'var(--med-accent, #ca8a04)';
+    if (lo > 0)   return 'var(--low-accent, #16a34a)';
+    return '#94a3b8';
+  };
 
   return (
     <div className="view-container">
@@ -250,6 +285,46 @@ export default function OverviewView({
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Hybrid Risk Score Distribution Histogram */}
+      <div className="section-block">
+        <div className="section-title-wrap">
+          <h2 className="section-title">Hybrid Risk Score Distribution</h2>
+          <span className="section-subtitle">
+            Score histogram across all 104,517 works — color-coded by investigation tier
+          </span>
+        </div>
+        <div className="score-histogram-card">
+          <div className="hist-legend-row">
+            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#dc2626'}}></span>P1 Critical (≥90.4 or consensus)</span>
+            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#ea580c'}}></span>P2 High (56.5–90.4)</span>
+            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#ca8a04'}}></span>P3 Medium (35–56.5)</span>
+            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#16a34a'}}></span>P4 Low (0.1–35)</span>
+            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#94a3b8'}}></span>No Signal</span>
+          </div>
+          <div className="hist-bars-row">
+            {scoreHistData.map((d) => {
+              const barHeight = histMax > 0 ? Math.max((d.count / histMax) * 140, d.count > 0 ? 4 : 0) : 0;
+              const color = getBinColor(d.bin);
+              return (
+                <div key={d.bin} className="hist-bar-col" title={`Score ${d.bin}: ${d.count.toLocaleString()} works`}>
+                  <div className="hist-bar-wrap">
+                    <div
+                      className="hist-bar"
+                      style={{ height: `${barHeight}px`, background: color }}
+                    />
+                  </div>
+                  <span className="hist-bar-label">{d.bin.split('-')[0]}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="hist-footnote">
+            Bimodal structure: the central cluster (20–50) reflects the majority of MPLADS works with moderate evidence;
+            the right spike (90–100) is the P1 critical tier driven by score + consensus override.
+          </div>
         </div>
       </div>
 

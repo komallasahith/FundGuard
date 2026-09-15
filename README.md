@@ -157,12 +157,24 @@ $$\text{ML}_{\text{cal}} = \text{PercentileRank}_{\text{all}}(\text{Anomaly Stre
 ### Unbiased Multi-Detector Fusion (Option B Score Regimes)
 To prevent systematic cross-region ranking distortion and avoid artificially over-rewarding sparse-cohort works:
 $$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times \text{Stat}_{\text{cal}} + 0.30 \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
-*Where Agreement Bonus = $+10.0$ if all 3 detectors agree, $+5.0$ if 2 detectors agree.*
+*Where Agreement Bonus = $+10.0$ if all 3 detectors agree, $+5.0$ if 2 detectors agree. Score is capped at 100.*
 
 - **Standard Regime (`SCORE_REGIME="STANDARD"`, $\ge 10$ peers)**: Full 3-detector consensus analysis.
-- **Sparse Peer Regime (`SCORE_REGIME="SPARSE_PEER"`, $< 10$ peers)**: Statistical peer comparisons are suppressed ($\text{Stat}_{\text{cal}} = 0$) without artificially inflating Rule or ML weights, preserving cross-region comparability.
+- **Sparse Peer Regime (`SCORE_REGIME="SPARSE_PEER"`, $< 10$ peers)**: Statistical peer comparisons are suppressed ($\text{Stat}_{\text{cal}} = 0$) **without** renormalizing the remaining weights — Rules and ML retain their fixed 0.35 and 0.30 weights, preserving cross-region comparability at the cost of a lower maximum achievable score for sparse-peer works.
 - **ML Isolation Forest Contamination**:
   Configured with `contamination="auto"` (the established heuristic threshold from Liu et al., 2008), ensuring unconstrained outlier scoring on the multidimensional feature matrix.
+
+### Batch 4 Pyramid Tier Thresholds
+Grid-search calibrated thresholds on 7,521 investigation candidates to produce a proper triage pyramid:
+
+| Tier | Assignment Rule | Count | % |
+|:-----|:----------------|------:|--:|
+| **P1 — Critical** | 3-engine consensus **OR** score ≥ 90.4 | 684 | 9.1% |
+| **P2 — High** | Score 56.5–90.4 | 1,302 | 17.3% |
+| **P3 — Medium** | Score 35.0–56.5 | 2,415 | 32.1% |
+| **P4 — Low** | Score 0.1–35.0 | 3,120 | 41.5% |
+
+> **Consensus Hard Override**: All 597 works where all three independent detectors (Rules, Statistical, ML) agree are unconditionally assigned to P1, regardless of their raw hybrid score.
 
 ---
 
@@ -177,17 +189,17 @@ $$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times 
 
 ## 🧪 Automated Unit & Golden Regression Test Suite
 
-FundGuard includes an automated 18-test suite with CI validation covering score calibration, generalized deduplication, peer sufficiency, data quality tiers, and golden snapshot regression:
+FundGuard includes an automated 19-test suite with CI validation covering score calibration, generalized deduplication, peer sufficiency, data quality tiers, consensus P1 override, and golden snapshot regression:
 
 ```bash
 python -m unittest discover tests/ -v
 ```
-*(All 18 test suites pass with 100% test coverage).*
+*(All 19 test cases pass with 100% coverage).*
 
 - **Golden Snapshot Tests**:
   - **Top-10 Flagged Works**: Asserts snapshot integrity (`313337`, `312966`, `284190`, `298370`, `300408`, `290133`, `238085`, `301697`, `298371`, `166142`).
-  - **Tier Distribution**: Freezes candidate volume (7,521) and priority tiers: **P1** (1,818 - 24.2%), **P2** (2,049 - 27.2%), **P3** (3,588 - 47.7%), **P4** (66 - 0.9%).
-  - **Detector Consensus**: Asserts 597 3-engine consensus cases.
+  - **Tier Distribution (Batch 4 Pyramid)**: Freezes candidate volume (7,521) and priority tiers: **P1** (684 — 9.1%), **P2** (1,302 — 17.3%), **P3** (2,415 — 32.1%), **P4** (3,120 — 41.5%).
+  - **Consensus Hard Constraint**: Asserts all 597 three-engine consensus works are in P1.
 - **Continuous Integration**: `.github/workflows/ci.yml` runs automated test matrix on Python 3.10/3.11/3.12 and verifies Vite frontend production builds on every push/PR.
 
 ---

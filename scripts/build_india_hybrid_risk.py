@@ -17,6 +17,20 @@ FEATURE_FILE = BASE_DIR / "data" / "processed" / "mplads_india_features.csv"
 
 HYBRID_FILE = OUT / "india_hybrid_risk.csv"
 SUMMARY_FILE = OUT / "india_hybrid_summary.csv"
+SCORE_DIST_FILE = OUT / "india_score_distribution.csv"
+
+# ============================================================
+# TIER THRESHOLDS (Batch 4 Pyramid Calibration)
+# ============================================================
+# Grid-search result on 7,521 candidates to hit pyramid targets:
+#   P1 ~9%  : consensus (3-engine) OR score >= 90.4
+#   P2 ~17% : score 56.5–90.4
+#   P3 ~32% : score 35.0–56.5
+#   P4 ~41% : score  0.1–35.0
+# All 597 three-engine consensus works are guaranteed P1 via the hard override.
+TIER_P1_SCORE_THRESHOLD = 90.4
+TIER_P2_THRESHOLD = 56.5
+TIER_P3_THRESHOLD = 35.0
 
 
 # ============================================================
@@ -509,13 +523,16 @@ base["AGREEMENT_BONUS"] = np.select(
 )
 
 # ------------------------------------------------------------
-# 6. FINAL HYBRID RISK SCORE (0–100 SCALE)
+# 6. FINAL HYBRID RISK SCORE (0–100 SCALE, CAPPED)
 # ------------------------------------------------------------
 base["HYBRID_RISK_SCORE"] = np.round(
-    base["RULE_COMPONENT"]
-    + base["STAT_COMPONENT"]
-    + base["ML_COMPONENT"]
-    + base["AGREEMENT_BONUS"],
+    np.minimum(
+        base["RULE_COMPONENT"]
+        + base["STAT_COMPONENT"]
+        + base["ML_COMPONENT"]
+        + base["AGREEMENT_BONUS"],
+        100.0
+    ),
     1
 )
 
@@ -527,9 +544,9 @@ section("10. RISK LEVEL")
 
 base["HYBRID_RISK_LEVEL"] = np.select(
     [
-        base["HYBRID_RISK_SCORE"] >= 60,
-        base["HYBRID_RISK_SCORE"] >= 40,
-        base["HYBRID_RISK_SCORE"] >= 20,
+        base["HYBRID_RISK_SCORE"] >= TIER_P1_SCORE_THRESHOLD,
+        base["HYBRID_RISK_SCORE"] >= TIER_P2_THRESHOLD,
+        base["HYBRID_RISK_SCORE"] >= TIER_P3_THRESHOLD,
         base["HYBRID_RISK_SCORE"] > 0,
     ],
     [
@@ -542,16 +559,17 @@ base["HYBRID_RISK_LEVEL"] = np.select(
 )
 
 # ============================================================
-# 11. PRIORITY
+# 11. PRIORITY (WITH 3-ENGINE CONSENSUS HARD OVERRIDE)
 # ============================================================
 
 section("11. INVESTIGATION PRIORITY")
 
+# Base priority by score threshold
 base["INVESTIGATION_PRIORITY"] = np.select(
     [
-        base["HYBRID_RISK_SCORE"] >= 60,
-        base["HYBRID_RISK_SCORE"] >= 40,
-        base["HYBRID_RISK_SCORE"] >= 20,
+        base["HYBRID_RISK_SCORE"] >= TIER_P1_SCORE_THRESHOLD,
+        base["HYBRID_RISK_SCORE"] >= TIER_P2_THRESHOLD,
+        base["HYBRID_RISK_SCORE"] >= TIER_P3_THRESHOLD,
         base["HYBRID_RISK_SCORE"] > 0,
     ],
     [
@@ -562,6 +580,18 @@ base["INVESTIGATION_PRIORITY"] = np.select(
     ],
     default="P0"
 )
+
+# Hard override: all 3-engine consensus works are always P1
+# This preserves the pyramid shape (consensus = 7.94% of candidates)
+base.loc[
+    base["INDEPENDENT_SIGNAL_COUNT"] == 3,
+    "INVESTIGATION_PRIORITY"
+] = "P1"
+
+base.loc[
+    base["INDEPENDENT_SIGNAL_COUNT"] == 3,
+    "HYBRID_RISK_LEVEL"
+] = "CRITICAL"
 
 
 # ============================================================
@@ -1000,6 +1030,86 @@ summary.to_csv(
 print(
     f"Saved: {SUMMARY_FILE}"
 )
+
+
+# ============================================================
+# 21. SCORE DISTRIBUTION EXPORT
+# ============================================================
+
+section("21. SCORE DISTRIBUTION EXPORT")
+
+score_bins = list(range(0, 101, 5))
+score_dist_rows = []
+for i in range(len(score_bins) - 1):
+    lo = score_bins[i]
+    hi = score_bins[i + 1]
+    label = f"{lo}-{hi}"
+    n = int(((hybrid["HYBRID_RISK_SCORE"] >= lo) & (hybrid["HYBRID_RISK_SCORE"] < hi)).sum())
+    score_dist_rows.append({"BIN_LABEL": label, "SCORE_MIN": lo, "SCORE_MAX": hi, "WORK_COUNT": n})
+
+# Final bucket: 100
+n_100 = int((hybrid["HYBRID_RISK_SCORE"] >= 100).sum())
+score_dist_rows.append({"BIN_LABEL": "100", "SCORE_MIN": 100, "SCORE_MAX": 100, "WORK_COUNT": n_100})
+
+score_dist_df = pd.DataFrame(score_dist_rows)
+
+score_dist_df.to_csv(SCORE_DIST_FILE, index=False)
+
+print(f"Saved: {SCORE_DIST_FILE}")
+
+
+# ============================================================
+# 22. TIER DISTRIBUTION SUMMARY (DIAGNOSTIC)
+# ============================================================
+
+section("22. TIER DISTRIBUTION SUMMARY")
+
+candidates_df = hybrid[hybrid["INVESTIGATION_CANDIDATE"] == 1]
+n_cands = len(candidates_df)
+
+tier_counts = (
+    candidates_df["INVESTIGATION_PRIORITY"]
+    .value_counts()
+    .reindex(["P1", "P2", "P3", "P4", "P0"], fill_value=0)
+)
+
+print()
+print(f"{'Tier':<6} {'Count':>8} {'% of Candidates':>18} {'Score Band':>28}")
+print("-" * 65)
+tier_bands = {
+    "P1": f"Consensus OR score >= {TIER_P1_SCORE_THRESHOLD}",
+    "P2": f"{TIER_P2_THRESHOLD}-{TIER_P1_SCORE_THRESHOLD}",
+    "P3": f"{TIER_P3_THRESHOLD}-{TIER_P2_THRESHOLD}",
+    "P4": f"0.1-{TIER_P3_THRESHOLD}",
+    "P0": "No signal",
+}
+for tier in ["P1", "P2", "P3", "P4"]:
+    n = int(tier_counts.get(tier, 0))
+    pct = n / n_cands * 100 if n_cands > 0 else 0
+    band = tier_bands.get(tier, "")
+    print(f"{tier:<6} {n:>8,} {pct:>17.2f}% {band:>28}")
+
+print("-" * 65)
+print(f"{'TOTAL':<6} {n_cands:>8,} {'100.00%':>18}")
+
+print()
+consensus_in_p1 = int(
+    ((candidates_df["INDEPENDENT_SIGNAL_COUNT"] == 3) &
+     (candidates_df["INVESTIGATION_PRIORITY"] == "P1")).sum()
+)
+print(
+    f"3-engine consensus in P1 : {consensus_in_p1:,} "
+    f"/ {int((candidates_df['INDEPENDENT_SIGNAL_COUNT'] == 3).sum()):,}"
+)
+p1_pct = tier_counts.get("P1", 0) / n_cands * 100 if n_cands > 0 else 0
+p2_pct = tier_counts.get("P2", 0) / n_cands * 100 if n_cands > 0 else 0
+p4_pct = tier_counts.get("P4", 0) / n_cands * 100 if n_cands > 0 else 0
+print(
+    f"Pyramid health           : P1+P2 = {p1_pct + p2_pct:.2f}% (target <= 30%)  |"
+    f"  P4 = {p4_pct:.2f}% (target >= 35%)"
+)
+
+
 
 
 # ============================================================
