@@ -103,7 +103,7 @@ export default function InvestigationDrawer({
               <span className={`drawer-risk-badge risk-${riskLevel.toLowerCase()}`}>
                 {riskLevel} RISK
               </span>
-              <span className="drawer-priority-badge">{priority}</span>
+              <span className="drawer-priority-badge">{work?.investigation_priority || 'P2'}</span>
               <span className="sig-badge" style={{ background: '#f1f5f9', color: '#334155', fontWeight: '600' }} title="Data Quality Tier">
                 Quality: {qualityTier}
               </span>

@@ -2009,7 +2009,7 @@ button, input, select, textarea {
   max-width: 680px;
   background-color: var(--bg-drawer);
   height: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
   box-shadow: var(--shadow-drawer);
   display: flex;
   flex-direction: column;
@@ -2142,6 +2142,7 @@ button, input, select, textarea {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .drawer-tab-pane {

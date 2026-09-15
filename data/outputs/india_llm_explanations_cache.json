@@ -1648,6 +1648,32 @@
     ],
     "confidence": "MEDIUM"
   },
+  "211743": {
+    "work_id": "211743",
+    "evidence_hash": "c5e75181a3875b26e82a2639cd408faf1da9c8a0caa4f603a43e8136ad49ed64",
+    "risk_summary": "The record was flagged as critical due to a high‑value sanction (₹8 million) for a generic “Normal/Others” project with no financial or vendor data and an ambiguous location description.",
+    "observed_signals": [
+      "Sanction amount unusually large for a generic work category",
+      "All financial fields (actual amount, disbursed amount, payment count, vendor count, payment frequency, disbursement‑to‑sanction ratio) are null",
+      "Project description and address are vague and lack verifiable identifiers"
+    ],
+    "why_flagged": "Two independent detectors converged: a rule‑based validator flagged missing mandatory financial fields and a NLP‑based detector flagged the non‑specific, location‑free description. The combination of a high sanction amount with zero disclosed expenditure triggers the critical risk model, resulting in a risk score of 91 and P1 priority.",
+    "limitations": [
+      "The source data provides no actual or disbursed amounts, so the assessment relies on absence of data rather than contradictory evidence"
+    ],
+    "what_to_verify": [
+      "Obtain sanctioned order and verify the approved ₹8 million amount",
+      "Request actual expenditure, disbursement schedules, and payment vouchers",
+      "Identify and confirm all vendors/sub‑contractors involved",
+      "Inspect the site at Besent Street, DN 116, U‑23, Zone‑9 to confirm hall construction",
+      "Cross‑check with local municipal/DMO records for project approvals and completion status"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T17:59:17.292Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
   "213687": {
     "risk_summary": "Critical hybrid risk score (85) triggered by multiple independent signals, unusually high payment frequency and vendor count, and missing documentation.",
     "observed_signals": [
@@ -2320,6 +2346,32 @@
     ],
     "confidence": "MEDIUM"
   },
+  "250092": {
+    "work_id": "250092",
+    "evidence_hash": "bc5ba4b0c74425dbb5af4c1c8eb82bf2ce098b0b982f1bd8c4700fe2b3ea7951",
+    "risk_summary": "The record shows a ₹6.7 million sanction for a low‑complexity “Normal/Others” activity (book distribution) with no reported actual, disbursed, or payment data.",
+    "observed_signals": [
+      "sanction amount unusually high for the described activity",
+      "all financial fields (actual_amount, disbursed_amount, payment_count, vendor_count) are null",
+      "category mismatch: Normal/Others vs large expenditure"
+    ],
+    "why_flagged": "Two independent detection methods converged on a critical risk because the high sanction amount lacks any supporting disbursement or vendor information, indicating possible mis‑allocation, phantom spending, or incomplete reporting for a routine library book distribution.",
+    "limitations": [
+      "The dataset provides only self‑reported fields; no external invoices or payment logs are available to confirm actual spending."
+    ],
+    "what_to_verify": [
+      "Obtain and review payment vouchers/invoices for the ₹6.7 M sanction",
+      "Confirm actual amount spent and disbursement dates",
+      "Identify the vendor(s) and verify their legitimacy and contract terms",
+      "Cross‑check school library records to confirm receipt of books",
+      "Assess whether the sanctioned amount aligns with typical per‑book costs for the listed schools"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T17:59:56.446Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
   "250843": {
     "summary": "The candidate shows a high risk level and score with multiple payments and limited peer comparison, while key fields such as actual cost, completion dates, and supporting documents are missing. These gaps and the concentration of payments warrant human review.",
     "signals": [
@@ -2919,6 +2971,86 @@
     ],
     "confidence": "medium",
     "generated_at": "2026-09-15T10:50:01.518Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "312966": {
+    "work_id": "312966",
+    "evidence_hash": "8ea10281a2ab486fcd68341efe08175bc0b17ef9c3552b053b9b763e7c243fe6",
+    "risk_summary": "The project shows a critical risk due to a large sanctioned amount with no recorded disbursement, payment, or vendor data, and a description that mismatches its category.",
+    "observed_signals": [
+      "sanction_amount present but actual_amount, disbursed_amount, payment_count, unique_vendor_count all null",
+      "category 'Normal/Others' inconsistent with infrastructure work description",
+      "high sanction amount (≈26.5 M) with no financial flow records",
+      "two independent detection methods flagged the same anomalies"
+    ],
+    "why_flagged": "Both the completeness detector (missing key financial fields) and the anomaly detector (high sanction amount with no downstream transactions and category mismatch) converged, triggering a critical alert. The absence of any disbursement or vendor information despite a sizable sanction suggests a potential ghost project or misreporting.",
+    "limitations": [
+      "The analysis relies solely on the supplied structured fields; it cannot verify the authenticity of the referenced letter or external records without additional data."
+    ],
+    "what_to_verify": [
+      "Obtain actual expenditure and disbursement statements for the sanctioned amount",
+      "Request payment vouchers and bank transfer records",
+      "Identify and review contracts with vendors involved in the high‑mast installation",
+      "Conduct a site visit to confirm physical installation of the mast(es)",
+      "Validate the referenced letter (number 900, dated 25 Aug 2026) with PD DRDA Mirzapur records",
+      "Cross‑check the work category classification against standard MPLADS guidelines"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T18:27:15.261Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "313016": {
+    "work_id": "313016",
+    "evidence_hash": "6623539027edba70860ed522108f4b7cf09fd758843a966d21f3298f8576cb0a",
+    "risk_summary": "The work is flagged as CRITICAL with a score of 91 due to missing financial flow data and an atypical high‑mast lighting project for a MPLADS constituency.",
+    "observed_signals": [
+      "sanction_amount present but actual_amount, disbursed_amount, payment_count, and vendor_count are null",
+      "work_category listed as \"Normal/Others\" despite a capital‑intensive high‑mast lighting installation"
+    ],
+    "why_flagged": "Two independent detectors converged: a data‑completeness model flagged the absence of any disbursement or vendor information, and a content‑anomaly model flagged the mismatch between the generic \"Normal/Others\" category and a large‑scale infrastructure item (high‑mast lights) that is unusual for MPLADS allocations. The combination of null financial fields and category‑description inconsistency triggered the CRITICAL risk level.",
+    "limitations": [
+      "The record contains only the structured fields; no supporting documents (invoices, vendor contracts, site photos) are available to confirm execution or spending."
+    ],
+    "what_to_verify": [
+      "Obtain and review the sanction letter (No.11849‑2026) and any subsequent approval documents",
+      "Request invoices, payment vouchers, and bank statements to confirm actual and disbursed amounts",
+      "Identify the vendor(s) and verify their registration and contract details",
+      "Conduct a field inspection of the listed locations in Block Saiyan and Block Kheragarh to confirm installation of high‑mast lights",
+      "Cross‑check the work against MPLADS guidelines for permissible projects and expenditure limits"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T18:00:35.273Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "313337": {
+    "work_id": "313337",
+    "evidence_hash": "ebcd5be1b3b2771a0a35e215ccef9db5d184930d9720e70979522d38beaff582",
+    "risk_summary": "The record shows a very large sanctioned amount (₹22.8 million) for a generic “Normal/Others” work with no actual, disbursed, or payment data, triggering a critical risk flag.",
+    "observed_signals": [
+      "Sanction amount unusually high for a Normal/Others category",
+      "All financial fields (actual_amount, disbursed_amount, payment_count, vendor data) are null/missing"
+    ],
+    "why_flagged": "Two independent detection methods converged on the same risk: (1) a financial‑data completeness check flagged the complete absence of disbursement and vendor information despite a high sanction value, and (2) a categorisation consistency check flagged the mismatch between the high‑cost lighting installation and the low‑risk “Normal/Others” work category. The combination of a large monetary figure with missing transaction records strongly suggests possible mis‑allocation, phantom projects, or data manipulation, leading the system to assign a CRITICAL level with a 92.9 score.",
+    "limitations": [
+      "The record provides no actual or disbursed amounts, vendor details, or payment timelines, limiting verification to structural anomalies rather than concrete evidence of fraud."
+    ],
+    "what_to_verify": [
+      "Obtain the sanction order and verify the approved amount",
+      "Retrieve payment vouchers, bank statements, and disbursement schedules for the project",
+      "Identify all vendors/invoice numbers linked to the work",
+      "Confirm that the work falls under the correct category (e.g., Infrastructure/Power)",
+      "Conduct a site visit to Ram Nagar block to verify installation of the high‑mast lights",
+      "Cross‑check the list of locations mentioned in the attached list with field observations",
+      "Review MP’s constituency office records for any approvals or objections"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T18:07:25.381Z",
     "model": "openai/gpt-oss-120b",
     "source": "groq",
     "cached": false
