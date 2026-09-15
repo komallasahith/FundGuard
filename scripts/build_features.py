@@ -117,41 +117,22 @@ exp["FUND_DISBURSED_AMT"] = pd.to_numeric(
 
 
 # =========================================================
-# 4. VALIDATED EXPENDITURE DUPLICATE REMOVAL
+# 4. GENERALIZED EXPENDITURE DUPLICATE REMOVAL
 # =========================================================
-#
-# We found one exact duplicated expenditure transaction
-# during validation:
-#
-# WORK = 250877
-# VENDOR = 79135
-# AMOUNT = 2841850
-#
-# Keep the raw source unchanged.
-# Remove only the extra copy for financial aggregation.
-# =========================================================
+# Detect and remove exact duplicate transaction records 
+# matching composite key (WORK_KEY, VENDOR_ID, FUND_DISBURSED_AMT, PAYMENT_DATE)
 
-duplicate_mask = (
-    (exp[WORK_KEY] == 250877)
-    & (exp["VENDOR_ID"] == 79135)
-    & (exp["FUND_DISBURSED_AMT"] == 2841850)
-)
+initial_exp_count = len(exp)
+candidate_dup_cols = [c for c in [WORK_KEY, "VENDOR_ID", "FUND_DISBURSED_AMT", "PAYMENT_DATE", "EXPENDITURE_DATE"] if c in exp.columns]
+if not candidate_dup_cols:
+    candidate_dup_cols = [WORK_KEY, "FUND_DISBURSED_AMT"] if "FUND_DISBURSED_AMT" in exp.columns else [WORK_KEY]
 
-duplicate_indices = exp.index[duplicate_mask].tolist()
-
-removed_duplicates = 0
-
-if len(duplicate_indices) > 1:
-
-    exp = exp.drop(
-        duplicate_indices[1:]
-    )
-
-    removed_duplicates = len(duplicate_indices) - 1
+exp = exp.drop_duplicates(subset=candidate_dup_cols, keep="first")
+removed_duplicates = initial_exp_count - len(exp)
 
 print(
-    f"\nValidated expenditure duplicates removed: "
-    f"{removed_duplicates}"
+    f"\nGeneralized expenditure duplicates removed: "
+    f"{removed_duplicates:,}"
 )
 
 

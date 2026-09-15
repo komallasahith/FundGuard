@@ -1,7 +1,10 @@
 from pathlib import Path
+import sys
 import pandas as pd
 import numpy as np
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 # ============================================================
 # FUNDGUARD — INDIA EVIDENCE BUILDER

@@ -85,8 +85,8 @@ export default function InvestigationDrawer({
   const riskLevel = String(risk.final_risk_level || work?.final_risk_level || 'LOW').toUpperCase();
   const rawScore = risk.hybrid_risk_score ?? work?.hybrid_risk_score;
   const scoreVal = rawScore != null ? Number(rawScore).toFixed(1) : '—';
-  const priority = risk.investigation_priority || work?.investigation_priority || 'P2';
-  const agreement = risk.detector_agreement || work?.detector_agreement || 'Single Detector';
+  const qualityTier = risk.data_quality_tier || work?.data_quality_tier || (quality.missing_field_count === 0 ? 'HIGH' : (quality.missing_field_count === 1 ? 'MEDIUM' : 'LOW'));
+  const peerSufficient = risk.peer_data_sufficient !== undefined ? risk.peer_data_sufficient : ((peer.peer_count ?? 15) >= 10);
 
   return (
     <div className="drawer-overlay" onClick={onClose}>
@@ -104,6 +104,12 @@ export default function InvestigationDrawer({
                 {riskLevel} RISK
               </span>
               <span className="drawer-priority-badge">{priority}</span>
+              <span className="sig-badge" style={{ background: '#f1f5f9', color: '#334155', fontWeight: '600' }} title="Data Quality Tier">
+                Quality: {qualityTier}
+              </span>
+              <span className="sig-badge" style={{ background: peerSufficient ? '#f0fdf4' : '#fffbeb', color: peerSufficient ? '#166534' : '#b45309', fontWeight: '600' }} title="Peer Cohort Sufficiency (>=10 Works)">
+                {peerSufficient ? '✓ Peer Data ≥10' : '⚠️ Peer Data <10'}
+              </span>
             </div>
             <div className="drawer-loc-text">
               {identity.state_name || work?.state_name} • {identity.constituency || work?.constituency} (MP: {identity.mp_name || work?.mp_name})
@@ -270,6 +276,9 @@ export default function InvestigationDrawer({
                       <div className="fin-row"><span className="fin-lbl">Disbursed to Sanction Ratio:</span><span className="fin-val">{formatRatio(financial.disbursed_to_sanction_ratio ?? work?.disbursed_to_sanction_ratio)}</span></div>
                       <div className="fin-row"><span className="fin-lbl">Peer Group Median Sanction:</span><span className="fin-val">{formatCurrency(peer.peer_median_sanction ?? work?.peer_median_sanction)}</span></div>
                       <div className="fin-row"><span className="fin-lbl">Sanction to Peer Median Ratio:</span><span className="fin-val fin-danger">{formatRatio(peer.sanction_to_peer_median ?? work?.sanction_to_peer_median)}</span></div>
+                    </div>
+                    <div style={{ marginTop: '10px', padding: '8px 10px', background: '#f8fafc', borderRadius: '6px', border: '1px solid #e2e8f0', fontSize: '11px', color: '#64748b', lineHeight: '1.4' }}>
+                      <strong style={{ color: '#334155' }}>Methodology Note:</strong> Peer groups match works within the same State & Category. Statistical baselines do not account for micro-regional terrain difficulty or district-level construction cost index variations.
                     </div>
                   </div>
 

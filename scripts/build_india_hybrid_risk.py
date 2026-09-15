@@ -408,79 +408,95 @@ print(
 
 
 # ============================================================
-# 9. HYBRID SCORE
+# 9. HYBRID SCORE (CALIBRATED 0–100 MULTI-DETECTOR FUSION)
 # ============================================================
 
-section("9. CALCULATING HYBRID RISK SCORE")
-
+section("9. CALCULATING CALIBRATED HYBRID RISK SCORE")
 
 # ------------------------------------------------------------
-# RULE
+# 1. 0–100 UNIFIED CALIBRATION PER DETECTOR
 # ------------------------------------------------------------
-
-base["RULE_COMPONENT"] = np.minimum(
-    base["RULE_SCORE"],
-    35
+# Rule score (0–35 scale) normalized to 0–100
+base["RULE_SCORE_CALIBRATED"] = np.clip(
+    (base["RULE_SCORE"] / 35.0) * 100.0,
+    0,
+    100.0
 )
 
-
-# ------------------------------------------------------------
-# STATISTICAL
-# ------------------------------------------------------------
-
-base["STAT_COMPONENT"] = np.minimum(
-    base["STAT_SCORE"],
-    35
+# Statistical IQR/Z-score (0–35 scale) normalized to 0–100
+base["STAT_SCORE_CALIBRATED"] = np.clip(
+    (base["STAT_SCORE"] / 35.0) * 100.0,
+    0,
+    100.0
 )
 
+# ML Isolation Forest score (already 0–100 percentile rank)
+base["ML_SCORE_CALIBRATED"] = np.clip(
+    base["ML_PERCENTILE"],
+    0,
+    100.0
+)
 
 # ------------------------------------------------------------
-# ML
+# 2. PEER DATA SUFFICIENT FLAG
 # ------------------------------------------------------------
+if "PEER_COUNT" in base.columns:
+    base["PEER_DATA_SUFFICIENT"] = (number(base["PEER_COUNT"]) >= 10).astype(int)
+elif "STAT_PEER_COUNT" in base.columns:
+    base["PEER_DATA_SUFFICIENT"] = (number(base["STAT_PEER_COUNT"]) >= 10).astype(int)
+else:
+    base["PEER_DATA_SUFFICIENT"] = 1
 
-base["ML_COMPONENT"] = np.select(
+# ------------------------------------------------------------
+# 3. DATA QUALITY TIER
+# ------------------------------------------------------------
+missing_cnt = number(base["MISSING_FIELD_COUNT"]) if "MISSING_FIELD_COUNT" in base.columns else 0
+base["DATA_QUALITY_TIER"] = np.select(
     [
-        base["ML_PERCENTILE"] >= 99,
-        base["ML_PERCENTILE"] >= 97.5,
-        base["ML_PERCENTILE"] >= 95,
+        missing_cnt == 0,
+        missing_cnt == 1,
+        missing_cnt >= 2
     ],
     [
-        20,
-        10,
-        5,
+        "HIGH",
+        "MEDIUM",
+        "LOW"
     ],
-    default=0
+    default="MEDIUM"
 )
 
+# ------------------------------------------------------------
+# 4. WEIGHTED FUSION (0.35 RULES / 0.35 STATS / 0.30 ML)
+# ------------------------------------------------------------
+base["RULE_COMPONENT"] = base["RULE_SCORE_CALIBRATED"] * 0.35
+base["STAT_COMPONENT"] = base["STAT_SCORE_CALIBRATED"] * 0.35
+base["ML_COMPONENT"] = base["ML_SCORE_CALIBRATED"] * 0.30
 
 # ------------------------------------------------------------
-# AGREEMENT
+# 5. DETECTOR AGREEMENT BONUS
 # ------------------------------------------------------------
-
 base["AGREEMENT_BONUS"] = np.select(
     [
         base["INDEPENDENT_SIGNAL_COUNT"] >= 3,
         base["INDEPENDENT_SIGNAL_COUNT"] >= 2,
     ],
     [
-        10,
-        5,
+        10.0,
+        5.0,
     ],
-    default=0
+    default=0.0
 )
 
-
 # ------------------------------------------------------------
-# FINAL
+# 6. FINAL HYBRID RISK SCORE (0–100 SCALE)
 # ------------------------------------------------------------
-
-base["HYBRID_RISK_SCORE"] = (
+base["HYBRID_RISK_SCORE"] = np.round(
     base["RULE_COMPONENT"]
     + base["STAT_COMPONENT"]
     + base["ML_COMPONENT"]
-    + base["AGREEMENT_BONUS"]
+    + base["AGREEMENT_BONUS"],
+    1
 )
-
 
 # ============================================================
 # 10. RISK LEVEL
@@ -503,7 +519,6 @@ base["HYBRID_RISK_LEVEL"] = np.select(
     ],
     default="NONE"
 )
-
 
 # ============================================================
 # 11. PRIORITY
@@ -618,16 +633,22 @@ final_columns = [
     "UNIQUE_VENDOR_COUNT",
 
     "RULE_SCORE",
+    "RULE_SCORE_CALIBRATED",
     "RULE_SEVERITY",
     "RULE_CANDIDATE",
 
     "STAT_SCORE",
+    "STAT_SCORE_CALIBRATED",
     "STAT_SEVERITY",
     "STAT_CANDIDATE",
 
     "ML_PERCENTILE",
+    "ML_SCORE_CALIBRATED",
     "ML_SEVERITY",
     "ML_CANDIDATE",
+
+    "PEER_DATA_SUFFICIENT",
+    "DATA_QUALITY_TIER",
 
     "RULE_COMPONENT",
     "STAT_COMPONENT",

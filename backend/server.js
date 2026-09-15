@@ -899,7 +899,16 @@ function normalizeRisk(
             statisticalScore,
 
         ml_score:
-            mlScore
+            mlScore,
+
+        peer_data_sufficient:
+            risk.PEER_DATA_SUFFICIENT !== undefined
+                ? Boolean(Number(risk.PEER_DATA_SUFFICIENT))
+                : (toNumber(row.PEER_COUNT ?? risk.PEER_COUNT ?? 15) >= 10),
+
+        data_quality_tier:
+            clean(risk.DATA_QUALITY_TIER || row.DATA_QUALITY_TIER) ||
+            (toNumber(row.MISSING_FIELD_COUNT) === 0 ? "HIGH" : (toNumber(row.MISSING_FIELD_COUNT) === 1 ? "MEDIUM" : "LOW"))
     };
 }
 
@@ -2681,7 +2690,9 @@ app.get("/api/anomalies/:workId", (req, res) => {
             detector_agreement_count: risk.detector_agreement_count,
             rule_score: risk.rule_score,
             statistical_score: risk.statistical_score,
-            ml_score: risk.ml_score
+            ml_score: risk.ml_score,
+            peer_data_sufficient: risk.peer_data_sufficient,
+            data_quality_tier: risk.data_quality_tier
         },
         financial: {
             recommended_amount: toNumber(row.RECOMMENDED_AMOUNT),

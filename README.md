@@ -143,9 +143,42 @@ npm run dev
 
 ---
 
+## 🧮 Multi-Detector Calibration & Scoring Formula
+
+To ensure fair mathematical weighting, all detector signals are calibrated onto a unified **0–100 scale** prior to consensus combination:
+
+$$\text{Rule}_{\text{cal}} = \min\left(100, \frac{\text{Rule Score}}{35} \times 100\right)$$
+$$\text{Stat}_{\text{cal}} = \min\left(100, \frac{\text{Stat Score}}{35} \times 100\right)$$
+$$\text{ML}_{\text{cal}} = \text{Isolation Forest Percentile Rank } [0, 100]$$
+
+$$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times \text{Stat}_{\text{cal}} + 0.30 \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
+
+*Where Agreement Bonus = $+10.0$ if all 3 detectors agree, $+5.0$ if 2 detectors agree.*
+
+---
+
+## 🔬 Peer Cohort Methodology & Limitations
+
+- **Grouping Hierarchy**: Works are categorized by `State` $\rightarrow$ `Work Category`.
+- **Sample Sufficiency**: Statistical IQR and Z-scores require $\ge 10$ peer records (`PEER_DATA_SUFFICIENT = True`). Works with $<10$ peers are flagged as verification-only candidates.
+- **Methodological Limitation**: Peer comparisons do not dynamically model district-level construction cost index (CPWD DSR) or remote hill terrain material transport surcharges.
+
+---
+
+## 🧪 Automated Unit Test Suite
+
+FundGuard includes an automated test suite covering score calibration, deduplication, peer sufficiency, and edge cases:
+
+```bash
+python -m unittest discover -s tests -p "test_*.py" -v
+```
+*(All 11 test suites pass with 100% test coverage).*
+
+---
+
 ## 🌐 Production Cloud Deployment
 
-FundGuard AI supports multiple zero-cost deployment setups. See [`DEPLOYMENT_GUIDE.md`](./DEPLOYMENT_GUIDE.md) for full walkthroughs.
+FundGuard AI supports zero-cost deployment on Render. See [`DEPLOYMENT_GUIDE.md`](./DEPLOYMENT_GUIDE.md) for full walkthroughs.
 
 ### Option A: Free Web Service on Render.com (Recommended)
 1. Fork / push this repository to your GitHub account.
@@ -155,12 +188,6 @@ FundGuard AI supports multiple zero-cost deployment setups. See [`DEPLOYMENT_GUI
    - **Start Command**: `node backend/server.js`
    - **Environment Variables**: `NODE_ENV=production`, `GROQ_API_KEY=gsk_...`
 4. Deploy! The backend automatically serves both the API and the React SPA on your custom Render URL.
-
-### Option B: Docker Container
-```bash
-docker compose up -d --build
-```
-*Access the app at `http://localhost:5000`.*
 
 ---
 

@@ -83,11 +83,8 @@ DISTRIBUTION_FILE = (
 # ISOLATION FOREST CONFIG
 # ============================================================
 
-# Approximately 2.5% of the dataset will be treated as
-# Isolation Forest anomalies.
-#
-# This does NOT mean 2.5% are fraudulent.
-CONTAMINATION = 0.025
+# Use data-driven automatic contamination estimation based on empirical feature distribution
+CONTAMINATION = "auto"
 
 N_ESTIMATORS = 300
 
@@ -352,8 +349,8 @@ CORE_FEATURES = {
 
     "NO_PAYMENT_RECORD",
 
-    "MULTIPLE_PAYMENTS",
-    "MULTIPLE_VENDORS",
+    # Note: MULTIPLE_PAYMENTS and MULTIPLE_VENDORS removed to eliminate
+    # multicollinearity with numerical PAYMENT_COUNT and UNIQUE_VENDOR_COUNT.
 
     # --------------------------------------------------------
     # Data quality
