@@ -3075,22 +3075,52 @@ try {
 
     loadData();
 
-
     // ============================================================
     // PRODUCTION STATIC FRONTEND SERVING
     // ============================================================
 
     const distPath = path.join(__dirname, "..", "frontend", "dist");
+
     if (fs.existsSync(distPath)) {
+
         app.use(express.static(distPath));
+
         app.get("/{*splat}", (req, res, next) => {
+
             if (req.path.startsWith("/api/")) {
                 return next();
             }
-            res.sendFile(path.join(distPath, "index.html"));
+
+            res.sendFile(
+                path.join(
+                    distPath,
+                    "index.html"
+                )
+            );
         });
     }
 
+    // ============================================================
+    // 404
+    // ============================================================
+
+    app.use(
+        (req, res) => {
+
+            res.status(404).json({
+
+                error:
+                    "Endpoint not found",
+
+                path:
+                    req.originalUrl
+            });
+        }
+    );
+
+    // ============================================================
+    // START SERVER
+    // ============================================================
 
     app.listen(
         PORT,
