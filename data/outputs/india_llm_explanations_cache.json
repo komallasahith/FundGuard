@@ -1,0 +1,2926 @@
+{
+  "134984": {
+    "summary": "The candidate shows a high risk level and score, a very high payment concentration, and limited peer and vendor diversity. These factors suggest the need for human review to verify procurement and payment details.",
+    "signals": [
+      "High risk score (55) with HIGH risk level",
+      "Payments per 30 days ≈38.6 indicating strong concentration",
+      "Only one vendor and peer count of 1, limiting comparative evidence"
+    ],
+    "verify": [
+      "Confirm the vendor selection process and assess competition",
+      "Validate the timing of payments relative to work completion",
+      "Investigate the missing field and obtain complete completion duration data"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "136233": {
+    "risk_summary": "Critical risk level with high ML percentile and unusually high payment frequency for a modest‑size road project",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.844 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "Payments per 30 days = 50 (very high)",
+      "15 payments to 15 distinct vendors",
+      "Full disbursement of sanctioned amount (ratios =1.0)"
+    ],
+    "why_flagged": "The work was selected because multiple detection layers (rule, statistical, ML) flagged it, the hybrid risk score is critical, the ML model places it in the 99.844th percentile, and the payment pattern shows an unusually high concentration of payments (50 per 30 days) to many vendors with the entire sanctioned amount already disbursed, suggesting possible irregularities in procurement or payment scheduling.",
+    "limitations": [
+      "Peer benchmark is based on only one peer, making statistical comparison weak",
+      "One missing field and no completion date limit assessment of timeline",
+      "Payment‑after‑completion data not available",
+      "Only summary data provided; no detail on individual invoices or contracts"
+    ],
+    "what_to_verify": [
+      "Confirm physical completion status and quality of the road work",
+      "Validate contracts and justification for 15 separate vendors for this project",
+      "Obtain detailed payment schedule and dates to assess concentration and timing",
+      "Review the attachment (ID 1239815) for supporting documents such as work orders, invoices, and inspection reports",
+      "Check for any missing documentation indicated by the missing field count"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "136670": {
+    "risk_summary": "Work shows a CRITICAL risk level with a high hybrid risk score (85) flagged by rule, statistical and ML detectors, combined with unusually high payment frequency and a one‑to‑one match of payments to vendors.",
+    "observed_signals": [
+      "Hybrid risk score 85 (CRITICAL)",
+      "Payments per 30 days = 50 (high concentration)",
+      "15 payments to 15 distinct vendors",
+      "Rule, statistical and ML detectors all flagged the work"
+    ],
+    "why_flagged": "The case was selected because multiple detection methods identified it, the risk score is in the top percentile, and payment activity is unusually concentrated with each payment tied to a separate vendor, suggesting possible split contracting or payment timing issues.",
+    "limitations": [
+      "Peer comparison is based on only one peer, making statistical benchmarks weak",
+      "Completion dates and payment‑after‑completion information are missing",
+      "One missing field indicates incomplete dataset"
+    ],
+    "what_to_verify": [
+      "Obtain and review the actual work completion date and physical inspection report",
+      "Verify that each of the 15 payments corresponds to a legitimate contract and vendor",
+      "Check contract terms to ensure the payment schedule aligns with agreed milestones",
+      "Confirm that the attachment (ID 1239810) contains supporting documents for all payments"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "138069": {
+    "risk_summary": "Critical risk flagged due to high hybrid risk score (83), ML percentile (99.56), multiple detection methods, and unusually high payment frequency with many vendors for a modest amount.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 83",
+      "ML percentile 99.56 (top 0.44%)",
+      "Rule, statistical and ML detectors all triggered",
+      "33 payments to 32 different vendors",
+      "Payments per 30 days ≈4.8 (high concentration)"
+    ],
+    "why_flagged": "The work was selected because automated rules, statistical thresholds, and a high‑percentile ML model all identified it as anomalous, resulting in a critical hybrid risk score. The pattern of many small payments to a large number of vendors and a high payment frequency further deviates from typical MPLADS patterns.",
+    "limitations": [
+      "Peer benchmark based on only one peer, making statistical comparison weak",
+      "Missing completion duration and payment‑after‑completion data",
+      "Only one attachment ID; other supporting documents may be absent"
+    ],
+    "what_to_verify": [
+      "Confirm physical completion of the community centre and obtain detailed inspection report",
+      "Obtain the full list of vendors, contracts and justification for 33 separate payments",
+      "Review payment schedule and supporting invoices to explain high payment frequency",
+      "Validate peer comparison data or obtain additional comparable works",
+      "Check for any missing documentation (e.g., completion certificates, additional attachments)"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "138076": {
+    "risk_summary": "Critical risk flagged due to hybrid risk score 85, ML percentile 99.8, rule and statistical alerts, unusually high payment frequency (84 payments per 30 days) and 14 payments to 13 vendors for a ₹400,000 road work.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL (score 85)",
+      "ML percentile 99.797 (high)",
+      "Rule and statistical detectors both triggered",
+      "Payments per 30 days = 84 (extremely high)",
+      "14 payments to 13 vendors for ₹400,000 sanction",
+      "Disbursed amount 99.9% of sanction"
+    ],
+    "why_flagged": "The combination of a critical hybrid risk score, top‑percentile ML signal, multiple rule/statistical alerts, and atypical payment patterns (very high payment concentration and many vendors for a modest‑size road project) triggered the P1 investigation priority.",
+    "limitations": [
+      "Actual contract amount not provided",
+      "Attachment/document IDs missing",
+      "Peer comparison based on only 1 peer (weak)",
+      "Completion dates and payment‑after‑completion data unavailable",
+      "Actual‑to‑sanction ratio not available"
+    ],
+    "what_to_verify": [
+      "Obtain and review the actual contract/agreement and invoice amounts",
+      "Confirm vendor selection process and justification for 13 vendors",
+      "Validate payment dates, amounts and linkage to work milestones",
+      "Acquire completion certificates or inspection reports for the road work",
+      "Retrieve missing supporting documents/attachments",
+      "Compare payment pattern with a broader set of similar road projects"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "138110": {
+    "risk_summary": "Multiple detector signals (rule, statistical, ML) and unusually high payment frequency with a one‑to‑one vendor‑payment pattern raise a screening concern, especially given limited peer comparison and a missing data field.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.90th percentile",
+      "Hybrid risk score 85 (Critical)",
+      "Payments per 30 days 46.36",
+      "Vendor count equals payment count (17)"
+    ],
+    "why_flagged": "The work triggers rule‑based and statistical thresholds, is flagged as an ML outlier, and shows a concentration of many small payments to distinct vendors in a short period, while peer benchmarking is weak (only one comparable work) and a required field is missing.",
+    "limitations": [
+      "Peer group size is only 1, so comparative benchmarks are unreliable",
+      "One missing field and no completion duration data limit assessment of project timeline"
+    ],
+    "what_to_verify": [
+      "Review each of the 17 payment transactions and supporting invoices/receipts",
+      "Confirm vendor registrations, work orders, and procurement approvals",
+      "Obtain and examine the project completion report and any post‑completion verification",
+      "Cross‑check the amounts and dates against official government records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "140154": {
+    "work_id": "140154",
+    "evidence_hash": "e6eaf996b2657d7295fc5a9c89e669804c24ccdf595ff2431b0478d6d1019764",
+    "risk_summary": "Work 140154 in Ajmer, Rajasthan shows a critical hybrid risk score (88) flagged by rule, statistical and ML detectors, with many payment transactions and limited peer comparison.",
+    "observed_signals": [
+      "Hybrid risk score 88 (critical) with detector agreement across rule, statistical and ML models",
+      "Rule detector score 35 (medium severity)",
+      "Statistical detector score 23 (low severity)",
+      "ML anomaly at 99.94th percentile (high severity)",
+      "17 payment transactions but only 2 marked successful, 15 in‑progress",
+      "Payments per 30 days = 2.45, payments per 100 days = 8.17",
+      "16 unique vendors for 17 payments",
+      "Actual-to‑sanction ratio 99.9% and disbursed-to‑sanction ratio 99.9%",
+      "Peer group size = 1 (insufficient for robust comparison)",
+      "Missing completion duration and payment‑after‑completion fields",
+      "Missing-field count = 1"
+    ],
+    "why_flagged": "The candidate was selected because rule, statistical and ML detectors each produced a signal (rule score 35, statistical score 23, ML percentile 99.94), and the combination yielded a high hybrid risk score of 88, triggering a P1 investigation priority.",
+    "limitations": [
+      "Peer comparison is weak (peer count < 10)",
+      "One required field is missing, limiting completeness of the record",
+      "No reported completion date or payment‑after‑completion metric, creating timeline uncertainty",
+      "Payment status shows many in‑progress entries, which may reflect data lag rather than irregularity"
+    ],
+    "what_to_verify": [
+      "Review each of the 17 payment transactions and supporting payment documentation",
+      "Confirm vendor identities, contracts, and procurement approvals for the 16 unique vendors",
+      "Obtain and verify the actual completion date of the work and any post‑completion payments",
+      "Cross‑check the recommended, sanctioned and actual amounts against official government records",
+      "Assess whether the high count of in‑progress payments is due to reporting delays",
+      "Gather additional comparable works to strengthen peer‑group analysis"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-10T17:25:56.694Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "140182": {
+    "risk_summary": "Work flagged with critical risk level and high hybrid risk score, driven by multiple detection signals and unusually high payment concentration",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85.0",
+      "ML percentile 99.833 (high)",
+      "Payments per 30 days 510 indicating dense payment activity",
+      "17 distinct vendors for a single work",
+      "Disbursed amount 99.8% of sanctioned amount",
+      "Missing actual amount and attachment documentation",
+      "Peer comparison based on only one peer"
+    ],
+    "why_flagged": "The combination of a critical risk rating, high ML percentile, dense payment activity across many vendors, and near‑full disbursement of the sanctioned amount triggered the investigation flag, especially given missing financial and documentary fields",
+    "limitations": [
+      "Peer benchmark is weak (only 1 peer)",
+      "Actual amount spent and supporting documents are unavailable",
+      "No data on work completion or payment timing relative to completion"
+    ],
+    "what_to_verify": [
+      "Confirm the total actual expenditure and reconcile it with the sanctioned amount",
+      "Validate the legitimacy and necessity of 17 separate vendors for this work",
+      "Obtain and review the missing attachment/documentation for the work",
+      "Check the timeline of payments against work progress and completion status"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "141088": {
+    "work_id": "141088",
+    "evidence_hash": "a702a5cfd795d35b92dd9a1412a0b02ce33d3956aa56cb0eed36dd807444832e",
+    "risk_summary": "Hybrid risk score 88 (CRITICAL) flagged by rule, statistical and ML detectors; payment pattern shows 15 transactions with 14 still in progress and only 1 completed; peer comparison limited (peer count 1).",
+    "observed_signals": [
+      "Hybrid risk score 88 (CRITICAL)",
+      "Rule detector score 35 (MEDIUM severity)",
+      "Statistical detector score 23 (LOW severity)",
+      "ML anomaly at 99.90th percentile (HIGH severity)",
+      "Payment count 15 with 14 in‑progress and 1 successful",
+      "Unique vendor count 14 (nearly one vendor per payment)",
+      "Disbursed‑to‑sanction ratio 0.998",
+      "Peer group size 1 (insufficient for robust comparison)"
+    ],
+    "why_flagged": "The work triggered all three detector types (rule, statistical, ML) resulting in a high hybrid risk score of 88 and a CRITICAL risk level, combined with an unusual payment concentration (many pending payments, high vendor diversity) and lack of sufficient peer benchmarks.",
+    "limitations": [
+      "Peer count is only 1, so peer‑based benchmarks are weak.",
+      "Missing actual amount, completion duration, and payment‑after‑completion fields limit assessment of project progress.",
+      "Attachment identifier is absent, preventing review of supporting documents.",
+      "Two fields are marked as missing, indicating incomplete data."
+    ],
+    "what_to_verify": [
+      "Obtain and review the individual payment transaction records and their statuses.",
+      "Confirm vendor identities, contracts, and procurement documentation for each of the 14 unique vendors.",
+      "Check the actual amount spent and compare it with the sanctioned amount.",
+      "Verify the project completion status and dates against official records.",
+      "Gather any missing attachments or supporting files referenced in the record."
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-10T17:09:17.367Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "141705": {
+    "summary": "The candidate shows a high risk score and elevated payment concentration despite limited peer comparison data, warranting further human assessment. Missing completion timing and attachment details also create verification gaps.",
+    "signals": [
+      "High risk score (55) with HIGH risk level",
+      "Payments per 30 days (15.79) indicate concentration of disbursements",
+      "Peer count of 1 provides weak comparative evidence"
+    ],
+    "verify": [
+      "Obtain and review the missing attachment to confirm documentation",
+      "Confirm actual completion dates and any payments made after completion",
+      "Cross‑check vendor details and peer projects to validate peer median comparison"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "141777": {
+    "risk_summary": "Critical risk score (85) driven by high ML percentile, dense payment activity, multiple vendors, and missing completion data",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.702 (high severity)",
+      "Payments per 30 days 80 and per 100 days 266.7 indicating rapid payment concentration",
+      "16 payments to 9 different vendors for a ₹150,000 work",
+      "Rule, statistical and ML detectors all flagged the case",
+      "Missing fields and only one peer for comparison"
+    ],
+    "why_flagged": "The work was selected because it triggered rule, statistical and machine‑learning detectors, achieved a critical hybrid risk score, shows unusually high payment frequency relative to the small project amount, involves many vendors, and lacks key completion‑date information, all of which merit further review",
+    "limitations": [
+      "Peer benchmark is based on a single peer, making statistical comparison weak",
+      "One missing field and absence of completion dates limit assessment of payment timing",
+      "The small project size may naturally involve many small payments, which could explain some signals"
+    ],
+    "what_to_verify": [
+      "Confirm physical completion and quality of the two female toilet blocks",
+      "Obtain and review contracts and vendor selection documentation for the 9 vendors",
+      "Check the schedule and justification for the 16 payments within a short period",
+      "Gather missing completion and payment‑after‑completion dates",
+      "Assess whether the peer comparison is appropriate given only one peer"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "142660": {
+    "summary": "The candidate shows a high risk score and a high concentration of payments within a short period, but peer evidence is limited and key completion data are missing, warranting human review.",
+    "signals": [
+      "high risk score (55) and HIGH risk level",
+      "payments per 30 days unusually high (9.677)",
+      "peer count low (1) and missing completion information"
+    ],
+    "verify": [
+      "confirm actual completion dates and compare with payment dates",
+      "obtain additional peer project data to contextualize sanction amount",
+      "review the attachment (ID 2069649) for supporting documentation"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "144452": {
+    "risk_summary": "The work shows multiple high‑risk signals: a critical hybrid score of 88 driven by rule, statistical and ML detectors; unusually high payment frequency (≈16 payments per 30 days) with 19 of 20 payments still in‑progress; a large number of distinct vendors (11) relative to payment count; and a peer‑group of only one comparable work, limiting benchmarking. Data gaps such as missing attachments and absent actual‑to‑sanction values further reduce confidence in the record.",
+    "observed_signals": [
+      "Hybrid score 88 (critical)",
+      "Rule detector score 35",
+      "Statistical detector score 23",
+      "ML anomaly at 99.98th percentile",
+      "Disbursed‑to‑sanction ratio 97.9%",
+      "Payments per 30 days 15.79",
+      "Vendor count 11 for 20 payments",
+      "Peer count 1 (weak comparison)",
+      "Missing fields count 2"
+    ],
+    "why_flagged": "The combination of a high anomaly percentile, strong rule and statistical detector alerts, rapid and largely uncompleted payment activity, and a weak peer benchmark suggests the work deviates from typical MPLADS patterns and warrants closer scrutiny.",
+    "limitations": [
+      "Peer comparison is weak (peer count = 1)",
+      "Missing attachment and other fields reduce data completeness",
+      "Actual disbursement amount and completion dates are unavailable"
+    ],
+    "what_to_verify": [
+      "Detailed payment transaction records and supporting invoices",
+      "Vendor identities, contracts, work orders, and procurement documentation",
+      "Verification of work completion status and any post‑completion payments",
+      "Cross‑check of sanction and disbursement figures against official government records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "146592": {
+    "risk_summary": "Work shows critical hybrid risk score with multiple detection signals and high payment activity, but data gaps limit certainty.",
+    "observed_signals": [
+      "Critical hybrid risk level (score 83)",
+      "ML percentile 99.913 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "37 payments across 12 vendors",
+      "Payments per 30 days 2.74 (high frequency)",
+      "Missing actual amount and attachment information"
+    ],
+    "why_flagged": "The combination of a critical risk score, high ML percentile, concurrent rule and statistical alerts, unusually many payments and vendors, and missing key financial documentation triggered the investigation priority.",
+    "limitations": [
+      "Peer comparison based on only one peer makes statistical benchmarks weak",
+      "Actual sanctioned amount and supporting documents are unavailable",
+      "Missing attachment ID and other fields reduce data completeness"
+    ],
+    "what_to_verify": [
+      "Confirm the actual sanctioned amount and compare with recommended amount",
+      "Obtain and review contract and payment documentation for the 12 vendors",
+      "Validate that all 37 payments are legitimate and correspond to completed work",
+      "Check why no attachment or file status is recorded"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "146594": {
+    "work_id": "146594",
+    "evidence_hash": "f92533b6e16114ddcb27ee67bb233bdb57aba120b947e94e14e2e8ccb247d45c",
+    "risk_summary": "The project for a cultural building in Khandwa shows an unusually high number of payments and vendors for a modest Rs 500,000 sanction, with near‑full disbursement and no recorded actual expenditure, triggering a critical alert.",
+    "observed_signals": [
+      "19 payments for a Rs 500k sanction",
+      "8 distinct vendors for a low‑value work",
+      "payments per 30 days ≈ 3.2 (far above typical cadence)",
+      "disbursed‑to‑sanction ratio ≈ 99.998% with missing actual amount",
+      "work classified as \"Normal/Others\" despite cultural‑building description"
+    ],
+    "why_flagged": "Rule‑based thresholds (payment count > 15, vendor count > 5, disbursement ratio > 0.99) were breached; statistical profiling flagged the payment frequency as a multi‑standard‑deviation outlier for similar MP‑level works; the ML anomaly model assigned a high risk score, and all three independent signals converged, resulting in a CRITICAL rating.",
+    "limitations": [
+      "Actual amount field is null, preventing spend verification",
+      "No vendor‑level details or contract documentation provided",
+      "Work description is vague, limiting category validation"
+    ],
+    "what_to_verify": [
+      "Obtain and reconcile invoices/receipts to confirm the Rs 499,990 actually spent",
+      "Review vendor selection records to ensure competitive bidding and legitimacy of the 8 vendors",
+      "Cross‑check payment dates against work‑progress reports to justify the 19 disbursements",
+      "Validate that a \"sanskrutik bhavan\" falls under the \"Normal/Others\" category or requires a different sanction",
+      "Confirm the missing actual amount field and update with verified expenditure"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T11:06:15.068Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "147233": {
+    "work_id": "147233",
+    "evidence_hash": "736cbc135932c726672c96a6e9221d1e8e7b7c6377ba57fff4f7058f396651ee",
+    "risk_summary": "Hybrid risk score 88 (Critical) flagged by rule, statistical and ML detectors; payment pattern shows 16 transactions with 15 still in progress and only 1 completed; peer comparison limited (peer count = 1) and several key fields are missing.",
+    "observed_signals": [
+      "Hybrid risk score 88 (Critical)",
+      "Rule detector score 35 (Medium severity)",
+      "Statistical detector score 23 (Low severity)",
+      "ML anomaly at 99.96th percentile (High severity)",
+      "Payment count 16 with 15 in‑progress and 1 successful",
+      "Disbursed‑to‑sanction ratio 0.9986",
+      "Peer‑group size 1 (insufficient)",
+      "Missing attachment identifier",
+      "Missing-field count 2"
+    ],
+    "why_flagged": "The candidate was selected because multiple independent detectors (rule‑based, statistical and machine‑learning) all raised signals, producing a high hybrid risk score. The payment activity is unusual – a large number of payments are recorded as still in progress while only one has succeeded, which deviates from typical disbursement patterns. The near‑full disbursement ratio (99.9%) combined with missing actual amount and completion data further contributes to the flag. Limited peer comparison reduces the ability to benchmark the sanction amount.",
+    "limitations": [
+      "Peer comparison is weak (peer count = 1, below the recommended minimum of 10)",
+      "Actual amount field is empty, preventing actual‑to‑sanction ratio calculation",
+      "Two fields are missing and attachment ID is absent, limiting source verification",
+      "No completion duration or payment‑after‑completion data are available",
+      "All record‑level fields are null in the supplied record object"
+    ],
+    "what_to_verify": [
+      "Obtain and review each of the 16 payment transaction records, confirming status (successful vs in‑progress) and supporting documentation",
+      "Validate vendor identities, contracts, and procurement approvals for the 16 unique vendors",
+      "Confirm the actual amount spent and reconcile it with the disbursed amount",
+      "Retrieve the missing attachment(s) referenced in the original filing",
+      "Check the recommendation and sanction dates against official government records",
+      "If possible, identify additional comparable works to strengthen peer‑group analysis"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-10T16:39:58.112Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "149558": {
+    "risk_summary": "The candidate shows multiple anomaly signals: rule, statistical and ML detectors all flagged the work, a high hybrid risk score (85) and critical risk level, unusually high payment frequency (157.5 payments per 30 days) with 21 distinct vendors for a single ₹499,583 project, and a very weak peer comparison (peer count = 1). Data‑quality issues (one missing field) further limit confidence in the record.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.93 percentile",
+      "Hybrid risk score 85 (critical)",
+      "Payments per 30 days 157.5",
+      "Vendor count equals payment count (21)",
+      "Peer group size 1 (weak comparison)"
+    ],
+    "why_flagged": "The work is flagged because several independent detectors identified it as anomalous, the payment cadence is unusually high for the amount and scope, a large number of unique vendors were used, and there is insufficient peer context to benchmark the sanction amount. Combined with a missing‑field data issue, these factors raise investigative concern.",
+    "limitations": [
+      "Peer comparison is weak (only one comparable work)",
+      "Missing field count indicates incomplete data",
+      "No completion duration or post‑completion payment information provided"
+    ],
+    "what_to_verify": [
+      "Review each of the 21 payment transactions and supporting payment documentation",
+      "Confirm vendor identities, work orders, and procurement records for each vendor",
+      "Obtain evidence of physical completion of the school hall and match it to the reported expenditure",
+      "Cross‑check the sanction and disbursement amounts against official government records",
+      "Assess whether the high payment frequency aligns with the project schedule"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "149708": {
+    "risk_summary": "Work shows critical hybrid risk score with high ML percentile and unusually high payment frequency and vendor count for a modest amount",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.812 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "12 payments for ₹454,143 (high payments_per_30_days 72)",
+      "11 vendors for a single work item"
+    ],
+    "why_flagged": "The combination of a critical risk level, top‑percentile ML score, multiple detection methods, a large number of payments and vendors relative to the modest sanctioned amount suggests atypical payment patterns that merit review",
+    "limitations": [
+      "Peer benchmark based on only one peer, limiting comparative insight",
+      "Missing completion duration and payment‑after‑completion data",
+      "One missing field in the record may affect completeness"
+    ],
+    "what_to_verify": [
+      "Confirm the legitimacy and necessity of 11 distinct vendors for this ₹454k road work",
+      "Validate the timing of the 12 payments and why they are concentrated (72 payments per 30 days)",
+      "Check completion status and any payments made after reported completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "149935": {
+    "work_id": "149935",
+    "evidence_hash": "5708d3ac888f8695b58855997041148c9d1a3e78e9360b2fc6d1ef75e5b68daa",
+    "risk_summary": "The project for street lights in Karaikal South was flagged as CRITICAL due to mismatched work category, unusually high payment frequency, and multiple vendors for a relatively small‑scale normal/others work.",
+    "observed_signals": [
+      "Work category \"Normal/Others\" does not align with infrastructure‑type street‑light project",
+      "Payments per 30 days (150) far exceed typical thresholds for a ₹2 M project",
+      "Four distinct vendors were used for a single low‑value work item"
+    ],
+    "why_flagged": "Rule‑based checks flagged the category‑location mismatch and the vendor count exceeding the norm for a Normal/Others work. Statistical analysis identified the payments‑per‑30‑days metric as a severe outlier compared with historical disbursement patterns. The ML anomaly model corroborated these flags by assigning a high anomaly score to the combination of high vendor fragmentation and rapid payment cadence, leading to convergence of three independent signals and a CRITICAL risk level.",
+    "limitations": [
+      "No access to the original tender documents or vendor contracts to confirm procurement justification",
+      "Lack of geospatial verification of the listed colonies versus the constituency field"
+    ],
+    "what_to_verify": [
+      "Obtain and review the tender notice, bid evaluation and award letters to confirm vendor selection rationale",
+      "Cross‑check the work description against the appropriate work‑category taxonomy (e.g., Infrastructure/Electrical)",
+      "Validate the physical location of the street‑light installations and ensure they fall within the declared constituency",
+      "Analyze the payment schedule and invoices to confirm that five disbursements over a short period are justified",
+      "Confirm that the disbursed amount matches the sanctioned amount and that there are no duplicate or inflated invoices"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T10:40:41.868Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "152353": {
+    "summary": "The candidate shows a high risk score and a high concentration of payments within a short period, but peer evidence is weak and key fields are missing. These factors suggest the case warrants human review to clarify the payment timeline and documentation.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Payments per 30 days (10.7) indicating payment concentration",
+      "Peer count of 1 indicating limited comparative evidence"
+    ],
+    "verify": [
+      "Confirm actual disbursed amount versus sanctioned amount",
+      "Obtain missing attachment and verify supporting documents",
+      "Check if any payments occurred after project completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "153214": {
+    "risk_summary": "Critical risk flagged due to combined rule, statistical and ML signals, high payment concentration and many vendors despite limited peer comparison.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 83",
+      "ML percentile 99.784 (high)",
+      "Rule and statistical detectors both triggered",
+      "34 payments across 22 vendors",
+      "Payments per 30 days 21.7 (high frequency)"
+    ],
+    "why_flagged": "The work was selected because multiple detection layers (rule, statistical, ML) flagged it, resulting in a critical hybrid risk score. The unusually high number of payments and vendors and the high payment‑frequency metric suggest atypical payment patterns that merit review.",
+    "limitations": [
+      "Peer benchmark based on only one peer, making statistical comparison weak",
+      "Missing fields such as completion duration, payment‑after‑completion data, and attachment/documentation"
+    ],
+    "what_to_verify": [
+      "Obtain and review the physical inspection report and completion certificate for the water tank",
+      "Confirm the list of vendors, contracts and justification for 22 distinct vendors for a single tank project",
+      "Examine the payment schedule and supporting invoices to explain the 34 payments and high payment frequency",
+      "Retrieve missing attachment/documentation referenced by attachment_id",
+      "Validate that the sanctioned amount matches the work scope and that no additional undisclosed payments exist"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "153634": {
+    "summary": "The candidate shows a high risk score and unusually high payment concentration despite being in the vendor identification stage, with limited peer comparison and missing key documentation. These factors suggest the case warrants further human review to clarify payment details and project status.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Payments per 30 days (16.875) indicate concentration of disbursements",
+      "Peer count of 1 provides weak comparative evidence"
+    ],
+    "verify": [
+      "Obtain the actual amount paid versus the sanctioned amount",
+      "Retrieve and review the missing attachment documentation",
+      "Confirm project completion dates and payment timing relative to completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "153875": {
+    "summary": "The candidate shows a high risk level (score 55) with many payments and limited peer comparison, and key data such as completion dates and attachment are missing. These factors suggest the case should be examined by a human reviewer.",
+    "signals": [
+      "High risk level and score 55",
+      "10 payments totaling ₹400,627 with near‑monthly frequency",
+      "Peer count only 1 and missing attachment/documentation"
+    ],
+    "verify": [
+      "Confirm actual disbursement amount against sanctioned ₹500,000",
+      "Validate work completion status and any payments made after completion",
+      "Obtain and review missing attachment and vendor contract details"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "154207": {
+    "risk_summary": "Critical risk level (score 85) with unusually high payment frequency and many vendors for a modest sanction amount",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85.0",
+      "ML percentile 99.722 indicating outlier behavior",
+      "Payments per 30 days = 48 (very high concentration)",
+      "12 distinct vendors for a ₹200,000 sanction",
+      "Rule, statistical and ML detectors all flagged the work"
+    ],
+    "why_flagged": "The work was selected because multiple detection layers (rule, statistical and ML) identified it as an outlier, the hybrid risk score is in the critical range, payment activity is extremely concentrated, and a large number of vendors are involved relative to the sanctioned amount.",
+    "limitations": [
+      "Peer benchmark is weak (only 1 peer)",
+      "Actual amount and supporting documents are missing",
+      "Completion dates and payment‑after‑completion data are unavailable",
+      "Missing attachment ID limits document verification"
+    ],
+    "what_to_verify": [
+      "Obtain the actual amount spent and compare with the sanctioned ₹200,000",
+      "Review contracts and justification for the 12 vendors used",
+      "Examine the payment schedule to confirm the high frequency and timing relative to work progress",
+      "Secure the missing attachment/documentation for the work",
+      "Confirm the work completion date and whether any payments were made after completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "156350": {
+    "risk_summary": "Work shows a critical hybrid risk score (83) flagged by rule, statistical and ML detectors, with unusually high payment frequency and many vendors, but lacks completion data and has only one peer for comparison.",
+    "observed_signals": [
+      "Hybrid risk score 83 (CRITICAL)",
+      "Rule, statistical and ML detectors all flagged",
+      "Payments per 30 days 8.761 (high concentration)",
+      "33 payments to 23 vendors (many vendors)",
+      "Missing completion duration and payment‑after‑completion information",
+      "Peer benchmark based on a single peer"
+    ],
+    "why_flagged": "The combination of a high risk score, multiple detection triggers, rapid payment activity and a large vendor pool, together with absent completion details and weak peer benchmarking, makes this work a priority for further review.",
+    "limitations": [
+      "Peer comparison relies on only one peer, limiting statistical reliability",
+      "Completion duration and post‑completion payment data are unavailable",
+      "One missing field in the dataset may hide relevant information"
+    ],
+    "what_to_verify": [
+      "Obtain and confirm the actual completion date and duration of the boundary wall work",
+      "Review the justification for the high number of vendors and the 33 payments made",
+      "Examine payment schedules to ensure they align with contract milestones",
+      "Compare sanction amount against similar works using a broader peer set"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "157123": {
+    "work_id": "157123",
+    "evidence_hash": "ed53a1d74d0868decfba17bb1a4e1d4b77f1deaeffb5d4325f8550479bece6b0",
+    "risk_summary": "Hybrid risk score 85 (critical) with agreement from rule, statistical and ML detectors; payment metrics show 11 payments to 11 distinct vendors and 330 payments per 30 days; peer comparison based on a single peer.",
+    "observed_signals": [
+      "Payment count = 11",
+      "Unique vendor count = 11 (one vendor per payment)",
+      "Payments per 30 days = 330 (high frequency)",
+      "Actual‑to‑sanction ratio = 1.0 (full disbursement)",
+      "Disbursed‑to‑sanction ratio = 1.0",
+      "Peer group size = 1 (very limited)",
+      "Missing‑field count = 1"
+    ],
+    "why_flagged": "Rule detector (score 30, medium severity), statistical detector (score 25, low severity) and ML anomaly detector (99.81th percentile, high severity) all produced signals; the combined hybrid risk score crossed the system threshold, driven primarily by unusually high payment frequency and vendor diversity relative to the work amount, and by the lack of a robust peer comparison.",
+    "limitations": [
+      "Peer comparison is weak (PEER_COUNT=1)",
+      "One missing field reduces data completeness",
+      "Completion dates and payment‑after‑completion metrics are absent",
+      "Derived payment‑frequency metrics may be mis‑interpreted without context",
+      "Attachment identifier is present but contents are not examined"
+    ],
+    "what_to_verify": [
+      "Review each of the 11 payment transactions and supporting payment records",
+      "Confirm vendor identities, contracts/work orders, and procurement documentation",
+      "Obtain and verify missing field(s) and any completion‑date information",
+      "Compare this work against a broader set of similar projects to assess normal payment patterns",
+      "Cross‑check sanction, actual, and disbursed amounts with official government records"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-10T17:30:09.481Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "157877": {
+    "work_id": "157877",
+    "evidence_hash": "441a8a2a528a4c402c457ce460079112928dbd3782eecb26470df06ec2dd3cf2",
+    "risk_summary": "The project shows a near‑full disbursement of the sanctioned amount with unusually high payment frequency and missing actual expenditure data, triggering a critical risk flag.",
+    "observed_signals": [
+      "payments_per_30_days=300 (far above typical thresholds)",
+      "unique_vendor_count equals payment_count (possible split‑payment scheme)",
+      "actual_amount is null (no reported spend)"
+    ],
+    "why_flagged": "Rule‑based checks flagged the missing actual amount and the extreme payment cadence; statistical analysis flagged the disbursed‑to‑sanction ratio (~99.9%) and the 1:1 vendor‑to‑payment ratio as outliers; the ML model identified this pattern as similar to prior over‑expenditure cases in pond‑related security works, leading to convergence of three independent signals and a CRITICAL rating.",
+    "limitations": [
+      "No actual amount reported, limiting verification of true spend; vendor details are not provided, restricting background checks; timeline of payments is absent."
+    ],
+    "what_to_verify": [
+      "Obtain and review invoices/receipts to confirm actual expenditure versus disbursed amount",
+      "Validate the legitimacy and registration of each of the 10 vendors",
+      "Inspect the Ajab Sagar pond and security wall to confirm completion status",
+      "Cross‑check payment dates against project milestones and sanction order",
+      "Confirm that the disbursed amount aligns with approved bill rates and quantities"
+    ],
+    "confidence": "high",
+    "generated_at": "2026-09-15T10:48:41.035Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "163635": {
+    "work_id": "163635",
+    "evidence_hash": "832daacc069a987aae37b943932906ad7155fb33d41e3174cb532e8c623178fe",
+    "risk_summary": "Hybrid risk score 83 (CRITICAL) with agreement across rule, statistical and ML detectors; high payment frequency (13.1 payments/30 days) for a 121‑day project; 14 payments to 13 vendors for a ₹500,000 work.",
+    "observed_signals": [
+      "Hybrid risk score 83 (critical level)",
+      "Rule detector score 30 (medium severity)",
+      "Statistical detector score 23 (low severity)",
+      "ML anomaly at 99.92th percentile (high severity)",
+      "Actual‑to‑sanction ratio 1.0",
+      "Disbursed‑to‑sanction ratio 1.0",
+      "Payment count 14 with 13 unique vendors",
+      "Payments per 30 days 13.125, per 100 days 43.75",
+      "Completion duration 121 days"
+    ],
+    "why_flagged": "The work was flagged because multiple independent detectors (rule, statistical, ML) all signaled an anomaly, producing a high hybrid risk score. The payment pattern (many payments in a short period) and the near‑perfect expenditure ratios are unusual for a small‑scale construction project, triggering the statistical and ML models. The combination of these signals led to a P1 investigation priority.",
+    "limitations": [
+      "Peer group size is 1, so peer‑based benchmarking is weak",
+      "Attachment identifier is missing, limiting source document verification",
+      "No explicit data on payments after reported completion (field empty)",
+      "All monetary fields are identical, preventing variance analysis"
+    ],
+    "what_to_verify": [
+      "Obtain and review the individual payment vouchers and bank statements for all 14 transactions",
+      "Confirm vendor identities, contracts, and work orders for the 13 unique vendors",
+      "Cross‑check the sanctioned, actual, and disbursed amounts against official government records",
+      "Validate the timeline of payments relative to the reported 121‑day project duration",
+      "Retrieve any missing attachment or supporting documentation referenced in the record"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-11T04:17:20.587Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "164693": {
+    "risk_summary": "The work shows multiple high‑risk signals: a critical hybrid score (85) driven by rule, statistical and ML detectors; unusually high payment frequency (56.25 payments per 30 days) and a payment recorded 29 days after the reported completion; 15 distinct vendors for a single modest‑size road block; and a peer‑group size of only one, limiting comparative context.",
+    "observed_signals": [
+      "Hybrid risk score 85 (critical)",
+      "Rule detector score 30",
+      "Statistical detector score 25",
+      "ML anomaly at 99.996th percentile",
+      "Payments per 30 days = 56.25",
+      "Payment after reported completion (29 days)",
+      "15 unique vendors for one work",
+      "Peer count = 1 (weak comparison)"
+    ],
+    "why_flagged": "The combination of rule‑based, statistical and machine‑learning anomalies, together with a very high payment‑frequency metric and a post‑completion payment, triggered the critical risk flag. The unusually large number of distinct vendors relative to the work size and the lack of a robust peer benchmark further raise concerns.",
+    "limitations": [
+      "Peer comparison is weak (only one comparable work)",
+      "Data‑quality fields show completeness unknown (null) and no attachment content provided"
+    ],
+    "what_to_verify": [
+      "Validate each of the 15 payment transactions and associated supporting documents",
+      "Confirm vendor identities, contracts and procurement approvals for all 15 vendors",
+      "Cross‑check the reported completion date against payment dates and on‑site measurement records",
+      "Obtain original government sanction and expenditure records to reconcile amounts",
+      "Assess whether any vendors appear on multiple works in the constituency"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "176296": {
+    "summary": "The candidate shows a high risk score and concentration of payments, but limited peer comparison and missing documentation raise concerns that merit human review.",
+    "signals": [
+      "high risk score (55) and priority P2",
+      "payments per 30 days unusually high (30)",
+      "peer count only 1 indicating weak comparative evidence",
+      "missing attachment ID and a missing field"
+    ],
+    "verify": [
+      "obtain and review the missing attachment/documentation",
+      "confirm the timing of payments relative to project completion",
+      "validate the vendor list and compare against peer projects"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "176969": {
+    "summary": "The candidate shows a medium risk score with several red‑flag signals such as multiple payments despite work being only partially completed and limited peer comparison data. Additional verification is needed to confirm payment timing, documentation, and actual expenditure.",
+    "signals": [
+      "Multiple payments (9) for partially completed work",
+      "Peer count of 1 indicating weak comparative evidence",
+      "Missing attachment/documentation"
+    ],
+    "verify": [
+      "Obtain and review the actual expenditure report versus the sanctioned amount",
+      "Confirm completion status and dates to assess payment‑after‑completion timing",
+      "Retrieve the missing attachment or supporting documents for the work"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "178196": {
+    "risk_summary": "Critical risk score with high payment fragmentation and many vendors relative to a modest sanction amount",
+    "observed_signals": [
+      "Rule-based medium severity flag",
+      "Statistical low severity flag",
+      "ML high severity flag (99.848 percentile)",
+      "47 payments and 27 vendors for ₹1.5 M sanction",
+      "Payments per 30 days >18 and per 100 days >60 indicating payment concentration"
+    ],
+    "why_flagged": "The work was selected because it triggered all three detection layers (rule, statistical, ML) and exhibits anomalous payment behavior—many small payments to numerous vendors in a short period despite a relatively low sanction amount, raising a potential need for verification",
+    "limitations": [
+      "Peer comparison based on only one peer makes statistical benchmarks weak",
+      "Actual amount, completion duration, and payment‑after‑completion timing are missing",
+      "Attachment/document IDs are not available",
+      "Two fields are missing from the record"
+    ],
+    "what_to_verify": [
+      "Confirm the total sanctioned amount and actual expenditure on the irrigation facility",
+      "Obtain detailed payment records and vendor invoices to assess payment fragmentation",
+      "Verify the physical completion status and dates of the work",
+      "Review any available project documents or attachments for compliance",
+      "Cross‑check the vendor list for duplicate or related entities"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "179568": {
+    "summary": "The candidate shows a high risk score and a high concentration of payments over a short period, but lacks key data such as actual cost and peer benchmarks. These gaps, combined with missing attachments, warrant human review.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Payments per 30 days (4.6) indicating concentration",
+      "Missing actual cost and attachment information"
+    ],
+    "verify": [
+      "Obtain and review the actual cost documentation",
+      "Locate and examine the missing attachment(s)",
+      "Confirm peer comparison data and completion status"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "180315": {
+    "summary": "The candidate shows a high risk score and large sanction amount with consistent detection signals, but limited peer comparison and a missing field raise questions. Human review is advised to clarify missing data and assess the payment pattern.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Low peer count (1) indicating weak comparative evidence",
+      "Missing field count (1) suggests incomplete data"
+    ],
+    "verify": [
+      "Obtain and review the missing field(s) to ensure data completeness",
+      "Confirm the actual completion date and payment timing relative to completion",
+      "Compare vendor pricing and payment patterns against broader dataset beyond the single peer"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "180614": {
+    "summary": "The candidate shows a high risk score and elevated payment concentration despite being in the vendor identification stage, with limited peer comparison data and missing key fields. These factors suggest the case warrants human review to clarify payment timing and documentation completeness.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Payments per 30 days (9.23) indicating concentration of disbursements",
+      "Peer count of 1 indicating weak comparative evidence"
+    ],
+    "verify": [
+      "Obtain and review the missing attachment documents",
+      "Confirm whether any payments were made after work completion",
+      "Validate vendor count and peer median sanction against similar projects"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "180883": {
+    "risk_summary": "The work shows multiple risk indicators: high hybrid score (85) driven by rule, statistical and ML detectors; unusually high payment frequency (130 payments per 30 days) with 13 transactions to 12 distinct vendors; peer comparison is weak (only 1 peer); and a missing-field flag. These signals suggest the need for detailed verification.",
+    "observed_signals": [
+      "Hybrid score 85 (critical)",
+      "Rule detector score 30",
+      "Statistical detector score 25",
+      "ML anomaly at 99.97th percentile",
+      "Payments per 30 days 130",
+      "Vendor count 12 for 13 payments",
+      "Peer count 1 (weak benchmark)",
+      "Missing-field count 1"
+    ],
+    "why_flagged": "The combination of high detector scores, extreme payment concentration, many unique vendors relative to a single work, and lack of a robust peer baseline triggered the critical risk flag. The missing data field further reduces confidence in the completeness of the record.",
+    "limitations": [
+      "Peer-group size is only 1, so comparative analysis is weak",
+      "One missing field and unknown data completeness limit assessment",
+      "No completion date or payment‑after‑completion information provided"
+    ],
+    "what_to_verify": [
+      "Detailed payment transaction records and supporting invoices",
+      "Vendor identities, contracts, work orders and procurement approvals",
+      "Alignment of payments with actual work progress and completion status",
+      "Original government sanction and expenditure documents to confirm reported amounts"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "183405": {
+    "summary": "The candidate shows a high risk score and a concentration of payments (20 per 30 days) despite limited peer comparison evidence. Additional review is needed to confirm payment timing, vendor legitimacy, and missing data fields.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Payments per 30 days unusually high (20)",
+      "Peer count low (1) indicating weak comparative evidence"
+    ],
+    "verify": [
+      "Confirm the timing of payments relative to project completion",
+      "Validate vendor identities and the number of vendors involved",
+      "Review the missing field and attachment to ensure all required documentation is present"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "183836": {
+    "risk_summary": "The work shows multiple high‑risk signals: rule and statistical detectors flagged it, an ML model placed it in the 99.9th percentile, payment frequency is unusually high (140 payments per 30 days) and each payment involves a distinct vendor. The disbursed‑to‑sanction ratio is near full (97.9%). Peer comparison is weak (only one peer). Data quality issues include missing fields and no attachment. These factors together raise a critical risk flag, but the limited peer data and missing documentation constrain certainty.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.9th percentile",
+      "Payments per 30 days 140",
+      "Unique vendor count equals payment count (14)",
+      "Disbursed‑to‑sanction ratio 97.9%"
+    ],
+    "why_flagged": "Combination of rule, statistical and ML detectors produced a high hybrid score (85) and critical risk level. The unusually high payment frequency and one‑to‑one vendor‑payment pattern are atypical. Peer benchmark is weak, and key documents are missing, prompting further scrutiny.",
+    "limitations": [
+      "Peer group size is only 1, so comparative analysis is weak",
+      "Missing attachment and two required fields reduce data completeness",
+      "No actual amount recorded and no completion dates limit verification"
+    ],
+    "what_to_verify": [
+      "Detailed payment transaction records and supporting receipts",
+      "Vendor identities, contracts, work orders, and procurement documentation",
+      "Evidence of work completion and timelines",
+      "Original government sanction and recommendation documents",
+      "Missing attachment and any omitted fields"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "183997": {
+    "risk_summary": "Critical risk level with high ML percentile and unusually high payment frequency",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.863 (high)",
+      "Rule and statistical detectors triggered",
+      "Payments per 30 days = 60 (very high)",
+      "Payments per 100 days = 200 (very high)",
+      "Vendor count 16 for a single work"
+    ],
+    "why_flagged": "The work was selected because multiple detection layers (rule, statistical, ML) flagged it, the hybrid risk score is critical, and payment activity is extremely concentrated in short periods, suggesting possible irregularities despite ratios matching sanctions",
+    "limitations": [
+      "Peer comparison is weak (only 1 peer)",
+      "Completion dates and payment‑after‑completion data are missing",
+      "One missing field in the record",
+      "No context on contract terms or payment schedule"
+    ],
+    "what_to_verify": [
+      "Obtain detailed payment schedule and dates to assess alignment with work progress",
+      "Confirm the list of 16 vendors and the nature of each contract",
+      "Retrieve completion date and verify that work was finished before final payments",
+      "Review attachment 2385117 for invoices, approvals, and physical inspection reports",
+      "Check whether the high payment frequency is justified by project milestones"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "186125": {
+    "risk_summary": "Critical risk level with high hybrid score and multiple detection signals, plus unusually high payment frequency and many vendors for a modest project amount.",
+    "observed_signals": [
+      "Hybrid risk score 85 (Critical)",
+      "Rule, statistical and ML detectors all flagged",
+      "ML percentile 99.815 (high)",
+      "Payments per 30 days = 55 (high concentration)",
+      "11 distinct vendors for ₹499,006"
+    ],
+    "why_flagged": "The work was selected because it triggered rule‑based, statistical and machine‑learning alerts, received a critical hybrid risk rating, and shows a very high payment concentration with many separate vendors, suggesting possible fragmentation or irregular payment patterns.",
+    "limitations": [
+      "Peer benchmark is weak (only 1 peer)",
+      "Completion dates and duration are missing",
+      "One missing field indicates incomplete record",
+      "High payment frequency alone does not prove misconduct"
+    ],
+    "what_to_verify": [
+      "Obtain and review contracts and vendor registration details for all 11 vendors",
+      "Confirm physical completion of the community centre and match it with inspection reports",
+      "Validate the payment schedule and justification for the 11 payments",
+      "Gather missing completion date and any omitted documentation"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "186128": {
+    "work_id": "186128",
+    "evidence_hash": "3904773d72cd5fd7f32863a3a9f8dd7d826388e0b612b37f74d1a435ab4d836e",
+    "risk_summary": "Hybrid risk score 90 (Critical) flagged by rule, statistical and ML detectors; payment pattern shows 21 transactions, 13 vendors, only 1 successful payment, and unusually high payments-per-time metrics; peer comparison limited to a single work.",
+    "observed_signals": [
+      "Rule detector score 35 (medium severity)",
+      "Statistical detector score 25 (low severity)",
+      "ML anomaly at 99.98th percentile (high severity)",
+      "21 payment transactions with 13 unique vendors",
+      "Only 1 payment marked successful, 20 in progress",
+      "Payments per 30 days reported as 126 and per 100 days as 420",
+      "Disbursed-to-sanction ratio 98.2%",
+      "Peer group size of 1 (weak comparison)",
+      "Missing actual amount and completion duration fields",
+      "Attachment identifier absent"
+    ],
+    "why_flagged": "The work was selected because multiple independent detectors (rule, statistical, ML) converged on a high hybrid risk score, and the payment metrics deviate from typical patterns (high transaction count, many vendors, low success count, extreme payments-per-time values) while peer benchmarking is unavailable.",
+    "limitations": [
+      "Peer comparison is weak (PEER_COUNT=1, below 10)",
+      "Two critical fields are missing (actual amount, completion duration)",
+      "No attachment or supporting documents provided",
+      "Inconsistent relationship between total payment count (21) and reported payments per 30/100 days",
+      "Payment status breakdown (1 success, 20 in‑progress) may reflect data‑entry timing rather than anomaly"
+    ],
+    "what_to_verify": [
+      "Obtain and review individual payment transaction records and their statuses",
+      "Confirm vendor identities, contracts, and procurement documentation",
+      "Validate the actual amount spent and completion dates against field reports",
+      "Cross‑check the reported payments‑per‑time metrics with the transaction timestamps",
+      "Seek the missing attachment or any other supporting documents"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-10T17:20:01.930Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "186582": {
+    "risk_summary": "Work flagged with critical hybrid risk level (score 85) and high ML percentile (99.843), combined with unusually high payment concentration (60 payments/30 days, 200/100 days) and a distinct vendor for each of the 14 payments, plus missing completion‑date fields.",
+    "observed_signals": [
+      "Critical hybrid risk score and level",
+      "Rule, statistical and ML detectors all triggered",
+      "Very high payment frequency per time window",
+      "One vendor per payment (14 vendors for 14 payments)",
+      "Missing completion duration and payment‑after‑completion data"
+    ],
+    "why_flagged": "The combination of a critical risk score, agreement across rule, statistical and machine‑learning detectors, extreme payment concentration and fragmentation across many vendors, and absent completion information suggests the work may warrant closer review for possible irregularities in procurement or payment timing.",
+    "limitations": [
+      "Peer comparison based on a single peer (peer_count = 1) is weak",
+      "One missing field and lack of completion dates limit contextual understanding",
+      "Payment‑after‑completion metrics are unavailable"
+    ],
+    "what_to_verify": [
+      "Confirm actual physical completion of the construction and obtain completion date",
+      "Validate the justification for 14 separate vendors and the corresponding contracts",
+      "Review payment schedule and supporting invoices to ensure payments align with work milestones",
+      "Check for any missing documentation referenced by the absent field"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "187297": {
+    "risk_summary": "Work flagged as CRITICAL with high hybrid risk score (85) and multiple detection signals, including a top‑percentile ML alert and unusually high payment concentration, but limited peer comparison and missing documentation.",
+    "observed_signals": [
+      "ML model percentile 99.817 (high risk)",
+      "Rule‑based flag with medium severity",
+      "Statistical flag with low severity",
+      "Payments per 30 days = 330 (extremely high concentration)",
+      "11 payments to 11 distinct vendors for the same sanctioned amount",
+      "Missing attachment ID and file status",
+      "Peer benchmark based on only 1 peer (weak)"
+    ],
+    "why_flagged": "The combination of a critical risk level, high ML percentile, rule and statistical alerts, and an unusually high frequency of payments suggests atypical payment behavior that warrants further review, especially given the absence of supporting documents and limited peer context.",
+    "limitations": [
+      "Peer comparison relies on a single peer, reducing statistical reliability",
+      "Attachment ID and file status are missing, limiting document verification",
+      "Completion dates and payment‑after‑completion information are unavailable",
+      "Vendor count equals payment count, but the reason for multiple vendors cannot be confirmed from the data"
+    ],
+    "what_to_verify": [
+      "Obtain and review contracts, invoices, and completion certificates for the interlock construction work",
+      "Confirm the actual completion date and whether payments were made after completion",
+      "Validate the justification for 11 separate payments and 11 vendors for the same amount",
+      "Compare payment schedule and amounts with typical projects of similar scope in the region",
+      "Check for any missing or delayed documentation that should accompany the sanction and disbursement"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "187406": {
+    "risk_summary": "Work flagged with CRITICAL risk level (score 85) due to multiple independent signals including high ML percentile, rule and statistical alerts, unusually high payment frequency, many vendors, and missing documentation.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85.0",
+      "ML percentile 99.859 (high severity)",
+      "Rule and statistical detectors triggered",
+      "Payments per 30 days = 285 (extremely high concentration)",
+      "19 payments to 10 vendors for ₹499,065",
+      "Missing attachment/document"
+    ],
+    "why_flagged": "The combination of a critical hybrid risk score, high ML percentile, rule and statistical alerts, and unusually dense payment activity across many vendors suggests atypical patterns that merit review, especially given the absence of completion dates and missing supporting documents.",
+    "limitations": [
+      "Peer comparison based on only one peer, limiting statistical reliability",
+      "Missing attachment ID and file status prevent document verification",
+      "Completion duration and payment‑after‑completion dates are unavailable"
+    ],
+    "what_to_verify": [
+      "Obtain and review the work completion certificate and actual completion dates",
+      "Confirm the justification for 19 payments to 10 different vendors and the payment schedule",
+      "Retrieve the missing attachment/documentation related to the sanction and execution",
+      "Compare payment patterns with a broader set of similar projects in the region"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "187418": {
+    "risk_summary": "Critical risk score (85) flagged by rule, statistical and ML detectors; unusually high payment frequency and many distinct vendors; limited peer comparison and missing key documentation.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.89 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "Payments per 30 days 47.14 and per 100 days 157.14",
+      "11 payments to 11 different vendors"
+    ],
+    "why_flagged": "The work was selected because multiple detection methods identified it as high‑risk, the hybrid risk score is in the critical range, and the payment pattern shows a very high concentration of payments in a short period across many vendors, which deviates from typical MPLADS spending patterns.",
+    "limitations": [
+      "Peer benchmark based on only one peer, making statistical comparison weak",
+      "Actual sanctioned amount is known but actual incurred amount and supporting documents are missing",
+      "Completion dates and post‑completion payment timing are unavailable"
+    ],
+    "what_to_verify": [
+      "Obtain the actual amount spent and compare with the sanctioned ₹500,000",
+      "Review invoices and contracts for each of the 11 vendors to confirm legitimacy",
+      "Check the timeline of payments against work progress and completion reports",
+      "Confirm existence and content of attachment/documentation for the project",
+      "Validate whether any payments were made after work completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "187596": {
+    "risk_summary": "Critical risk level (score 83) flagged by rule, statistical and ML detectors with high ML percentile and unusual payment patterns",
+    "observed_signals": [
+      "ML model percentile 99.955 (high)",
+      "Rule-based medium severity flag",
+      "Statistical low severity flag",
+      "High payment concentration (17.3 payments per 30 days)",
+      "Large number of vendors (17) for a single work",
+      "Critical hybrid risk level"
+    ],
+    "why_flagged": "The work received a CRITICAL hybrid risk score of 83 and was flagged by three independent detectors (rule, statistical and ML). The ML model placed it in the 99.955th percentile, and the rule engine assigned a medium‑severity flag. Payment activity is unusually dense (17.3 payments per 30 days) and involves 17 different vendors for a single footpath project, suggesting possible fragmentation. The combination of these signals triggered a P1 investigation priority.",
+    "limitations": [
+      "Only one peer record is available, so peer‑based benchmarks are weak",
+      "Completion duration and payment‑after‑completion dates are missing",
+      "Missing_field_count indicates incomplete data"
+    ],
+    "what_to_verify": [
+      "Obtain an independent site inspection report confirming the footpaths were constructed as described",
+      "Match each of the 34 payments to valid invoices and verify the corresponding vendor’s work scope",
+      "Check for duplicate or related vendor entities among the 17 listed vendors",
+      "Confirm the actual sanction amount matches the recommended amount and that disbursements align with verified work milestones",
+      "Acquire the official completion date to assess any post‑completion payments"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "188930": {
+    "risk_summary": "The candidate shows multiple anomaly signals: high rule (30) and statistical (25) detector scores, an ML anomaly at the 99.9th percentile, a high hybrid risk score (85) and CRITICAL level, unusually high payment frequency (64 payments per 30 days), many unique vendors (15) for a single work, and a weak peer benchmark (only 1 comparable work).",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.90th percentile",
+      "Hybrid risk score 85 (CRITICAL)",
+      "Payments per 30 days 64.0",
+      "15 unique vendors for one work",
+      "Peer group size 1 (weak comparison)",
+      "Missing-field count 1"
+    ],
+    "why_flagged": "The combination of rule‑based, statistical and machine‑learning anomaly detections, together with a very high payment concentration metric and a large number of vendors relative to the work size, triggered the screening. The peer comparison is weak, limiting contextual validation, and a missing field indicates data‑quality concerns.",
+    "limitations": [
+      "Peer comparison based on only one other work (peer_count = 1) limits benchmarking reliability",
+      "One missing field and null completeness flag indicate incomplete data",
+      "No completion date or payment‑after‑completion information to verify timeline"
+    ],
+    "what_to_verify": [
+      "Review each of the 32 payment transactions and supporting payment records",
+      "Confirm vendor identities, contracts, work orders and procurement documentation",
+      "Cross‑check the work’s recommendation, sanction and actual expenditure against official government records",
+      "Obtain and examine any missing fields or documents referenced in the attachment"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "188935": {
+    "risk_summary": "Critical risk score (85) with multiple independent signals, high payment frequency and many vendors for a modest ₹355,000 road project",
+    "observed_signals": [
+      "Rule-based trigger (medium severity)",
+      "Statistical anomaly (low severity)",
+      "ML outlier (99.761 percentile, high severity)",
+      "Payments per 30 days = 47.5 (high concentration)",
+      "11 vendors for a single ₹355,000 work"
+    ],
+    "why_flagged": "The work was flagged due to a CRITICAL hybrid risk level, combined rule, statistical and ML alerts, unusually high payment activity relative to the sanctioned amount, and an atypically large number of vendors, all suggesting a pattern that merits further review",
+    "limitations": [
+      "Peer comparison based on only one peer makes benchmark unreliable",
+      "Completion duration and payment‑after‑completion dates are missing",
+      "Only summary fields are available; detailed invoices, contracts, and progress reports are not provided"
+    ],
+    "what_to_verify": [
+      "Confirm physical completion of the street and drains as described",
+      "Obtain and review contracts/invoices for all 11 vendors to assess necessity and pricing",
+      "Examine the payment schedule and supporting documents to explain 19 payments and high payment frequency",
+      "Check dates of completion versus payment dates to ensure payments are not post‑completion anomalies",
+      "Review attachment ID 1577424 for approval and inspection records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "190826": {
+    "summary": "The candidate shows a medium risk score with full disbursement despite lacking actual cost data and only one peer comparison, indicating potential data gaps. Additional verification is needed to confirm completion status, actual expenditures, and vendor details.",
+    "signals": [
+      "Medium risk score (35) with full sanction disbursed",
+      "Only one peer record limiting comparative context",
+      "Missing actual cost and completion information"
+    ],
+    "verify": [
+      "Obtain and review the actual cost documentation for the library construction",
+      "Confirm the work completion status and any post‑completion payments",
+      "Retrieve the missing attachment and verify vendor identities and contracts"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "191456": {
+    "risk_summary": "Critical risk flagged due to multiple detection signals and unusually high payment concentration",
+    "observed_signals": [
+      "Rule-based medium severity flag",
+      "Statistical low severity flag",
+      "ML model high percentile (99.748)",
+      "14 payments to 14 distinct vendors",
+      "Payments per 30 days = 46.667 (high frequency)"
+    ],
+    "why_flagged": "The work triggered rule, statistical and machine‑learning detectors simultaneously, received a critical hybrid risk score (85) and shows a very high payment‑frequency metric with a distinct vendor for each payment, suggesting atypical payment patterns that merit review",
+    "limitations": [
+      "Peer benchmark based on only one peer (weak statistical comparison)",
+      "Missing fields and attachment ID limit verification of supporting documents",
+      "No completion date or payment‑after‑completion information available"
+    ],
+    "what_to_verify": [
+      "Obtain and review the work completion certificate and actual completion date",
+      "Confirm the legitimacy of each of the 14 vendors and the corresponding invoices",
+      "Check the payment schedule to understand why payments are so frequent and whether they align with work milestones",
+      "Retrieve the missing attachment/documentation referenced in the record"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "191752": {
+    "risk_summary": "Work flagged with CRITICAL hybrid risk level and high ML percentile, many payments and vendors, and missing key documentation",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 83",
+      "ML percentile 99.622 (high)",
+      "Payments per 30 days 11.9 and per 100 days 39.7 indicating high payment concentration",
+      "27 payments to 25 vendors for a single work",
+      "Disbursed amount 99.7% of sanctioned amount",
+      "Rule, statistical and ML detectors all triggered"
+    ],
+    "why_flagged": "The combination of a critical risk score, high ML percentile, unusually high payment frequency and vendor count for a single project, and the activation of rule, statistical and ML detectors triggered the investigation priority P1",
+    "limitations": [
+      "Peer comparison based on only one peer (weak statistical benchmark)",
+      "Actual amount and attachment documents are missing",
+      "Completion dates and post‑completion payment information are unavailable",
+      "Missing field count indicates incomplete record"
+    ],
+    "what_to_verify": [
+      "Obtain and review the actual contract amount and compare with sanctioned and disbursed amounts",
+      "Confirm the list of 25 vendors and the justification for each payment",
+      "Verify physical progress of the construction and completion status",
+      "Retrieve missing attachment/documentation for the work",
+      "Examine payment dates to assess concentration and compliance with project timeline"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "192002": {
+    "risk_summary": "Critical risk level with high hybrid risk score and multiple detection signals, coupled with high payment frequency and missing key documentation",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 83.0",
+      "ML percentile 99.807 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "31 payments across 21 vendors (high vendor count)",
+      "Payments per 30 days 3.039 (frequent disbursements)",
+      "Disbursed amount 95.1% of sanctioned amount"
+    ],
+    "why_flagged": "The work was selected because it triggered rule, statistical and machine‑learning detectors, received a critical hybrid risk rating, and shows unusually frequent payments to many vendors that nearly exhaust the sanctioned amount, while key fields such as actual amount and supporting attachment are missing.",
+    "limitations": [
+      "Peer benchmark based on only one peer, making statistical comparison weak",
+      "Actual amount spent and supporting documents are unavailable",
+      "Completion dates and post‑completion payment timing are not provided"
+    ],
+    "what_to_verify": [
+      "Obtain and review the actual amount spent and compare with the sanctioned ₹1,500,000",
+      "Collect invoices, contracts and receipts for all 21 vendors to confirm legitimacy and necessity",
+      "Verify the work progress timeline against the 31 payment dates to ensure payments align with completed milestones",
+      "Confirm existence and content of the missing attachment/documentation",
+      "Check whether any payments were made after project completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "192113": {
+    "risk_summary": "Critical risk level with high hybrid risk score and multiple detection signals, combined with unusually high payment frequency and many vendors for a single work.",
+    "observed_signals": [
+      "Hybrid risk score 83 (Critical)",
+      "Rule, statistical and ML detectors all flagged (3 independent signals)",
+      "ML percentile 99.88 (high)",
+      "Payments per 30 days 4.263 (high frequency)",
+      "Vendor count 25 for one work"
+    ],
+    "why_flagged": "The work was selected because it triggered all three detection layers (rule, statistical, ML) and received a critical risk rating. The high payment concentration, large number of vendors, and near‑full disbursement against the sanctioned amount raise questions about procurement and payment practices, especially given the lack of completion‑date information.",
+    "limitations": [
+      "Peer comparison based on only one peer (weak benchmark)",
+      "Missing completion duration and payment‑after‑completion data",
+      "One missing field in the dataset"
+    ],
+    "what_to_verify": [
+      "Confirm the actual completion date and whether any payments were made after completion",
+      "Review the vendor selection process and contracts to explain the presence of 25 vendors",
+      "Validate the justification for the high frequency of payments (4+ payments per month)",
+      "Check that the disbursed amount matches the work performed and approved invoices"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "193196": {
+    "risk_summary": "Work shows a critical hybrid risk level (score 85) flagged by rule, statistical and ML detectors, with a high ML percentile (99.6) and many in‑progress payments despite being only partially completed.",
+    "observed_signals": [
+      "Critical hybrid risk level and score 85",
+      "ML percentile 99.628 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "Disbursed amount 98.4% of sanctioned amount",
+      "18 payments all marked in‑progress, no successful payments recorded",
+      "Missing actual amount and attachment information",
+      "Peer comparison based on only one peer"
+    ],
+    "why_flagged": "The combination of a critical risk rating, high ML percentile, multiple detection triggers, a large number of pending payments while the work is only partially completed, and limited peer benchmark data makes this work a priority for investigation.",
+    "limitations": [
+      "Actual amount spent is not available",
+      "Peer benchmark relies on a single peer, limiting statistical reliability",
+      "Payments‑per‑time metrics are missing",
+      "Attachment and file status information are unavailable",
+      "No successful payment records to confirm disbursement completion"
+    ],
+    "what_to_verify": [
+      "Obtain and review the actual amount spent versus the sanctioned amount",
+      "Confirm the status and justification of the 18 in‑progress payments",
+      "Verify the physical completion status of the community centre construction",
+      "Retrieve missing attachment documents and vendor invoices",
+      "Assess peer projects with more robust sample sizes for comparison"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "193509": {
+    "risk_summary": "Critical risk score (83) with high ML percentile and multiple detector flags, combined with unusually high number of payments/vendors and limited peer comparison.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL (score 83)",
+      "ML percentile 99.812 (top‑tier)",
+      "Rule, statistical and ML detectors all flagged",
+      "29 payments from 29 distinct vendors for ₹691,928",
+      "Payments per 30 days 3.283 (high frequency)",
+      "Only 1 peer available for benchmark",
+      "Missing field count of 1"
+    ],
+    "why_flagged": "The work was selected because it triggers several independent risk signals: a critical hybrid risk score, an extreme ML percentile, rule‑based and statistical alerts, and a concentration of many small payments (29 vendors) over a short period, all of which may indicate irregular procurement or payment practices.",
+    "limitations": [
+      "Peer benchmark is weak (only one peer)",
+      "Completion duration and post‑completion payment dates are unavailable",
+      "One missing field reduces data completeness"
+    ],
+    "what_to_verify": [
+      "Obtain and review the list of 29 vendors and justification for each payment",
+      "Confirm the actual completion date of the playground and check if any payments were made after completion",
+      "Retrieve the missing field/document referenced by missing_field_count",
+      "Compare sanction amounts with a broader set of similar playground projects in Rajasthan"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "193510": {
+    "risk_summary": "Critical hybrid risk score (83) flagged by rule, statistical and ML detectors; high payment frequency (10.13 payments/30 days) with 26 distinct vendor payments; missing actual amount and attachment data; peer comparison based on only one peer.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 83",
+      "ML percentile 99.629 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "Payments per 30 days 10.13 (high frequency)",
+      "Vendor count equals payment count (26)",
+      "Missing actual amount and attachment fields",
+      "Peer count only 1 (weak benchmark)"
+    ],
+    "why_flagged": "The work was selected because multiple detection methods identified it as high‑risk, the hybrid risk score is in the critical range, payment activity is unusually concentrated, and key financial documentation is missing, all of which merit further review.",
+    "limitations": [
+      "Peer benchmark is based on a single peer, limiting statistical reliability",
+      "Actual amount spent is not available, preventing cost‑overrun assessment",
+      "Missing attachment ID means supporting documents are not in the dataset",
+      "High vendor/payment count may reflect legitimate multiple invoices rather than fraud"
+    ],
+    "what_to_verify": [
+      "Obtain and review the actual amount spent and compare with the sanctioned amount",
+      "Collect all vendor invoices, contracts and payment vouchers for the 26 payments",
+      "Confirm that the playground construction was completed as reported and check dates of completion versus final payments",
+      "Retrieve the missing attachment/documentation referenced in the work file",
+      "Assess whether the high payment frequency aligns with the project schedule"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "194491": {
+    "risk_summary": "Work flagged with CRITICAL risk level (score 83) due to multiple detector alerts, high payment concentration and unusually many vendors for a single‑amount project.",
+    "observed_signals": [
+      "Hybrid risk score 83 (CRITICAL)",
+      "Rule, statistical and ML detectors all triggered",
+      "Payments per 30 days 17.1 (high frequency)",
+      "31 vendors for a ₹599,779 work",
+      "49 separate payments for the same amount"
+    ],
+    "why_flagged": "The case combines rule‑based, statistical and machine‑learning alerts, a very high hybrid risk score, and atypical payment patterns (many small payments and many vendors) that deviate from typical MPLADS work profiles, prompting a priority‑1 investigation.",
+    "limitations": [
+      "Peer comparison is weak (only 1 peer)",
+      "Completion date and post‑completion payment information are missing",
+      "Missing field count indicates incomplete data"
+    ],
+    "what_to_verify": [
+      "Obtain and review the physical inspection report and completion certificate for the boundary wall work",
+      "Confirm the list of 31 vendors and the rationale for splitting the contract into 49 payments",
+      "Check the payment schedule against contract terms and verify no payments were made after work completion",
+      "Gather comparable MPLADS works in Rajasthan to assess typical vendor and payment patterns"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "194809": {
+    "summary": "The candidate shows a high risk score and unusually frequent payments, but limited peer comparison and missing completion data warrant further review.",
+    "signals": [
+      "high risk score (55) and priority P2",
+      "payments per 30 days unusually high (10.345)",
+      "peer count only 1 indicating weak comparative evidence",
+      "missing field(s) and no completion dates available"
+    ],
+    "verify": [
+      "obtain and examine the missing attachment to confirm documentation",
+      "validate the actual completion dates versus payment dates",
+      "compare vendor payment patterns with similar projects in the region"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "201523": {
+    "summary": "The candidate shows a high risk score and a high concentration of payments within a short period, but peer evidence is weak and key fields are missing. These factors suggest the case warrants human review to clarify completion status and documentation.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Payments per 30 days of 4.48 indicating payment concentration",
+      "Missing attachment ID and multiple missing fields"
+    ],
+    "verify": [
+      "Confirm actual amount disbursed versus sanctioned amount",
+      "Obtain and review completion documentation and dates",
+      "Validate vendor details and obtain missing attachment(s)"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "202993": {
+    "summary": "The candidate shows a high risk level with a substantial sanction amount and multiple payments in a short period, while peer evidence is weak and key documentation is missing. These factors suggest the case warrants human review to confirm the procurement and payment details.",
+    "signals": [
+      "High risk level and score (55)",
+      "Payments per 30 days unusually high (5)",
+      "Peer count low (1) indicating weak comparative evidence",
+      "Missing attachment ID and multiple missing fields"
+    ],
+    "verify": [
+      "Confirm actual disbursed amount matches the sanctioned amount",
+      "Obtain and review the missing attachment/documentation for the vendor identification stage",
+      "Validate the vendor selection process and the justification for seven payments",
+      "Cross‑check peer benchmarks with a broader dataset"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "203729": {
+    "work_id": "203729",
+    "evidence_hash": "9874951eada49d5fa14f6ab777794fb25d96a6593c95db88aa01d95da735acb2",
+    "risk_summary": "Hybrid risk score 85 (critical) flagged by rule, statistical and ML detectors; 14 payments to 14 unique vendors; disbursed-to-sanction ratio 98.3%; peer comparison based on a single work.",
+    "observed_signals": [
+      "Hybrid risk score 85 (critical level)",
+      "Rule detector score 30 (medium severity)",
+      "Statistical detector score 25 (low severity)",
+      "ML anomaly at 99.86th percentile (high severity)",
+      "Payment count 14 with 14 unique vendors",
+      "Payments per 30 days = 420, payments per 100 days = 1400",
+      "Disbursed-to-sanction ratio 0.9829 (98.3%)",
+      "Missing actual amount and completion dates",
+      "Missing attachment identifier",
+      "Peer count = 1 (weak peer group)"
+    ],
+    "why_flagged": "The work was selected because multiple independent detectors (rule, statistical, ML) all flagged it, resulting in a high hybrid risk score of 85 and a critical risk level. The combination of a high number of payments in a short period, each to a distinct vendor, and missing key fields (actual amount, completion data, attachment) contributed to the flag.",
+    "limitations": [
+      "Peer comparison is weak (only 1 comparable work)",
+      "Two required fields are missing (actual amount, completion duration)",
+      "Attachment identifier is absent, limiting document verification",
+      "No actual amount reported, preventing actual-to-sanction ratio calculation",
+      "Completion dates are not provided, so timeline verification is limited"
+    ],
+    "what_to_verify": [
+      "Obtain and review the individual payment transaction records for all 14 payments",
+      "Confirm vendor identities and verify that each vendor is legitimate for the work",
+      "Check work orders, procurement documents, and any contracts related to the construction",
+      "Locate the missing attachment(s) and assess supporting documentation",
+      "Determine the actual amount spent and completion dates to compute actual-to-sanction ratio and verify completion status",
+      "Cross‑check the disbursement amounts against official government records"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-11T04:11:35.218Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "203951": {
+    "risk_summary": "High hybrid risk score (85) with CRITICAL level, flagged by rule, statistical and ML detectors; unusually high payment frequency (84 payments per 30 days) and 14 distinct vendors for a single ₹398,600 project.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.857 (high)",
+      "Rule, statistical and ML detectors all flagged",
+      "Payments per 30 days = 84 (high concentration)",
+      "Payments per 100 days = 280 (high concentration)",
+      "Vendor count equals payment count (14 distinct vendors)"
+    ],
+    "why_flagged": "The work was selected because multiple detection methods identified it as high‑risk, the hybrid risk score is in the critical range, and the payment activity is unusually concentrated with many separate vendors for a modest‑size project, suggesting potential irregularities.",
+    "limitations": [
+      "Peer benchmark based on only one peer, making statistical comparison weak",
+      "Missing completion duration and payment‑after‑completion data limit assessment of timing anomalies",
+      "Only one attachment ID available; other supporting documents may be missing"
+    ],
+    "what_to_verify": [
+      "Obtain and review detailed payment schedule and invoices to confirm dates, amounts, and vendor legitimacy",
+      "Confirm that 14 separate vendors are justified for the scope of work and amount",
+      "Verify actual completion date and whether any payments were made after completion",
+      "Examine tendering and approval documents to ensure proper procurement procedures"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "203954": {
+    "risk_summary": "The work shows multiple high‑risk signals: rule, statistical and ML detectors all flagged it, the hybrid risk score is 88 (critical), there are 15 payment entries all marked in‑progress with no successful payments, and payment frequency metrics are unusually high. Peer comparison is weak (only one comparable work) and key documentation is missing.",
+    "observed_signals": [
+      "Rule detector score 35",
+      "Statistical detector score 23",
+      "ML anomaly at 99.95th percentile",
+      "Hybrid risk score 88 (critical)",
+      "15 payment transactions with 0 successful",
+      "Payments per 30 days 150",
+      "Peer group size 1",
+      "2 missing fields",
+      "No attachment identifier"
+    ],
+    "why_flagged": "The combination of detector alerts, an unusually high number of pending payments, elevated payment‑frequency metrics, and limited peer benchmark data creates a pattern that deviates from typical MPLADS projects. Data‑quality gaps (missing fields and attachment) further limit confidence in the recorded information, prompting a higher investigation priority.",
+    "limitations": [
+      "Peer benchmark is based on a single comparable work, reducing the reliability of peer‑based assessments",
+      "Missing attachment and two required fields hinder verification of supporting documents",
+      "Actual amount and completion dates are not recorded, limiting assessment of fund utilization"
+    ],
+    "what_to_verify": [
+      "Obtain and review each of the 15 payment transaction records and corresponding vendor invoices",
+      "Confirm whether any payments have been successfully completed and reconcile with disbursement data",
+      "Check original recommendation, sanction and work‑completion documents for completeness and authenticity",
+      "Validate the existence of the missing attachment and fill the two missing fields",
+      "Compare the work’s cost and timeline against a broader set of similar MPLADS projects if available"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "206388": {
+    "risk_summary": "Critical risk score (83) with multiple alerts, high payment frequency and many vendors, but limited peer data and missing completion details",
+    "observed_signals": [
+      "High hybrid risk score (83) and CRITICAL level",
+      "ML model percentile 99.795 (high)",
+      "Rule and statistical signals triggered",
+      "Payments per 30 days (33.5) and per 100 days (111.5) are unusually high",
+      "21 vendors for a ₹499,720 work"
+    ],
+    "why_flagged": "The case combines rule, statistical and ML alerts, a critical hybrid risk level, very high payment‑concentration metrics and an unusually large number of vendors relative to the sanctioned amount, prompting priority investigation",
+    "limitations": [
+      "Peer comparison based on only one peer makes statistical benchmarks weak",
+      "Completion duration and payment‑after‑completion information are missing, limiting assessment of timing anomalies",
+      "Payment frequency metrics may be affected by reporting or settlement timing"
+    ],
+    "what_to_verify": [
+      "Confirm physical completion of the boundary wall as described",
+      "Obtain and review contracts/invoices for all 21 vendors to assess necessity and pricing",
+      "Examine the payment schedule to justify 29 payments against the work scope",
+      "Determine the actual completion date and check for any payments made after completion",
+      "Verify the attachment (ID 2101579) contains the required approval and sanction documents"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "206528": {
+    "risk_summary": "Critical risk flagged with high hybrid risk score (85) and multiple independent signals including high ML percentile (99.836) and unusually high payment frequency despite work being only partially completed.",
+    "observed_signals": [
+      "Rule-based medium severity signal",
+      "Statistical low severity signal",
+      "Machine learning high severity signal with 99.836 percentile",
+      "Payments per 30 days = 140 (very high concentration)",
+      "Disbursed amount 99.8% of sanctioned amount"
+    ],
+    "why_flagged": "The work was selected because it triggered rule, statistical and ML detectors, achieved a critical hybrid risk level, and shows an unusually high number of payments (14) and payment concentration in a short period while the project is only partially completed, suggesting possible payment‑milestone mismatches.",
+    "limitations": [
+      "Actual project cost not available",
+      "No attachment or supporting documents provided",
+      "Only one peer for benchmark comparison",
+      "Completion date and payment‑after‑completion timing missing"
+    ],
+    "what_to_verify": [
+      "Obtain and review invoices and cost breakdown to confirm actual amount spent",
+      "Verify physical progress of the road construction against payment milestones",
+      "Confirm identities and contracts of the 14 vendors/payments",
+      "Check for missing documentation (attachment ID, project reports)",
+      "Validate that disbursements align with approved sanction and project schedule"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "207525": {
+    "work_id": "207525",
+    "evidence_hash": "efc5aa2ff8f85dd2a7239f692b6cf4e770c5e95a979bd3e42de58eb5d32b6c86",
+    "risk_summary": "Hybrid risk score 83 (critical) flagged by rule, statistical and ML detectors; 22 payments to 9 vendors with a 99.9% disbursement ratio; peer comparison limited (peer count 1) and missing attachment fields.",
+    "observed_signals": [
+      "Hybrid risk score 83 (critical level)",
+      "Rule detector score 30 (medium severity)",
+      "Statistical detector score 23 (low severity)",
+      "ML anomaly at 99.48th percentile (high severity)",
+      "Disbursed-to-sanction ratio 0.999325 (99.9%)",
+      "Payment count 22 with 9 unique vendors",
+      "Payments per 30 days ≈ 3.9",
+      "Peer group size 1 (weak comparison)",
+      "Missing attachment identifier and two other fields"
+    ],
+    "why_flagged": "The work was flagged because multiple independent detectors (rule, statistical, ML) all generated signals, resulting in a high hybrid risk score of 83. The combination of a near‑full disbursement ratio, a high number of payments relative to the work stage, and limited peer comparison contributed to the critical risk level.",
+    "limitations": [
+      "Peer comparison is weak (PEER_COUNT = 1, below 10)",
+      "Missing actual amount and completion duration fields",
+      "Attachment identifier absent, indicating missing supporting documents",
+      "Two fields are marked as missing (MISSING_FIELD_COUNT = 2)",
+      "No data on payment after reported completion or completion before last payment"
+    ],
+    "what_to_verify": [
+      "Obtain and review individual payment transaction records and supporting receipts",
+      "Confirm vendor identities, contracts, and work orders for the 9 vendors",
+      "Validate the total disbursed amount (₹999,325) against official fund release logs",
+      "Retrieve the missing attachment/document referenced by ATTACH_ID",
+      "Check the actual amount spent and completion status of the work",
+      "Cross‑verify recommendation and sanction dates with government records"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-11T04:29:23.238Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "208008": {
+    "risk_summary": "Critical risk score (83) with high ML percentile and multiple alerts, plus unusually high number of payments/vendors and missing documentation.",
+    "observed_signals": [
+      "Rule engine flagged (medium severity)",
+      "Statistical anomaly flagged (low severity)",
+      "Machine‑learning model high percentile (99.577)",
+      "29 payments to 29 distinct vendors (high payment frequency)",
+      "Payments per 30 days ≈7 (concentrated activity)",
+      "Missing actual amount and attachment IDs",
+      "Peer comparison based on only one peer"
+    ],
+    "why_flagged": "The work was selected because the hybrid risk model rated it CRITICAL, the ML component placed it in the top 0.5% of cases, and there are atypical payment patterns (many small payments to many vendors) combined with missing key documentation, all of which merit further review.",
+    "limitations": [
+      "Peer benchmark is weak (only 1 peer)",
+      "Actual amount and supporting documents are unavailable",
+      "Completion dates and payment‑after‑completion timing are not provided"
+    ],
+    "what_to_verify": [
+      "Obtain the actual amount approved and compare with the disbursed ₹494,307",
+      "Collect invoices, contracts, and receipts for each of the 29 vendors",
+      "Confirm the work completion status and dates versus payment dates",
+      "Investigate why each payment was made to a different vendor",
+      "Retrieve the missing attachment/documentation referenced in the record"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "209161": {
+    "summary": "The candidate shows a high risk score and unusually high payment concentration, but key details such as actual expenditure, completion dates, and supporting documents are missing. These gaps, combined with limited peer comparison, suggest a need for human review.",
+    "signals": [
+      "high risk score (55) and priority P2",
+      "payments per 30 days unusually high (19.09)",
+      "missing actual amount, completion data and attachment"
+    ],
+    "verify": [
+      "obtain and review the actual expenditure record",
+      "confirm project completion status and payment timing",
+      "retrieve the missing attachment/documentation"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "209980": {
+    "risk_summary": "Work shows a CRITICAL hybrid risk level with high risk score (85) and multiple independent signals (rule, statistical, ML) including a very high ML percentile (99.842) and unusually high payment concentration metrics.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "Independent_signal_count 3 (rule, statistical, ML)",
+      "ML percentile 99.842 (high)",
+      "Payments per 30 days 47.7 and per 100 days 159.1 (high concentration)",
+      "35 payments to 21 vendors"
+    ],
+    "why_flagged": "The combination of a critical risk rating, multiple detection methods flagging the work, extreme payment‑frequency metrics, and a large number of vendors for a single ₹498,250 project suggests atypical payment patterns that merit further review.",
+    "limitations": [
+      "Peer benchmark is weak (only 1 peer)",
+      "Completion duration and post‑completion payment timing are unavailable",
+      "One missing field indicates incomplete record",
+      "Payments‑per‑day metrics do not confirm recurring schedule"
+    ],
+    "what_to_verify": [
+      "Confirm physical completion status and inspection report for the community centre",
+      "Obtain and review contracts to explain why 21 vendors were engaged for a ₹498,250 project",
+      "Examine payment dates and amounts to assess concentration and timing relative to work progress",
+      "Check for any missing documentation referenced by the attachment ID"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "210101": {
+    "summary": "The candidate shows a high risk level and score, but limited peer comparison and missing documentation raise questions about data completeness. Human review is needed to confirm the payment details and verify missing fields and attachments.",
+    "signals": [
+      "High risk score (55) and HIGH risk level",
+      "Peer count of 1 indicates weak comparative evidence",
+      "Missing attachment ID and multiple missing fields"
+    ],
+    "verify": [
+      "Obtain the missing attachment or confirm its existence",
+      "Validate the completeness of required fields (e.g., payment dates, completion dates)",
+      "Cross‑check disbursed amount against the sanctioned amount and payment schedule"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "213687": {
+    "risk_summary": "Critical hybrid risk score (85) triggered by multiple independent signals, unusually high payment frequency and vendor count, and missing documentation.",
+    "observed_signals": [
+      "High ML percentile (99.764)",
+      "Rule and statistical signals combined",
+      "Payments per 30 days unusually high (42)",
+      "14 distinct vendors for the same sanctioned amount",
+      "Missing attachment/documentation",
+      "Peer benchmark based on a single peer"
+    ],
+    "why_flagged": "The work was flagged due to a critical risk score supported by rule, statistical and machine‑learning alerts, a very high concentration of payments over a short period, an unusually large number of vendors for a single furniture purchase, and the absence of key supporting documents.",
+    "limitations": [
+      "Peer comparison relies on only one peer, limiting statistical relevance",
+      "Attachment ID and file status are missing, preventing document review",
+      "Completion dates and payment‑after‑completion information are unavailable"
+    ],
+    "what_to_verify": [
+      "Confirm the legitimacy and necessity of each of the 14 vendors and whether they supplied distinct items",
+      "Obtain and review procurement documents (tender, purchase orders, invoices, delivery receipts)",
+      "Verify the timeline of work completion versus payment dates",
+      "Check that the total amount matches market rates for the furniture procured",
+      "Validate that missing attachment(s) exist in the source system"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "214613": {
+    "summary": "The candidate shows a high risk level with a substantial sanction amount and a high concentration of payments, yet it is still in the vendor identification stage and lacks key documentation. Additionally, peer evidence is minimal and several fields are missing, warranting human review.",
+    "signals": [
+      "High risk level and risk score of 55",
+      "Payments per 30 days of 3.134 indicating payment concentration",
+      "Peer count of 1 suggesting weak comparative evidence",
+      "Missing attachment and multiple missing fields"
+    ],
+    "verify": [
+      "Confirm whether disbursed payments align with the vendor identification stage",
+      "Obtain the missing attachment and fill the absent fields",
+      "Compare sanction amount to a broader peer set to assess reasonableness"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "218459": {
+    "risk_summary": "The candidate shows multiple detector alerts (rule score 35, statistical score 23, ML anomaly at 99.9th percentile) and a high hybrid risk score (88, CRITICAL). Payment activity is unusual – 11 transactions involving 11 distinct vendors, with only one marked successful and ten still in‑progress, yielding a high payments‑per‑time‑window metric. Peer comparison is weak (only one peer), and a missing‑field flag indicates incomplete data. These factors together trigger a priority‑1 flag.",
+    "observed_signals": [
+      "Rule detector score 35.0",
+      "Statistical detector score 23.0",
+      "ML anomaly at 99.89th percentile",
+      "Hybrid risk score 88 (CRITICAL)",
+      "11 payment transactions with 10 still in‑progress",
+      "Peer group size 1 (weak comparison)",
+      "Missing‑field count 1"
+    ],
+    "why_flagged": "The work is flagged because several independent detection methods identified it as an outlier, the payment pattern shows many pending transactions relative to a single successful payment, and the supporting data set is limited (only one peer and a missing field), raising verification concerns.",
+    "limitations": [
+      "Peer comparison based on a single comparable work limits statistical confidence",
+      "One missing field and null completion data reduce data completeness",
+      "Payment status (in‑progress vs completed) is not confirmed",
+      "Hybrid score reflects risk priority, not proven misconduct"
+    ],
+    "what_to_verify": [
+      "Review each of the 11 payment transactions and associated supporting documents",
+      "Confirm vendor identities, contracts, and work orders for the tin‑shed construction",
+      "Validate whether the work was completed and if the in‑progress payments correspond to pending deliverables",
+      "Obtain the missing field(s) and any completion reports",
+      "Cross‑check the amounts disbursed against actual expenditure and procurement records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "219458": {
+    "summary": "The candidate shows a medium risk score with multiple independent signals and full disbursement of the sanctioned amount, but limited peer comparison and missing documentation raise concerns. Human review is advised to confirm payment timing, completion status, and vendor legitimacy.",
+    "signals": [
+      "Medium risk score with two agreeing detection methods",
+      "Low peer count (only 1 comparable work)",
+      "Missing attachment and incomplete fields"
+    ],
+    "verify": [
+      "Obtain and review the missing attachment/documentation",
+      "Confirm the actual completion date and whether payments occurred after completion",
+      "Validate vendor identities and compare against peer projects"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "220213": {
+    "work_id": "220213",
+    "evidence_hash": "59aace62f9e005a5595a2cbbd046174afd01d15f5f7c9c4af6786672dd61fb87",
+    "risk_summary": "Hybrid risk score 85 (CRITICAL) flagged by rule, statistical and ML detectors; high payment count (19) with 19 unique vendors and unusually high payments per 30/100 days; peer comparison limited (peer count 1) and missing attachment fields.",
+    "observed_signals": [
+      "Payment count: 19",
+      "Unique vendor count: 19 (one vendor per payment)",
+      "Payments per 30 days: 570",
+      "Payments per 100 days: 1900",
+      "Disbursed-to-sanction ratio: 0.9876",
+      "Peer count: 1 (weak peer group)",
+      "Missing-field count: 2 and no attachment ID",
+      "Work stage: Vendor Identification (early stage)",
+      "Rule detector score 30 (MEDIUM severity)",
+      "Statistical detector score 25 (LOW severity)",
+      "ML anomaly at 99.87th percentile (HIGH severity)"
+    ],
+    "why_flagged": "The record triggered all three detector types (rule, statistical, ML) resulting in a high hybrid risk score of 85 and a CRITICAL risk level, leading to a P1 investigation priority.",
+    "limitations": [
+      "Peer comparison is weak because only one comparable work is available (PEER_COUNT < 10).",
+      "Two fields are missing and the attachment identifier is absent, limiting verification of supporting documents.",
+      "Actual amount and completion dates are not provided, restricting assessment of work progress."
+    ],
+    "what_to_verify": [
+      "Obtain and review each of the 19 payment transactions and related payment vouchers.",
+      "Confirm vendor identities, contracts, and procurement documentation for all 19 vendors.",
+      "Validate the sanctioned amount (₹500,000) against official sanction orders and disbursement records.",
+      "Check the timeline between recommendation (2025-07-19) and sanction (2025-08-14) and any subsequent payments.",
+      "Retrieve missing fields and attachment documents to fill data gaps.",
+      "If possible, locate additional comparable works to strengthen peer analysis."
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-11T04:12:08.949Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "221641": {
+    "risk_summary": "Work flagged with critical hybrid risk (score 83) due to multiple independent signals, high payment frequency, many vendors, and missing documentation.",
+    "observed_signals": [
+      "ML percentile 99.402 (high)",
+      "Rule and statistical detectors both triggered",
+      "26 payments for a single work",
+      "24 distinct vendors associated with the work",
+      "Missing attachment/documentation",
+      "Critical hybrid risk level"
+    ],
+    "why_flagged": "The case combines rule, statistical and machine‑learning alerts, a high hybrid risk score, unusually frequent payments and a large number of vendors for a single boundary‑wall project, and lacks key documentation, prompting a priority‑1 investigation.",
+    "limitations": [
+      "Peer comparison is weak (only 1 peer)",
+      "Key fields such as completion dates and attachment IDs are missing, limiting context",
+      "Payment‑frequency metrics do not prove irregularity without supporting contract details"
+    ],
+    "what_to_verify": [
+      "Obtain and review the contract and vendor selection documents for the boundary‑wall work",
+      "Match each of the 26 payments to approved milestones or invoices",
+      "Confirm the actual completion date and whether any payments were made after completion",
+      "Validate that the total cost (₹498,875) is reasonable for the scope of work",
+      "Retrieve the missing attachment/documentation referenced in the record"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "225510": {
+    "risk_summary": "Critical risk score (83) flagged by rule, statistical and ML detectors; unusually high payment frequency (25.6 payments/30 days) with 35 distinct vendors for a single ₹496,300 work; missing attachment and limited peer data.",
+    "observed_signals": [
+      "ML percentile 99.723 (high)",
+      "Rule and statistical alerts combined",
+      "35 payments to 35 vendors",
+      "Payments per 30 days >25",
+      "Missing attachment/document"
+    ],
+    "why_flagged": "The work was selected because multiple detection layers (rule, statistical, ML) produced a critical hybrid risk score, reinforced by an unusually high concentration of payments and a one‑to‑one vendor‑payment pattern, plus absent supporting documentation.",
+    "limitations": [
+      "Peer comparison based on only one peer is unreliable",
+      "Missing attachment and other fields limit context",
+      "No completion date to assess post‑completion payments"
+    ],
+    "what_to_verify": [
+      "Obtain and review the missing attachment/documentation for the boundary wall project",
+      "Validate the list of 35 vendors and confirm each payment is justified for the work scope",
+      "Confirm the actual work completion date and compare it with payment dates",
+      "Cross‑check the sanction and recommendation dates with on‑ground progress reports"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "227474": {
+    "work_id": "227474",
+    "evidence_hash": "1c77b3179545cf89c3476f73c60ecef5e4673301b515da0bde66d106ff2fb0ed",
+    "risk_summary": "High hybrid risk score (90) with rule, statistical, and ML agreement; 14 in‑progress payments, zero successful payments, and payments occurring 101 days after reported completion.",
+    "observed_signals": [
+      "Hybrid risk score 90 (critical level)",
+      "Detector agreement: RULE + STATISTICAL + ML",
+      "ML anomaly percentile 99.999",
+      "Payment count 14, unique vendor count 14",
+      "Payment_success_count 0, payment_in_progress_count 14",
+      "Payments per 30 days 60, payments per 100 days 200",
+      "Payment activity 101 days after reported completion",
+      "Peer count 1 (benchmark data limited)"
+    ],
+    "why_flagged": "The candidate was flagged because multiple independent detectors (rule‑based, statistical, and machine‑learning) identified anomalies, the hybrid risk score is high, payment activity shows unusually high frequency with no recorded successful payments, and payments continued well after the work was reported completed. These patterns together trigger a P1 investigation priority.",
+    "limitations": [
+      "Peer comparison is weak (peer count < 10)",
+      "Attachment identifier missing; supporting documents not available",
+      "Payment status fields show all payments as 'in progress' which may reflect data‑quality issues",
+      "No explicit file status or verification of vendor contracts in the record"
+    ],
+    "what_to_verify": [
+      "Obtain and review the 14 payment transaction records and confirm their status (paid vs pending).",
+      "Validate vendor identities, contracts, and procurement documentation for each of the 14 vendors.",
+      "Cross‑check the reported completion date against payment dates and any measurement or inspection reports.",
+      "Retrieve missing attachment(s) and any related work order or invoice documents.",
+      "Compare sanction and actual amounts with original government sanction orders."
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-10T17:21:26.927Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "227478": {
+    "work_id": "227478",
+    "evidence_hash": "993cae4e163826a414b6634a006bed609509eefc42efc50f8314d8262c7de746",
+    "risk_summary": "Hybrid risk score 85 (critical) with rule, statistical, and ML detectors flagging the work; disbursed-to-sanction ratio 79.8% and 15 payments to 15 unique vendors; peer comparison limited (peer count 1) and several key fields missing.",
+    "observed_signals": [
+      "Hybrid risk score 85 (critical level)",
+      "Rule detector score 30 (medium severity)",
+      "Statistical detector score 25 (low severity)",
+      "ML anomaly at 99.86th percentile (high severity)",
+      "Disbursed-to-sanction ratio 0.798",
+      "Payment count 15 with 15 unique vendors",
+      "Payments per 30 days 56.25 (high frequency)",
+      "Missing actual amount and actual-to-sanction ratio",
+      "Missing attachment identifier",
+      "Peer count 1 (weak peer group)"
+    ],
+    "why_flagged": "The work was selected because multiple independent detectors (rule, statistical, ML) agreed on a high hybrid risk score, combined with unusually high payment frequency and vendor concentration, and notable data gaps such as missing actual amount and attachment, prompting an investigation priority P1.",
+    "limitations": [
+      "Peer group size is only 1, limiting comparative analysis",
+      "Actual amount and actual-to-sanction ratio are missing",
+      "Attachment identifier is absent, preventing document review",
+      "Two fields are flagged as missing in the source record",
+      "Record section contains null values for key attributes"
+    ],
+    "what_to_verify": [
+      "Obtain and review individual payment transaction records and supporting vouchers",
+      "Confirm vendor identities, contracts, and procurement documentation for each of the 15 vendors",
+      "Validate the total disbursed amount (₹399,099) against sanctioned amount (₹499,959)",
+      "Acquire the missing actual amount and compute actual-to-sanction ratio",
+      "Retrieve the missing attachment and assess related work orders and completion certificates",
+      "Cross‑check dates (recommendation, sanction, work stage) with official government records",
+      "If possible, locate additional comparable works to strengthen peer analysis"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-10T17:50:11.677Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "228859": {
+    "risk_summary": "Multiple automated detectors (rule, statistical, ML) flagged this MPLADS work, yielding a high hybrid score (85) and a CRITICAL risk level. The payment pattern shows 20 distinct payments to 20 unique vendors with a very high payments‑per‑time metric, while peer comparison is based on a single comparable work, limiting context. Data quality issues (one missing field) further constrain assessment.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.91th percentile",
+      "Hybrid score 85 (CRITICAL)",
+      "20 payments to 20 unique vendors",
+      "Payments per 30 days 120"
+    ],
+    "why_flagged": "The work was flagged because automated rule and statistical checks identified irregularities, the ML model marked it as an extreme outlier, and the combined hybrid score crossed the critical threshold. The unusually high frequency of payments relative to the short timeline, together with a weak peer benchmark (only one comparable work), amplifies the concern.",
+    "limitations": [
+      "Peer group size is only 1, so peer‑based benchmarks are weak",
+      "One missing data field and no completeness metric; timeline lacks completion duration",
+      "No attachment content provided for direct document review"
+    ],
+    "what_to_verify": [
+      "Validate each of the 20 payment transactions against invoices, work orders, and vendor contracts",
+      "Confirm vendor identities and that they are legitimate suppliers for the described construction work",
+      "Obtain and review the physical inspection report and any completion certificates to verify actual work done",
+      "Cross‑check the sanction, actual expenditure, and disbursement figures with official government records",
+      "Expand peer comparison by locating additional similar works in the same state/sector",
+      "Check the missing field and any other documentation gaps"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "230890": {
+    "risk_summary": "The work shows multiple anomaly signals: rule, statistical and ML detectors all flagged it, the hybrid risk score is 88 (critical). Disbursement is only 57% of the sanctioned amount while 25 payment entries (one per vendor) are recorded, with 23 still in‑progress and a high payment frequency (≈4.2 payments/30 days). Peer comparison is weak (only one peer). Data‑quality issues include missing fields and absent attachment. These factors collectively suggest verification concerns that merit priority review.",
+    "observed_signals": [
+      "Rule detector score 35.0",
+      "Statistical detector score 23.0",
+      "ML anomaly at 99.98th percentile",
+      "Disbursed‑to‑sanction ratio 57%",
+      "High payment count (25) vs low disbursement",
+      "Payments per 30 days 4.24",
+      "Weak peer group (peer_count = 1)",
+      "Missing attachment and fields"
+    ],
+    "why_flagged": "The combination of high‑severity detector outputs, a low disbursement ratio relative to the sanctioned amount, an unusually large number of payment entries with most still in‑progress, and a weak peer benchmark trigger the critical risk level and P1 priority.",
+    "limitations": [
+      "Actual disbursed amount is missing (null)",
+      "Completion dates and payment‑after‑completion status are unavailable",
+      "Peer comparison is based on a single comparable work",
+      "Two required data fields are missing and no attachment is provided"
+    ],
+    "what_to_verify": [
+      "Detailed payment transaction records and their supporting invoices",
+      "Vendor identities, contracts, work orders and procurement documentation",
+      "Progress reports or site inspection evidence to confirm work completion",
+      "Sanction and disbursement ledger entries in official government systems",
+      "Missing attachment and any other absent data fields"
+    ],
+    "confidence": "HIGH"
+  },
+  "232218": {
+    "risk_summary": "The candidate triggers multiple detector alerts (rule, statistical, ML) and shows a high payment concentration (71.25 payments per 30 days) despite a modest number of payments (19) and vendors (14). The sanction, actual expenditure, and disbursement amounts are identical, and the peer comparison is based on only one other work, making the benchmark weak. Missing fields further reduce data completeness, leading to a critical risk level and priority P1.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.89th percentile",
+      "Payments per 30 days 71.25",
+      "Vendor count 14 for 19 payments",
+      "Peer group size 1 (weak comparison)",
+      "Missing fields count 2"
+    ],
+    "why_flagged": "Combination of rule‑based, statistical and machine‑learning anomalies, unusually high payment frequency, identical sanction/actual/disbursement amounts, and limited peer context collectively raise a critical risk flag.",
+    "limitations": [
+      "Peer comparison is weak (peer count <10)",
+      "Missing data fields (2) affect completeness",
+      "No completion duration or post‑completion payment information provided"
+    ],
+    "what_to_verify": [
+      "Validate each payment transaction against supporting payment records",
+      "Confirm vendor identities, work orders and procurement documentation",
+      "Obtain and review work completion dates and related verification documents",
+      "Cross‑check sanction, actual expenditure and disbursement figures with official government records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "232220": {
+    "risk_summary": "Work shows a critical risk score (85) driven by high ML percentile, rule and statistical flags, unusually high payment concentration and many vendors, with missing completion data.",
+    "observed_signals": [
+      "ML percentile 99.877 (high)",
+      "Rule and statistical detectors both flagged",
+      "Payments per 30 days 77.14 (high concentration)",
+      "Vendor count 11 (many vendors)",
+      "Actual to sanction ratio 1.0 (full disbursement)"
+    ],
+    "why_flagged": "The combination of rule, statistical and ML detections produced a critical hybrid risk level, reinforced by a very high ML percentile and unusually frequent payments relative to the project timeline, plus a large number of vendors and lack of documented completion information.",
+    "limitations": [
+      "Peer comparison is based on only one peer, making statistical benchmarks weak",
+      "Missing fields such as completion duration and payment‑after‑completion timing limit context",
+      "No recommended amount provided for benchmark",
+      "Attachment content not reviewed"
+    ],
+    "what_to_verify": [
+      "Confirm the physical completion status and dates of the drainage work",
+      "Obtain and review contracts and invoices for all 11 vendors",
+      "Validate the justification for the high frequency and total of 18 payments",
+      "Gather additional peer projects to benchmark sanction amounts",
+      "Inspect the attachment (ID 1893891) for supporting documentation"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "233653": {
+    "work_id": "233653",
+    "evidence_hash": "6445d58c7293e92b7f07fdbd6f416dbc21019a39da69e8785d96b9fd43a0f918",
+    "risk_summary": "The project is a reading‑room construction in Gadchiroli with a sanctioned amount of ₹1,000,000, of which ₹993,369 was disbursed in a single payment to a single vendor, and no actual amount is recorded.",
+    "observed_signals": [
+      "single vendor for the entire project",
+      "single payment covering 99.3% of the sanctioned amount",
+      "actual amount field is null (no reported cost)",
+      "work category listed as \"Normal/Others\" for a construction activity"
+    ],
+    "why_flagged": "FundGuard’s single‑method detector flagged the record because multiple risk indicators converged: a near‑full disbursement ratio (0.993) in one payment, lack of competition (only one vendor), and the absence of a reported actual expenditure. Together these suggest possible over‑disbursement, insufficient cost verification, or non‑compliance with MPLADS procurement norms, prompting a low‑level alert for further review.",
+    "limitations": [
+      "Only one data source is available; actual amount is missing, limiting cost‑verification analysis",
+      "No contract, invoice, or vendor background information is provided",
+      "No timeline or completion‑certificate data to confirm work delivery"
+    ],
+    "what_to_verify": [
+      "Obtain the contract, invoice and payment voucher for the vendor",
+      "Confirm the actual cost incurred and reconcile it with the disbursed amount",
+      "Validate that the vendor is registered and has no conflict of interest",
+      "Check that construction of reading rooms is permissible under MPLADS guidelines for this constituency",
+      "Review work‑completion certificates or site inspection reports",
+      "Examine the sanction order and any subsequent amendments for changes in scope or amount"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-15T10:47:26.199Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "235824": {
+    "work_id": "235824",
+    "evidence_hash": "50b572ab34346e559a7c9093d2a40b00bff6b70c230f3c4684c24cf7d2292b59",
+    "risk_summary": "The record shows a school‑bus‑stop renovation with a ₹1 M sanction, a single payment of ₹988,136 to one vendor, and no reported actual amount spent, triggering a low‑level alert.",
+    "observed_signals": [
+      "Actual amount not reported (null)",
+      "Only one vendor and one payment",
+      "Disbursed‑to‑sanction ratio ≈ 99% (very high)",
+      "Work categorized as “Normal/Others” with vague description"
+    ],
+    "why_flagged": "The detector flagged the case because the data pattern matches known risk indicators: absence of an actual‑cost figure prevents cost‑validation, while a single vendor and a single disbursement concentrate financial exposure. The near‑full disbursement of the sanctioned amount further suggests possible over‑payment or lack of incremental verification. Although the overall risk score is low, the convergence of these independent signals (one detection method) raised a flag for manual review.",
+    "limitations": [
+      "No actual amount or invoice data to confirm the true cost",
+      "No details on the vendor’s procurement process (e.g., competitive bidding)",
+      "Only one detection method contributed the signal, limiting corroboration"
+    ],
+    "what_to_verify": [
+      "Obtain and review the invoice(s) and receipt(s) to confirm the actual cost of the bus‑stop work",
+      "Validate that the vendor was selected through a transparent, competitive process or justified as a sole‑source",
+      "Inspect the site or obtain an independent engineering report confirming completion and quality of the renovation",
+      "Cross‑check the sanction order, payment voucher, and bank statements to ensure the disbursement matches approved amounts and timelines",
+      "Confirm that the work falls under the appropriate MPLADS category and that the description aligns with the physical work performed"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-15T10:47:43.925Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "238957": {
+    "summary": "The candidate shows a high risk score and concentration of payments despite limited peer comparison and missing documentation. Several data gaps and a partially completed work status warrant human verification.",
+    "signals": [
+      "High risk score (55) with HIGH risk level",
+      "Payments per 30 days (16.875) indicate payment concentration",
+      "Peer count of 1 provides weak comparative evidence"
+    ],
+    "verify": [
+      "Obtain and review the missing attachment/documentation",
+      "Confirm actual expenditure and completion status of the shed",
+      "Validate vendor details and reconcile payment timeline against work progress"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "239889": {
+    "risk_summary": "Work shows critical risk level with high hybrid risk score and multiple detection flags, plus unusually high payment frequency and many vendors despite being only partially completed.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85.0",
+      "ML percentile 99.881 (high severity)",
+      "Rule, statistical and ML detectors all flagged",
+      "Payments per 30 days 120 and per 100 days 400 (high concentration)",
+      "20 payments to 20 distinct vendors"
+    ],
+    "why_flagged": "The combination of a critical risk rating, high risk score, concordant rule/statistical/ML alerts, and an unusually dense payment pattern for a partially completed project suggests the work warrants further review.",
+    "limitations": [
+      "Peer benchmark based on only one peer (weak statistical comparison)",
+      "Actual amount spent and supporting documents are missing",
+      "Completion duration and post‑completion payment timing are unavailable",
+      "Attachment ID and file status not provided"
+    ],
+    "what_to_verify": [
+      "Obtain and review invoices, receipts and contracts for all 20 payments to confirm they match work milestones",
+      "Verify physical progress of the boundary wall to assess if payments align with completed work",
+      "Check vendor registration and eligibility for each of the 20 vendors",
+      "Confirm the total actual expenditure against the sanctioned amount",
+      "Retrieve missing attachment/documentation and clarify completion dates and any post‑completion payments"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "241441": {
+    "risk_summary": "The candidate shows multiple anomaly signals: high hybrid risk score (88, CRITICAL), rule and statistical detectors flagged, ML anomaly at 99.97th percentile, unusually high payment frequency (≈25.7 payments per 30 days) with 11 of 12 payments still in‑progress, 12 distinct vendors for 12 payments, and a disbursed‑to‑sanction ratio of 83%. Peer comparison is weak (only one peer). Data quality issues include two missing fields and no attachment identifier.",
+    "observed_signals": [
+      "Hybrid score 88 (CRITICAL)",
+      "Rule detector score 35",
+      "Statistical detector score 23",
+      "ML anomaly at 99.97th percentile",
+      "Payments per 30 days 25.71",
+      "11 in‑progress payments out of 12",
+      "12 unique vendors for 12 payments",
+      "Disbursed‑to‑sanction ratio 0.83"
+    ],
+    "why_flaged": "The work is flagged because a combination of rule‑based, statistical and machine‑learning detectors identified it as anomalous, the payment pattern is unusually dense and many payments remain pending, vendor diversity matches each payment suggesting possible fragmentation, and the peer benchmark is insufficient for reliable comparison. Data‑quality gaps further limit confidence in the record.",
+    "limitations": [
+      "Peer group size of 1 makes comparative analysis weak",
+      "Missing attachment and two other fields reduce record completeness",
+      "Actual disbursement amount and completion status are not recorded"
+    ],
+    "what_to_verify": [
+      "Obtain and review each payment transaction record and supporting documentation",
+      "Confirm vendor identities, work orders, and procurement approvals",
+      "Verify the actual amount disbursed versus sanctioned amount",
+      "Determine whether the work has been completed and reconcile any post‑completion payments",
+      "Retrieve missing attachment and fill missing fields from official sources"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "241808": {
+    "summary": "The candidate shows a high risk score and concentrated payment activity despite incomplete work and missing cost documentation. Limited peer comparison and absent attachment IDs further suggest the need for human review.",
+    "signals": [
+      "High risk score (55) with P2 priority",
+      "Payments per 30 days unusually high (40)",
+      "Peer count low (1) indicating weak comparative evidence"
+    ],
+    "verify": [
+      "Obtain actual cost details for the sanctioned amount",
+      "Confirm work completion status and any post‑completion payments",
+      "Retrieve missing attachment(s) and vendor documentation"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "242369": {
+    "risk_summary": "Work flagged with CRITICAL risk level, high ML percentile (99.758), many payments (32) to numerous vendors (17) and high payment frequency, combined with missing completion data and weak peer comparison.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 83",
+      "ML percentile 99.758 (high)",
+      "Rule, statistical and ML detectors all triggered",
+      "32 payments across 17 vendors (high fragmentation)",
+      "Payments per 30 days ≈4.9 (high concentration)",
+      "Actual, sanctioned and disbursed amounts all equal (full payout)",
+      "Missing completion duration and payment‑after‑completion fields",
+      "Peer count only 1 (weak benchmark)"
+    ],
+    "why_flagged": "The case combines multiple high‑severity signals—critical risk score, top‑percentile ML alert, and unusually frequent payments to many vendors—while lacking key completion information and having an insufficient peer base for comparison, prompting a priority investigation.",
+    "limitations": [
+      "Peer benchmark based on a single peer is unreliable",
+      "Completion duration and post‑completion payment data are unavailable",
+      "Only one attachment ID is present; document completeness cannot be confirmed"
+    ],
+    "what_to_verify": [
+      "Confirm the actual completion date and physical status of the digital library",
+      "Obtain and review contracts/invoices for all 17 vendors and the 32 payments",
+      "Validate that the full sanctioned amount was justified and appropriately disbursed",
+      "Check for any additional documentation linked to attachment ID 2402323",
+      "Assess whether the high payment frequency aligns with the work schedule"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "243395": {
+    "risk_summary": "Work flagged with CRITICAL risk level and high ML percentile, many payments in a short period, and numerous vendors despite limited peer comparison.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.865 (high)",
+      "28 payments with payments_per_30_days 280",
+      "15 distinct vendors for a single work",
+      "Rule, statistical and ML detectors all triggered"
+    ],
+    "why_flagged": "The combination of a critical hybrid risk score, an extreme ML percentile, unusually high payment frequency and vendor count, and multiple detection methods triggered suggests the work may warrant closer review.",
+    "limitations": [
+      "Peer benchmark based on only one peer, making statistical comparison weak",
+      "Missing completion duration and payment‑after‑completion data",
+      "Potential timing effects in payment reporting"
+    ],
+    "what_to_verify": [
+      "Confirm actual completion status and dates of the flood control embankments",
+      "Review contracts and selection process for the 15 vendors",
+      "Validate that each of the 28 payments corresponds to documented milestones or invoices",
+      "Check whether the high payment frequency aligns with project schedule",
+      "Assess whether the peer comparison is appropriate given the single peer"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "243399": {
+    "risk_summary": "Work flagged with CRITICAL hybrid risk (score 85) due to multiple detection signals and unusually high payment frequency for a modest amount.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "Rule, statistical and ML detectors all flagged (rule severity MEDIUM, stat severity LOW, ML percentile 99.742, severity HIGH)",
+      "Payments per 30 days = 110 and per 100 days = 366.667 indicating high payment concentration",
+      "Vendor count 13 for a single work of ₹199,739",
+      "Only one peer available for comparison",
+      "Missing field(s) in the record"
+    ],
+    "why_flagged": "The combination of a high hybrid risk score, concurrence of rule, statistical and machine‑learning alerts, and extreme payment‑frequency metrics triggered the P1 priority despite limited peer benchmarking.",
+    "limitations": [
+      "Peer benchmark based on a single comparable work, which is statistically weak",
+      "Completion dates and payment‑after‑completion information are unavailable",
+      "One missing field reduces data completeness",
+      "Payment‑frequency metrics may reflect reporting timing rather than actual recurring payments"
+    ],
+    "what_to_verify": [
+      "Obtain and review the physical inspection report and completion certificate for the footpath work",
+      "Confirm the list of 13 vendors, their contracts and whether they are appropriate for the ₹199,739 scope",
+      "Examine the payment schedule and dates to explain the high payments_per_30_days figure",
+      "Collect missing fields, especially completion date and any post‑completion payments",
+      "Gather additional peer works to strengthen comparative analysis"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "245253": {
+    "risk_summary": "The candidate shows multiple anomaly signals (rule, statistical and ML) combined with unusually high payment frequency, a one‑to‑one match of payments to vendors, and a low disbursed‑to‑sanction ratio. Peer comparison is weak (only one peer) and key documents are missing, prompting a critical risk rating.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.95th percentile",
+      "Payments per 30 days 240 (high frequency)",
+      "Disbursed‑to‑sanction ratio 61.4% (partial disbursement)",
+      "16 payments to 16 distinct vendors"
+    ],
+    "why_flagged": "The combination of high detector scores, extreme payment concentration features, many unique vendors for a modest sanctioned amount, and incomplete documentation triggered the CRITICAL risk level. Weak peer benchmarking further limits contextual assessment.",
+    "limitations": [
+      "Peer group contains only 1 comparable work, reducing the reliability of peer‑based benchmarks",
+      "Two required fields and the attachment are missing, creating data‑quality gaps",
+      "No actual completion amount or completion duration is recorded, limiting verification of work status"
+    ],
+    "what_to_verify": [
+      "Inspect each of the 16 payment transactions and match them to invoices or receipts",
+      "Confirm vendor identities, check for duplicate or related entities, and review procurement contracts",
+      "Obtain the work order, progress reports, and any completion certificates for the tin shed project",
+      "Reconcile the ₹429,791 disbursed amount with the sanctioned ₹700,000 budget and assess reasons for partial disbursement",
+      "Retrieve the missing attachment/documentation referenced in the record",
+      "Cross‑check the timeline of recommendation, sanction, and any payments against official government records"
+    ],
+    "confidence": "HIGH"
+  },
+  "247524": {
+    "work_id": "247524",
+    "evidence_hash": "0258b378730d6e34dee38021d9b1d4faeb1790f059cceeb0f659c0c8c3316941",
+    "risk_summary": "Work 247524 shows a critical hybrid risk score of 85, triggered by rule, statistical and ML detectors, with a single vendor handling multiple payments and several missing data fields.",
+    "observed_signals": [
+      "Rule detector generated a medium‑severity signal (score 35)",
+      "Statistical detector generated a low‑severity signal (score 20)",
+      "ML detector flagged an anomaly at the 99.18th percentile (high severity)",
+      "15 payment transactions recorded, of which 6 are marked successful and 9 are in‑progress",
+      "Payments per 30 days ≈3.28 and per 100 days ≈10.95",
+      "Only one unique vendor is associated with the work",
+      "Disbursed‑to‑sanction ratio is 0.99988 (near full disbursement)",
+      "Peer‑group size is 1, limiting comparative analysis",
+      "Two fields are missing and no attachment identifier is provided"
+    ],
+    "why_flagged": "The hybrid risk model combined rule‑based, statistical and machine‑learning anomalies, resulting in a high risk score (85) and a CRITICAL risk level. The combination of an unusually high number of payment transactions with many still in‑progress, a single vendor, and significant data gaps (missing actual amount, completion dates, and supporting documents) triggered the investigation flag.",
+    "limitations": [
+      "Peer comparison is weak because only one comparable work is available (PEER_COUNT=1)",
+      "Missing actual amount, completion duration, and payment‑after‑completion fields limit assessment of project progress",
+      "Attachment identifier is absent, preventing review of supporting documents",
+      "Payment status counts (in‑progress vs successful) may reflect reporting lags rather than irregularities"
+    ],
+    "what_to_verify": [
+      "Obtain and review each of the 15 payment transaction records and their supporting invoices",
+      "Confirm the identity of the sole vendor and whether multiple contracts or invoices were issued",
+      "Verify the actual amount spent and the completion status of the work",
+      "Retrieve the missing attachment/documentation referenced in the record",
+      "Cross‑check sanction and recommendation dates against project timelines",
+      "Assess whether the high in‑progress payment count reflects pending approvals or potential issues"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-11T04:12:21.877Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "249915": {
+    "risk_summary": "The work shows multiple anomaly signals (rule, statistical and ML) and a high hybrid risk score (88, CRITICAL). Payment activity is unusually fragmented (12 transactions, 12 distinct vendors, only 1 marked successful) and the peer comparison is based on a single comparable work, limiting contextual assessment. Data gaps (missing fields, absent completion dates) further reduce confidence in the current picture.",
+    "observed_signals": [
+      "Rule detector score 35.0",
+      "Statistical detector score 23.0",
+      "ML anomaly at 99.97th percentile",
+      "12 payment transactions with 12 unique vendors",
+      "Only 1 successful payment, 11 in‑progress",
+      "Peer group size 1"
+    ],
+    "why_flagged": "Combined detector alerts, high anomaly percentile, and atypical payment pattern (many vendors and pending payments) triggered the critical risk flag. The weak peer benchmark and missing data amplify uncertainty, prompting a high‑priority review.",
+    "limitations": [
+      "Peer comparison based on a single work (peer_count = 1) limits contextual relevance",
+      "One missing field and absent completion dates reduce data completeness"
+    ],
+    "what_to_verify": [
+      "Detailed review of each payment transaction and supporting bank records",
+      "Verification of vendor identities, contracts, work orders, and procurement documentation",
+      "Confirmation of actual work completion status and dates",
+      "Cross‑check of reported amounts against original government sanction and expenditure records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "249920": {
+    "risk_summary": "The candidate shows multiple anomaly signals: high hybrid score (88) flagged as CRITICAL, rule (35) and statistical (23) detector alerts, and an ML anomaly at the 99.98th percentile. Payment activity is concentrated (≈6.4 payments per 30 days) with 11 of 12 payments still marked in‑progress, and each payment is linked to a distinct vendor. Peer comparison is weak (only one peer work). A missing‑field flag and incomplete timeline data further reduce data confidence.",
+    "observed_signals": [
+      "Hybrid score 88 (CRITICAL)",
+      "Rule detector score 35",
+      "Statistical detector score 23",
+      "ML anomaly 99.98th percentile",
+      "Payments per 30 days 6.43",
+      "12 unique vendors for 12 payments",
+      "11 payments still in‑progress",
+      "Peer group size 1 (weak)",
+      "Missing‑field count 1"
+    ],
+    "why_flagged": "The combination of high‑severity detector alerts, unusually frequent payment activity, a large proportion of payments not yet completed, and limited peer benchmarking creates a strong screening signal for further review.",
+    "limitations": [
+      "Peer comparison based on a single comparable work limits contextual assessment",
+      "Missing field(s) and absent completion dates reduce data completeness",
+      "Payment status (in‑progress vs. completed) may reflect reporting lag rather than misuse"
+    ],
+    "what_to_verify": [
+      "Review each of the 12 payment transactions and supporting payment documentation",
+      "Confirm vendor identities, work orders, and procurement approvals",
+      "Validate actual work completion dates and reconcile with payment timeline",
+      "Address the missing field(s) and obtain complete project documentation",
+      "Cross‑check reported amounts and dates against official government records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "250843": {
+    "summary": "The candidate shows a high risk level and score with multiple payments and limited peer comparison, while key fields such as actual cost, completion dates, and supporting documents are missing. These gaps and the concentration of payments warrant human review.",
+    "signals": [
+      "High risk level and score (55)",
+      "Payments per 30 days above 2.5 indicating concentration",
+      "Peer count of 1 suggests weak comparative evidence"
+    ],
+    "verify": [
+      "Obtain and review the actual cost documentation",
+      "Confirm the work completion status and dates",
+      "Retrieve the missing attachment and any related invoices"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "251135": {
+    "risk_summary": "Work shows critical risk level with high hybrid risk score and extreme ML percentile, coupled with unusually high payment frequency and many distinct vendors, but key data such as actual amount and documentation are missing.",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL",
+      "Hybrid risk score 85.0",
+      "ML percentile 99.834 (high)",
+      "Payments per 30 days 60 and per 100 days 200 (high concentration)",
+      "Payment count equals vendor count (22 distinct vendors)",
+      "Rule, statistical and ML detectors all flagged"
+    ],
+    "why_flagged": "The combination of a critical risk rating, top‑percentile ML score, very frequent payments, and a large number of separate vendors suggests atypical payment patterns that merit further review, especially given missing financial and documentary details.",
+    "limitations": [
+      "Peer benchmark based on only one peer, making statistical comparison weak",
+      "Actual disbursed amount is available but sanctioned amount lacks supporting documentation",
+      "Missing attachment ID and other fields limit verification of work completion"
+    ],
+    "what_to_verify": [
+      "Confirm the actual amount approved and spent for the work",
+      "Validate the identity and legitimacy of each of the 22 vendors and whether they are distinct projects",
+      "Obtain and review the work completion report and related attachments",
+      "Check the timeline of payments relative to work milestones and completion dates",
+      "Verify that the high payment frequency aligns with contract terms"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "251136": {
+    "risk_summary": "The candidate shows multiple anomaly signals – rule, statistical and ML detectors all flag the work, with a high hybrid risk score (85) and critical risk level. Payment activity is unusually concentrated (165 payments per 30 days) and almost every payment involves a distinct vendor (21 vendors for 22 payments). Peer comparison is weak (only one peer). Data quality issues include a missing field. These factors together trigger a high‑priority investigation flag.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.90th percentile",
+      "Payments per 30 days 165 (high concentration)",
+      "Vendor count 21 vs payment count 22 (near‑one‑to‑one)",
+      "Missing-field count 1"
+    ],
+    "why_flagged": "The work is flagged because several independent detectors identified it as anomalous, the payment frequency and vendor dispersion are atypical, peer benchmarking is unavailable, and there is a documented data‑quality gap. The combination of these signals raises a critical risk rating.",
+    "limitations": [
+      "Peer group size is only 1, so comparative benchmarks are unreliable",
+      "One missing field and null completeness indicate incomplete data",
+      "No information on completion duration or post‑completion payments limits verification of work progress"
+    ],
+    "what_to_verify": [
+      "Review each of the 22 payment transactions and their supporting invoices/receipts",
+      "Confirm the identity, registration, and eligibility of the 21 vendors and match them to work orders",
+      "Obtain original government sanction and expenditure records to validate amounts and dates",
+      "Check procurement documentation (tender, award, work order) for consistency with payments",
+      "Assess whether the high payment concentration aligns with the actual work schedule",
+      "Address the missing field by locating the absent data element in source files"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "252744": {
+    "risk_summary": "The candidate shows multiple anomaly signals: high rule (35) and statistical (23) detector scores, an ML anomaly at the 99.96th percentile, a critical hybrid risk score (88), a high frequency of payments (≈2.5 per 30 days) with many in‑progress transactions, and a weak peer benchmark (only one comparable work). Data gaps (missing fields, no attachment, no actual amount) further limit assessment.",
+    "observed_signals": [
+      "Rule detector score 35",
+      "Statistical detector score 23",
+      "ML anomaly 99.96th percentile",
+      "Hybrid risk score 88 (critical)",
+      "Payments per 30 days 2.55",
+      "14 distinct vendors for 14 payments",
+      "11 payments still in‑progress",
+      "Peer group size 1 (weak)",
+      "Missing attachment and 2 fields"
+    ],
+    "why_flagged": "The combination of rule‑based, statistical and machine‑learning anomalies, unusually high payment concentration, a large number of active vendors and pending payments, and insufficient peer comparison together trigger the critical risk flag. Data‑quality issues (missing fields/attachment) also raise verification concerns.",
+    "limitations": [
+      "Peer comparison is weak (peer count = 1)",
+      "Missing attachment and two data fields limit completeness",
+      "Actual disbursement amount not recorded",
+      "No completion date or verification of work finish"
+    ],
+    "what_to_verify": [
+      "Detailed payment transaction records and supporting invoices",
+      "Vendor identities, contracts, and work orders for the 14 vendors",
+      "Status of each payment (why 11 remain in‑progress)",
+      "Completion evidence for the Godown construction",
+      "Original sanction and disbursement documents",
+      "Peer works for similar projects in Himachal Pradesh"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "254284": {
+    "summary": "The candidate shows a high risk score and unusually high payment concentration despite being in the vendor identification stage, with limited peer comparison data. Additional verification is needed due to missing attachments and incomplete fields.",
+    "signals": [
+      "High risk score (55)",
+      "Payments per 30 days unusually high (12)",
+      "Peer count very low (1)"
+    ],
+    "verify": [
+      "Obtain and review the missing attachment documents",
+      "Cross‑check payment dates and amounts against contract terms",
+      "Confirm vendor details and sanction amounts with procurement records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "254550": {
+    "risk_summary": "Work shows a critical hybrid risk score (83) flagged by rule, statistical and ML detectors, with unusually high payment frequency and many vendors, but peer comparison is weak and key timeline data are missing.",
+    "observed_signals": [
+      "Critical hybrid risk level (score 83)",
+      "ML percentile 99.862 (high)",
+      "Rule and statistical signals both triggered",
+      "Payments per 30 days = 22.286 (high concentration)",
+      "24 vendors for 26 payments (many vendors)",
+      "Peer count = 1 (limited benchmark)"
+    ],
+    "why_flagged": "The combination of a high risk score, multiple detection methods, and atypical payment patterns (high frequency and many vendors) triggered the investigation, while the lack of robust peer comparison and missing completion dates limit contextual understanding.",
+    "limitations": [
+      "Peer benchmark based on a single peer, reducing statistical reliability",
+      "Completion duration and payment‑after‑completion dates are unavailable",
+      "Only one missing field noted, indicating incomplete dataset",
+      "High payment‑frequency metrics may reflect reporting timing rather than actual payment schedule"
+    ],
+    "what_to_verify": [
+      "Obtain the actual work start, progress and completion dates and align them with payment dates",
+      "Review contracts and invoices for the 24 vendors to confirm necessity and legitimacy",
+      "Check that each payment corresponds to a verified completed milestone",
+      "Compare this project with other similar road works in Rajasthan to assess typical sanction amounts",
+      "Confirm that all required documentation (e.g., attachment 2317668) is present and complete"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "257060": {
+    "risk_summary": "The candidate shows multiple anomaly signals (rule score 35, statistical score 23, ML 99.6th percentile) and a high hybrid risk score (88, CRITICAL). All 11 recorded payments are marked as in‑progress with no successful completions, and each payment is linked to a distinct vendor. Peer comparison is weak (only one peer). Data gaps include missing fields and absent attachment, limiting context.",
+    "observed_signals": [
+      "Rule detector score 35.0",
+      "Statistical detector score 23.0",
+      "ML anomaly at 99.60th percentile",
+      "11 in‑progress payments, 0 successful",
+      "Disbursed‑to‑sanction ratio 98.8%",
+      "Peer group size 1"
+    ],
+    "why_flagged": "The combination of rule, statistical and ML anomalies, the unusually high count of in‑progress payments with no successful completions, and a one‑to‑one mapping of payments to vendors raise concerns. The weak peer benchmark and missing documentation further reduce confidence in the work’s financial integrity.",
+    "limitations": [
+      "Peer comparison based on a single comparable work (peer_count = 1)",
+      "Two missing data fields and no attachment identifier",
+      "No actual amount recorded and no completion date information"
+    ],
+    "what_to_verify": [
+      "Obtain and review each of the 11 payment transaction records and their supporting documents",
+      "Confirm vendor identities, contracts, work orders, and procurement approvals",
+      "Verify the physical completion status of the road work and reconcile it with the disbursement amount",
+      "Locate missing attachment(s) and fill the two missing data fields",
+      "Cross‑check the sanction and recommendation dates against official government records"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "257077": {
+    "summary": "The candidate shows a high risk level with a risk score of 55 and multiple independent signals, but key data such as actual costs and completion dates are missing and peer comparison is weak. These gaps and the concentration of payments suggest the case warrants human review.",
+    "signals": [
+      "High risk level and score",
+      "Multiple payments (10) with high frequency (2.6 per 30 days)",
+      "Low peer count (1) limiting benchmark reliability"
+    ],
+    "verify": [
+      "Obtain the actual cost figure for the work",
+      "Confirm whether any payments were made after project completion",
+      "Locate and review the missing attachment documentation"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "257935": {
+    "summary": "The candidate shows a high risk score and unusually high payment concentration with multiple vendors, but peer comparison is weak and key fields are missing. Human review is needed to confirm the legitimacy of the vendor identification and payment timing.",
+    "signals": [
+      "High risk score (55) and priority P2",
+      "Payments per 30 days (10.588) indicating concentration",
+      "Peer count of 1 suggesting limited comparative evidence"
+    ],
+    "verify": [
+      "Confirm the authenticity and completeness of attachment documentation",
+      "Validate the vendor identification process and the six separate payments",
+      "Cross‑check the sanction amount against actual disbursements and missing fields"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "259396": {
+    "risk_summary": "Critical risk flagged for boundary wall construction with high ML percentile and unusually high payment frequency across many vendors",
+    "observed_signals": [
+      "Hybrid risk level CRITICAL with score 85",
+      "ML percentile 99.82 (high)",
+      "Payments per 30 days 68.57 and per 100 days 228.57 indicating rapid payment cadence",
+      "16 payments to 16 distinct vendors for a ₹500,000 work",
+      "Rule, statistical and ML detectors all triggered",
+      "Independent signal count 3"
+    ],
+    "why_flagged": "The work was selected because multiple detection layers (rule, statistical, ML) identified it as high‑risk, the hybrid risk score is critical, payment activity is unusually concentrated in a short period with a separate vendor for each payment, and peer comparison is unavailable for robust benchmarking.",
+    "limitations": [
+      "Actual amount and completion dates are missing",
+      "Only one peer record limits comparative analysis",
+      "Attachment/documentation IDs are not available",
+      "Missing fields reduce data completeness"
+    ],
+    "what_to_verify": [
+      "Obtain and review invoices and contracts for each of the 16 vendors to confirm legitimate work",
+      "Verify the physical progress and completion dates of the boundary wall against payment schedule",
+      "Confirm the total actual cost and compare with sanctioned amount",
+      "Check for supporting project documentation (e.g., approval letters, inspection reports)",
+      "Validate that the high payment frequency complies with MPLADS guidelines"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "259491": {
+    "risk_summary": "The work shows multiple anomaly signals (rule, statistical and ML) combined with a low disbursement‑to‑sanction ratio (43.5%), 17 in‑progress payments to 17 distinct vendors and no recorded successful payments. Peer comparison is weak (only one peer). These factors contributed to a CRITICAL risk level and P1 priority.",
+    "observed_signals": [
+      "Rule detector score 35.0",
+      "Statistical detector score 23.0",
+      "ML anomaly at 99.97th percentile",
+      "Disbursed‑to‑sanction ratio 0.435",
+      "17 payment transactions all marked in‑progress",
+      "17 unique vendors",
+      "Zero successful payments"
+    ],
+    "why_flagged": "The candidate was flagged because the detectors identified out‑of‑norm patterns, the fund utilisation is far below the sanctioned amount, and the payment pattern (many pending payments, no completed ones) is atypical for a partially completed work. The peer benchmark is insufficient to contextualise the sanction amount, further raising concern.",
+    "limitations": [
+      "Actual disbursed amount is missing (null)",
+      "Two data fields are missing and no attachment is available",
+      "Peer group size is only 1, limiting comparative analysis",
+      "No completion date or verification of work progress is provided"
+    ],
+    "what_to_verify": [
+      "Review each of the 17 payment transactions and supporting bank records",
+      "Confirm vendor identities, contracts, work orders and procurement approvals",
+      "Obtain and examine the missing fields/attachments (e.g., invoices, completion certificates)",
+      "Validate the actual work progress against site reports or photographs",
+      "Compare the sanction amount with a broader set of similar MPLADS projects once more peers are identified"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "261813": {
+    "risk_summary": "Work flagged as CRITICAL with high hybrid risk score (85) and multiple independent signals (rule, statistical, ML) indicating unusual payment patterns and data gaps.",
+    "observed_signals": [
+      "ML percentile 99.804 (high)",
+      "Payments per 30 days 57.27 (very high frequency)",
+      "21 distinct vendors for a single road project",
+      "Missing actual amount and attachment information",
+      "Only one peer for comparison"
+    ],
+    "why_flagged": "The combination of a critical risk level, high ML percentile, unusually high payment concentration, a large number of vendors relative to the scope, and missing key financial documentation triggered the investigation priority (P1).",
+    "limitations": [
+      "Peer benchmark based on a single peer, making statistical comparison weak",
+      "Actual amount spent and supporting documents are unavailable",
+      "Completion dates and payment‑after‑completion timing are not provided"
+    ],
+    "what_to_verify": [
+      "Obtain and review the actual amount invoiced and paid versus the sanctioned amount",
+      "Validate vendor identities, contracts, and invoices for all 21 payments",
+      "Confirm physical completion of the gravel road and any drainage work",
+      "Check dates of payments relative to work progress and completion",
+      "Retrieve missing attachment/documentation referenced in the record"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "265222": {
+    "summary": "The candidate shows a high risk score and unusually high payment concentration despite limited peer comparison and a missing data field. These factors suggest the need for human review to confirm the legitimacy of the payments and project completion.",
+    "signals": [
+      "High risk score (55) with priority P2",
+      "Payments per 30 days of 26.25 indicating concentration",
+      "Peer count of 1 indicating weak comparative evidence",
+      "Missing field count of 1"
+    ],
+    "verify": [
+      "Obtain and review the missing field to complete the record",
+      "Confirm project completion status and timing of payments relative to completion",
+      "Validate vendor details and assess whether the 7 payments to 6 vendors are justified"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "269861": {
+    "risk_summary": "The work shows multiple anomaly signals: high hybrid risk score (88) driven by rule (35), statistical (23) and ML (99.85th percentile) detectors; a disbursed‑to‑sanction ratio of 80.4% with ₹80,420 out of ₹100,000 disbursed; 12 payment transactions all marked as in‑progress and none recorded as successful; a peer group of only one comparable work, making peer benchmarking weak; and two missing data fields plus no attachment. These factors collectively raise a critical risk flag, though data gaps limit certainty.",
+    "observed_signals": [
+      "Hybrid score 88 (critical)",
+      "Rule detector score 35",
+      "Statistical detector score 23",
+      "ML anomaly at 99.85th percentile",
+      "Disbursed‑to‑sanction ratio 0.8042",
+      "12 payment transactions, 0 successful, 12 in‑progress",
+      "Peer count 1 (weak comparison)",
+      "2 missing fields, no attachment"
+    ],
+    "why_flagged": "The combination of high anomaly detector scores, an unusually low proportion of funds disbursed relative to the sanctioned amount, and a payment pattern with no successful completions despite multiple in‑progress entries suggests irregularities. The peer comparison is weak (only one peer), and missing documentation further hampers validation, prompting a critical risk flag.",
+    "limitations": [
+      "Peer group size below 10 limits comparative analysis",
+      "Missing attachment and two data fields reduce record completeness",
+      "Actual amount and completion dates are unavailable"
+    ],
+    "what_to_verify": [
+      "Review each of the 12 payment transactions and supporting bank records",
+      "Confirm vendor identities, work orders and procurement documentation",
+      "Validate the sanctioned amount and the ₹80,420 disbursement against official government records",
+      "Determine whether any of the in‑progress payments were later completed",
+      "Assess why no payments are marked successful",
+      "Obtain the missing attachment and fill the two missing fields"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "269863": {
+    "risk_summary": "The work shows multiple high‑risk signals: rule, statistical and ML detectors all flagged it, yielding a hybrid score of 88 and a CRITICAL risk level. Payment activity is unusual – 16 transactions are recorded as in‑progress with zero successful payments, and 15 distinct vendors are linked to those payments. The disbursed‑to‑sanction ratio is 95.4%, but the actual amount is missing. Peer comparison is weak (only one peer), and key documentation is absent (2 missing fields, no attachment).",
+    "observed_signals": [
+      "Hybrid score 88 (critical)",
+      "Rule detector score 35",
+      "Statistical detector score 23",
+      "ML anomaly at 99.75th percentile",
+      "16 payment transactions all marked in‑progress, 0 successful",
+      "15 unique vendors for 16 payments",
+      "Disbursed‑to‑sanction ratio 95.4%"
+    ],
+    "why_flagged": "The combination of high detector scores, a critical hybrid risk rating, an atypical payment pattern (many in‑progress payments with no successful completions), and significant data gaps (missing actual amount, missing fields, no attachment) collectively trigger the flag. Weak peer benchmarking further limits contextual validation.",
+    "limitations": [
+      "Peer group size is only 1, so comparative analysis is unreliable",
+      "Missing fields (2) and absent attachment reduce data completeness",
+      "Actual disbursement amount is not recorded",
+      "Completion dates and payment‑after‑completion flags are unavailable"
+    ],
+    "what_to_verify": [
+      "Review each of the 16 payment transactions, confirming status and supporting documentation",
+      "Validate vendor identities, work orders, and procurement records for the 15 vendors",
+      "Reconcile disbursed amount (₹95,430) with sanction amount (₹100,000) and obtain the missing actual amount",
+      "Obtain and examine the missing attachment and any other omitted fields",
+      "Confirm project completion dates and whether any payments occurred after completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "269915": {
+    "risk_summary": "Work flagged with CRITICAL risk level (score 85) due to multiple detection signals, unusually high payment frequency and many vendors for a modest sanction amount.",
+    "observed_signals": [
+      "Rule-based flag (MEDIUM severity)",
+      "Statistical anomaly (LOW severity)",
+      "ML model high percentile (99.664) with HIGH severity",
+      "Payments per 30 days unusually high (55.7)",
+      "12 vendors for a ₹100,000 sanction"
+    ],
+    "why_flagged": "The candidate triggered rule, statistical and ML detectors, received a high hybrid risk score, and shows a concentration of payments (13 payments) and a large number of vendors relative to the small sanctioned amount, suggesting potential irregularities in vendor selection or payment scheduling.",
+    "limitations": [
+      "Peer comparison based on only one peer (weak benchmark)",
+      "Actual amount not provided",
+      "Attachment/documentation missing",
+      "Completion dates and post‑completion payment information unavailable"
+    ],
+    "what_to_verify": [
+      "Obtain the actual cost incurred and reconcile with the sanctioned amount",
+      "Review vendor selection documents and contracts for the 12 vendors",
+      "Examine the payment schedule to explain the high frequency of payments",
+      "Confirm the work’s completion status and any payments made after completion",
+      "Collect comparable peer project data for footpath construction in Uttarakhand"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "269917": {
+    "risk_summary": "The candidate shows multiple anomaly signals: high rule (35) and statistical (23) detector scores, an ML anomaly at the 99.92th percentile, a low disbursed‑to‑sanction ratio (63.1%), 13 in‑progress payments with no successful completions, and a one‑item peer group, all contributing to a CRITICAL risk level and P1 priority.",
+    "observed_signals": [
+      "Rule detector score 35.0",
+      "Statistical detector score 23.0",
+      "ML anomaly percentile 99.92",
+      "Disbursed‑to‑sanction ratio 0.63",
+      "13 payment transactions all marked in‑progress",
+      "13 distinct vendors for 13 payments",
+      "Peer group size 1 (weak comparison)"
+    ],
+    "why_flagged": "The combination of high detector scores, an extreme ML percentile, a large number of pending payments with no successful completions, and a low proportion of funds actually disbursed relative to the sanctioned amount triggered the rule‑statistical‑ML agreement and elevated the hybrid risk score to 88 (CRITICAL). The weak peer benchmark further limits normalisation, reinforcing the flag.",
+    "limitations": [
+      "Actual disbursed amount is missing (null)",
+      "Two required data fields are absent",
+      "No attachment or supporting document identifier is available",
+      "Peer comparison is based on a single work (peer_count = 1)",
+      "Completion dates and verification of work completion are not provided"
+    ],
+    "what_to_verify": [
+      "Obtain detailed payment transaction records and verify their status against bank statements",
+      "Confirm vendor identities, contracts, work orders, and procurement approvals for each of the 13 vendors",
+      "Cross‑check the sanctioned amount, recommendation date, and sanction date with official government orders",
+      "Validate the actual amount disbursed and reconcile the 63.1% disbursement ratio",
+      "Determine whether the work has been completed or is still pending and why payments remain in‑progress",
+      "Gather missing fields and any attachment documents to fill data gaps"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "269921": {
+    "work_id": "269921",
+    "evidence_hash": "bd17d62f2a20e6214561c176641774eb12558da8a8a118798b35c1ac9d1d2f2b",
+    "risk_summary": "Hybrid risk score 90 (critical) flagged by rule, statistical and ML detectors; unusual payment metrics and limited peer comparison.",
+    "observed_signals": [
+      "Hybrid risk score 90 (critical)",
+      "Rule detector score 35 (medium severity)",
+      "Statistical detector score 25 (low severity)",
+      "ML anomaly at 99.98th percentile (high severity)",
+      "Payment count 17 with 0 successful payments and 17 in‑progress",
+      "Payments per 30 days reported as 255",
+      "Unique vendor count 16 (nearly one vendor per payment)",
+      "Disbursed‑to‑sanction ratio 0.95",
+      "Peer group size 1 (insufficient for robust comparison)",
+      "Missing actual amount and attachment identifier"
+    ],
+    "why_flagged": "The work triggered multiple independent detectors (rule, statistical, ML) resulting in a high hybrid risk score; payment activity patterns (high count, no successful completions, extreme payments‑per‑time metrics) deviate from typical expectations, and peer comparison is weak.",
+    "limitations": [
+      "Peer count is only 1, so peer‑based benchmarks are unreliable",
+      "Two fields are missing (actual amount, attachment ID)",
+      "Actual amount and payment success details are absent",
+      "No completion date or duration provided",
+      "Potential data entry errors in payment frequency metrics"
+    ],
+    "what_to_verify": [
+      "Obtain and review each of the 17 payment transaction records",
+      "Confirm vendor identities and procurement documentation for the 16 unique vendors",
+      "Validate the total disbursed amount (₹95,003) against official fund release logs",
+      "Check the recommendation (2026‑02‑22) and sanction (2026‑08‑25) dates for consistency",
+      "Acquire the missing actual amount and any supporting work completion evidence",
+      "Secure the attachment/documentation referenced by ATTACH_ID",
+      "Compare this work against a larger set of similar projects once more peer data is available"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-15T10:32:43.757Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "270073": {
+    "summary": "The candidate shows a critical risk score with a high concentration of payments and numerous distinct vendors, while key completion and documentation fields are missing. Weak peer evidence and multiple missing data points further suggest the need for human review.",
+    "signals": [
+      "Critical risk score of 85 with P1 priority",
+      "Payments per 30 days of 190 indicating high payment concentration",
+      "Vendor count equals payment count (19) suggesting many separate payments",
+      "Only one peer record providing weak comparative context",
+      "Missing completion dates and attachment ID"
+    ],
+    "verify": [
+      "Obtain and review the actual work completion report and site inspection evidence",
+      "Confirm the existence and validity of attachment documents for the project",
+      "Cross‑check vendor identities and contracts to ensure payments align with delivered work"
+    ],
+    "confidence": "HIGH"
+  },
+  "270403": {
+    "risk_summary": "The candidate shows multiple anomaly signals (rule, statistical and ML) and a high hybrid risk score (88, CRITICAL). Payment activity is unusually concentrated (90 payments per 30 days) with 9 transactions, 8 vendors, but only 1 marked successful and 8 still in‑progress. Peer comparison is weak (only 1 peer). Key documentation is missing (2 fields, no attachment). These factors together trigger a high‑priority flag.",
+    "observed_signals": [
+      "Rule detector score 35.0",
+      "Statistical detector score 23.0",
+      "ML anomaly at 99.94th percentile",
+      "Payments per 30 days 90 (high concentration)",
+      "Payments per 100 days 300 (high concentration)",
+      "Only 1 successful payment out of 9",
+      "Peer group size 1 (weak benchmark)",
+      "Missing attachment and 2 fields"
+    ],
+    "why_flagged": "The combination of rule‑based, statistical and machine‑learning anomalies, unusually high payment frequency, a large share of payments still marked in‑progress, and insufficient peer comparison creates a critical risk profile. Missing documentation further reduces transparency.",
+    "limitations": [
+      "Peer comparison based on a single comparable work limits contextual assessment",
+      "Missing fields and absent attachment reduce data completeness",
+      "Actual amount and completion dates are not recorded, hindering verification of work status"
+    ],
+    "what_to_verify": [
+      "Review each of the 9 payment transactions and supporting bank records",
+      "Confirm vendor identities, contracts, work orders and procurement approvals",
+      "Validate the status of the 8 in‑progress payments and reason for pending completion",
+      "Obtain and examine the missing attachment and any other omitted documents",
+      "Cross‑check sanction and disbursement figures against official government records",
+      "Assess whether the work has been completed despite the ‘partially completed’ stage"
+    ],
+    "confidence": "HIGH"
+  },
+  "272209": {
+    "summary": "The candidate shows a medium risk score with several red‑flag signals such as partial work completion, missing documentation, and limited peer comparison. Human review is advisable to confirm payment legitimacy and project status.",
+    "signals": [
+      "Medium risk score (35) with independent signals from two detection methods",
+      "Work partially completed while payments have been made",
+      "Peer count of 1 indicates weak comparative evidence"
+    ],
+    "verify": [
+      "Obtain and review the actual expenditure report for the ₹327,137 disbursed",
+      "Check attachment availability and verify supporting documents for the construction contract",
+      "Confirm payment dates relative to the reported completion status"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "272258": {
+    "summary": "The candidate shows a high risk score and multiple detection methods agreeing, combined with a high concentration of payments and limited peer comparison, warranting human review. Additional missing data and ongoing payments further suggest the need for verification.",
+    "signals": [
+      "High risk score with detector agreement",
+      "Payments per 30 days unusually high",
+      "Peer count only 1 limiting comparative analysis"
+    ],
+    "verify": [
+      "Obtain actual disbursed amount and compare to sanction",
+      "Retrieve missing attachment/documentation",
+      "Clarify completion dates and any payments after completion"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "276799": {
+    "risk_summary": "The candidate shows multiple anomaly signals (rule, statistical and ML) combined with unusually high payment frequency (225 payments per 30 days) and a large number of distinct vendors (14) for a modest sanctioned amount. The peer comparison is based on only one similar work, making the benchmark weak, and key documents are missing.",
+    "observed_signals": [
+      "Rule detector score 30.0",
+      "Statistical detector score 25.0",
+      "ML anomaly at 99.89th percentile",
+      "Payments per 30 days 225",
+      "Vendor count 14 for ₹150,000 sanction"
+    ],
+    "why_flagged": "The hybrid risk engine flagged the work because several independent detectors identified it as anomalous, the payment cadence is unusually high relative to the project size, and the vendor landscape is fragmented. Additionally, the lack of supporting attachments and missing fields reduce data completeness, and peer benchmarking is unreliable due to a single comparable record.",
+    "limitations": [
+      "Peer-group size is only 1, so peer‑based benchmarks are weak",
+      "Missing fields (2) and no attachment identifier limit document verification",
+      "Actual disbursement amount is recorded but actual work completion data is absent"
+    ],
+    "what_to_verify": [
+      "Obtain and review each of the 15 payment transaction records and their supporting invoices",
+      "Confirm the identity, registration, and work order details of the 14 vendors",
+      "Check work completion certificates, site inspection reports, and any other procurement documentation",
+      "Reconcile the disbursed amount (₹137,788) with the sanctioned amount and verify reasons for the 8.1% shortfall",
+      "Retrieve the missing attachment(s) and fill the identified data gaps"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "279797": {
+    "risk_summary": "Work flagged with CRITICAL hybrid risk level and score 85, driven by high ML percentile, dense payment activity and missing key data.",
+    "observed_signals": [
+      "Hybrid risk score 85 (CRITICAL)",
+      "ML percentile 99.777 (HIGH)",
+      "Rule and statistical detectors both triggered",
+      "Payments per 30 days 126 (extremely high frequency)",
+      "21 distinct vendors for 21 payments",
+      "Actual amount not available",
+      "Only 1 peer for comparison"
+    ],
+    "why_flagged": "The case triggered rule, statistical and machine‑learning detectors, resulting in a high hybrid risk score. Payment activity is unusually concentrated (126 payments per 30 days) and each payment involves a different vendor, suggesting possible fragmentation. Critical risk level and missing actual amount/attachment further raise concern, prompting a P1 investigation priority.",
+    "limitations": [
+      "Peer benchmark is based on a single peer, limiting statistical reliability",
+      "Missing actual amount and attachment ID prevent verification of sanctioned vs. spent funds",
+      "High payment frequency may reflect legitimate phased disbursement rather than irregularity"
+    ],
+    "what_to_verify": [
+      "Obtain the actual invoice/contract amount and compare with sanctioned amount",
+      "Confirm the legitimacy and necessity of 21 separate vendors for this single park project",
+      "Review payment schedule and justification for the high frequency of disbursements",
+      "Access missing attachment/documentation for the work"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "293547": {
+    "work_id": "293547",
+    "evidence_hash": "4d9870d1dc2b3013db7fca775a941562144d90bbb5909b10b9c00c6bd1313233",
+    "risk_summary": "The work shows a full disbursement of the sanctioned amount with no reported actual cost and was executed through a single vendor in one payment, triggering a low‑level alert.",
+    "observed_signals": [
+      "disbursed_to_sanction_ratio equals 1 (full amount released)",
+      "actual_amount field is null (no cost verification)",
+      "unique_vendor_count is 1 with a single payment"
+    ],
+    "why_flagged": "The detector flagged the record because the combination of a missing actual expenditure figure, a single‑vendor, single‑payment pattern, and a 100% disbursement ratio matches a known risk signature for potential over‑payment or inadequate procurement oversight, even though the overall risk score is low.",
+    "limitations": [
+      "Absence of actual amount data prevents cost‑benefit comparison",
+      "No vendor identification or contract details are provided",
+      "Payment timing information is unavailable"
+    ],
+    "what_to_verify": [
+      "Obtain and review the vendor invoice and payment voucher to confirm the actual cost",
+      "Verify the quantity and specifications of the RCC benches installed",
+      "Check procurement documentation for competitive bidding or justification for single‑vendor award",
+      "Confirm that the disbursement complies with MPLADS guidelines and that the full amount was appropriate"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-15T10:49:45.868Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  },
+  "293891": {
+    "work_id": "293891",
+    "evidence_hash": "c3a8fe06a975e11c56c0c2a012a428ebb760889b0c0ab06976da715ab0664596",
+    "risk_summary": "The work shows a near‑full disbursement of the sanctioned amount in a single payment to a single vendor with a vague description.",
+    "observed_signals": [
+      "Disbursement‑to‑sanction ratio ≈99.96% in one payment",
+      "Only one vendor used for the contract",
+      "Work description lacks detail and specificity"
+    ],
+    "why_flagged": "FundGuard's rule‑based detector flags cases where the entire sanctioned budget is released in a single transaction to a sole supplier, especially when the project narrative is non‑descriptive. The convergence of a high disbursement ratio, single‑vendor procurement, and an ambiguous work description triggered the single‑method signal.",
+    "limitations": [
+      "Actual amount field is missing, preventing verification of spend vs. invoice",
+      "No data on payment timing (payments_per_30_days) or contract documentation"
+    ],
+    "what_to_verify": [
+      "Obtain the vendor's registration and qualification documents to confirm eligibility",
+      "Review the tender/award process to ensure competitive bidding was conducted",
+      "Inspect invoices, work completion certificates, and site photos for the suction pipe motor engine project in Naiyanwali",
+      "Reconcile the disbursed amount with the actual cost incurred and the sanctioned estimate",
+      "Check compliance with MPLADS guidelines on procurement thresholds and documentation"
+    ],
+    "confidence": "medium",
+    "generated_at": "2026-09-15T10:50:01.518Z",
+    "model": "openai/gpt-oss-120b",
+    "source": "groq",
+    "cached": false
+  }
+}

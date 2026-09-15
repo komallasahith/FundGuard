@@ -1,0 +1,13 @@
+RULE,CATEGORY,STRENGTH,SCORE,VERIFICATION_ONLY,TRIGGERED_WORKS,PERCENT_OF_WORKS,DESCRIPTION
+STAT_LOW_DATA_COMPLETENESS,Data Quality,VERIFY,0,True,27347,26.16512146349398,Data completeness is within the lowest 10% of the observed dataset; verify source completeness.
+STAT_SANCTION_ABOVE_PEER_IQR,Financial,MODERATE,20,False,1631,1.5605116870939657,Sanction amount exceeds the robust 1.5×IQR upper boundary of comparable works.
+STAT_SANCTION_EXTREME_PEER_IQR,Financial,STRONG,35,False,944,0.9032023498569611,Sanction amount exceeds the robust 3×IQR upper boundary of comparable works.
+STAT_SANCTION_ABOVE_5X_PEER_MEDIAN,Financial,STRONG,35,False,708,0.6774017623927208,Sanction amount is more than 5x the leave-one-out peer median.
+STAT_VENDOR_COUNT_OUTLIER,Payment Behavior,MODERATE,10,False,521,0.49848350029181854,Unique vendor count is in the extreme upper tail of the observed distribution.
+STAT_PAYMENT_COUNT_OUTLIER,Payment Behavior,MODERATE,10,False,474,0.45351473922902497,Payment transaction count is in the extreme upper tail of the observed distribution.
+STAT_VENDOR_COUNT_EXTREME,Payment Behavior,STRONG,20,False,261,0.24972014122104538,Unique vendor count is beyond the 99.5th percentile of the observed distribution.
+STAT_PAYMENT_COUNT_EXTREME,Payment Behavior,STRONG,20,False,259,0.24780657692050098,Payment transaction count is beyond the 99.5th percentile of the observed distribution.
+STAT_PAYMENT_FREQUENCY_OUTLIER,Payment Behavior,MODERATE,10,False,126,0.12055455093429776,Payment frequency is in the extreme upper tail of the observed distribution.
+STAT_PAYMENT_FREQUENCY_EXTREME,Payment Behavior,STRONG,20,False,63,0.06027727546714888,Payment frequency is beyond the 99.5th percentile of the observed distribution.
+STAT_COMPLETION_DURATION_OUTLIER,Timeline,MODERATE,10,False,35,0.03348737525952716,Completion duration is above the robust 1.5×IQR upper boundary.
+STAT_COMPLETION_DURATION_EXTREME,Timeline,STRONG,20,False,0,0.0,Completion duration is above the robust 3×IQR upper boundary.
