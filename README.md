@@ -145,34 +145,46 @@ npm run dev
 
 ## 🧮 Multi-Detector Calibration & Scoring Formula
 
-To ensure fair mathematical weighting, all detector signals are calibrated onto a unified **0–100 scale** prior to consensus combination:
+To ensure semantic compatibility across all three detection engines, raw detector signals are calibrated into **uniform percentile ranks [0, 100]** prior to consensus combination:
 
-$$\text{Rule}_{\text{cal}} = \min\left(100, \frac{\text{Rule Score}}{35} \times 100\right)$$
-$$\text{Stat}_{\text{cal}} = \min\left(100, \frac{\text{Stat Score}}{35} \times 100\right)$$
-$$\text{ML}_{\text{cal}} = \text{Isolation Forest Percentile Rank } [0, 100]$$
+$$\text{Rule}_{\text{cal}} = \text{PercentileRank}(\text{Rule Score}) \times 100 \quad (\text{if candidate}, 0 \text{ otherwise})$$
+$$\text{Stat}_{\text{cal}} = \text{PercentileRank}(\text{Stat Score}) \times 100 \quad (\text{if candidate}, 0 \text{ otherwise})$$
+$$\text{ML}_{\text{cal}} = \text{PercentileRank}(\text{Anomaly Strength}) \times 100 \quad [0, 100]$$
 
-$$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times \text{Stat}_{\text{cal}} + 0.30 \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
+### Weighted Multi-Detector Fusion & Fallback
+- **Standard Fusion (Peer Data Sufficient $\ge 10$)**:
+  $$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times \text{Stat}_{\text{cal}} + 0.30 \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
+  *Where Agreement Bonus = $+10.0$ if all 3 detectors agree, $+5.0$ if 2 detectors agree.*
 
-*Where Agreement Bonus = $+10.0$ if all 3 detectors agree, $+5.0$ if 2 detectors agree.*
+- **Dynamic Fallback (Peer Data Insufficient $< 10$)**:
+  When peer data is sparse, the statistical peer comparison is neutralized and weights dynamically rebalance across Rules (53.8%) and ML (46.2%):
+  $$\text{Hybrid Risk Score} = \frac{0.35}{0.65} \times \text{Rule}_{\text{cal}} + \frac{0.30}{0.65} \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
+
+- **ML Isolation Forest Contamination**:
+  Configured with `contamination="auto"` (the established heuristic threshold from Liu et al., 2008), ensuring unconstrained outlier scoring on the multidimensional feature matrix.
 
 ---
 
 ## 🔬 Peer Cohort Methodology & Limitations
 
 - **Grouping Hierarchy**: Works are categorized by `State` $\rightarrow$ `Work Category`.
-- **Sample Sufficiency**: Statistical IQR and Z-scores require $\ge 10$ peer records (`PEER_DATA_SUFFICIENT = True`). Works with $<10$ peers are flagged as verification-only candidates.
+- **Sample Sufficiency**: Statistical IQR and Z-scores require $\ge 10$ peer records (`PEER_DATA_SUFFICIENT = True`). Works with $<10$ peers are flagged and evaluated via the Rule + ML fallback path.
+- **Data Quality Tiers**: Records are classified as `HIGH` (0 missing fields), `MEDIUM` (1 missing field), or `LOW` ($\ge 2$ missing fields) to signal data completeness to investigators.
 - **Methodological Limitation**: Peer comparisons do not dynamically model district-level construction cost index (CPWD DSR) or remote hill terrain material transport surcharges.
 
 ---
 
-## 🧪 Automated Unit Test Suite
+## 🧪 Automated Unit & Golden Regression Test Suite
 
-FundGuard includes an automated test suite covering score calibration, deduplication, peer sufficiency, and edge cases:
+FundGuard includes an automated test suite with CI validation covering score calibration, generalized deduplication, peer sufficiency fallback, data quality tiers, and golden snapshot regression:
 
 ```bash
-python -m unittest discover -s tests -p "test_*.py" -v
+python -m unittest discover tests/ -v
 ```
-*(All 11 test suites pass with 100% test coverage).*
+*(All 17 test suites pass with 100% test coverage).*
+
+- **Golden Regression**: Asserts top-10 flagged work snapshots (`313337`, `312966`, `284190`, etc.), consensus counts, and priority tiers remain deterministic across refactors.
+- **Continuous Integration**: `.github/workflows/ci.yml` runs automated test matrix on Python 3.10/3.11/3.12 and verifies Vite frontend production builds on every push/PR.
 
 ---
 

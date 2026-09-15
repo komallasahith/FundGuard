@@ -2,9 +2,8 @@ import pandas as pd
 from pathlib import Path
 
 
-INPUT_FILE = Path(
-    "data/processed/mplads_india_work_master.csv"
-)
+BASE_DIR = Path(__file__).resolve().parents[1]
+INPUT_FILE = BASE_DIR / "data" / "processed" / "mplads_india_work_master.csv"
 
 
 print("=" * 70)

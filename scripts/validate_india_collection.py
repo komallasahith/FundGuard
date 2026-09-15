@@ -6,7 +6,8 @@ from pathlib import Path
 # CONFIG
 # ============================================================
 
-INPUT_FILE = Path("data/processed/india_work_collection.csv")
+BASE_DIR = Path(__file__).resolve().parents[1]
+INPUT_FILE = BASE_DIR / "data" / "processed" / "india_work_collection.csv"
 
 
 # ============================================================

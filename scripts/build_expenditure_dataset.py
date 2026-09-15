@@ -1,8 +1,9 @@
 import pandas as pd
 from pathlib import Path
 
-INPUT = Path("data/processed/mplads_validated_dedup.csv")
-OUTPUT = Path("data/processed/mplads_expenditure_transactions.csv")
+BASE_DIR = Path(__file__).resolve().parents[1]
+INPUT = BASE_DIR / "data" / "processed" / "mplads_validated_dedup.csv"
+OUTPUT = BASE_DIR / "data" / "processed" / "mplads_expenditure_transactions.csv"
 
 WORK_KEY = "WORK_RECOMMENDATION_DTL_ID"
 

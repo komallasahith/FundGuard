@@ -1,5 +1,6 @@
 import os
 import json
+from pathlib import Path
 import numpy as np
 import pandas as pd
 
@@ -8,20 +9,14 @@ import pandas as pd
 # CONFIG
 # ============================================================
 
-RISK_FILE = "data/outputs/fundguard_risk_results.csv"
-FEATURE_FILE = "data/processed/mplads_features.csv"
+BASE_DIR = Path(__file__).resolve().parents[1]
+RISK_FILE = BASE_DIR / "data" / "outputs" / "fundguard_risk_results.csv"
+FEATURE_FILE = BASE_DIR / "data" / "processed" / "mplads_features.csv"
 
-OUTPUT_DIR = "data/outputs"
+OUTPUT_DIR = BASE_DIR / "data" / "outputs"
 
-CSV_OUTPUT = os.path.join(
-    OUTPUT_DIR,
-    "fundguard_evidence.csv"
-)
-
-JSON_OUTPUT = os.path.join(
-    OUTPUT_DIR,
-    "fundguard_evidence.json"
-)
+CSV_OUTPUT = OUTPUT_DIR / "fundguard_evidence.csv"
+JSON_OUTPUT = OUTPUT_DIR / "fundguard_evidence.json"
 
 
 # ============================================================

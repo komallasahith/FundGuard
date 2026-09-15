@@ -7,9 +7,10 @@ from pathlib import Path
 # CONFIGURATION
 # =========================================================
 
-WORK_FILE = Path("data/processed/mplads_work_master.csv")
-EXP_FILE = Path("data/processed/mplads_expenditure_transactions.csv")
-OUTPUT_FILE = Path("data/processed/mplads_features.csv")
+BASE_DIR = Path(__file__).resolve().parents[1]
+WORK_FILE = BASE_DIR / "data" / "processed" / "mplads_work_master.csv"
+EXP_FILE = BASE_DIR / "data" / "processed" / "mplads_expenditure_transactions.csv"
+OUTPUT_FILE = BASE_DIR / "data" / "processed" / "mplads_features.csv"
 
 WORK_KEY = "WORK_RECOMMENDATION_DTL_ID"
 

@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-INPUT = Path("data/processed/mplads_features.csv")
+BASE_DIR = Path(__file__).resolve().parents[1]
+INPUT = BASE_DIR / "data" / "processed" / "mplads_features.csv"
 
 print("=" * 75)
 print("FUNDGUARD AI — PHASE 2.5")
@@ -86,7 +87,7 @@ inf_counts = inf_counts[
 ]
 
 if len(inf_counts) == 0:
-    print("No infinite values found. ✅")
+    print("No infinite values found. [OK]")
 else:
     print(inf_counts.to_string())
 

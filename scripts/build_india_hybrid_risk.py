@@ -408,33 +408,32 @@ print(
 
 
 # ============================================================
-# 9. HYBRID SCORE (CALIBRATED 0–100 MULTI-DETECTOR FUSION)
+# 9. HYBRID SCORE (PERCENTILE-RANK CALIBRATED MULTI-DETECTOR FUSION)
 # ============================================================
 
 section("9. CALCULATING CALIBRATED HYBRID RISK SCORE")
 
 # ------------------------------------------------------------
-# 1. 0–100 UNIFIED CALIBRATION PER DETECTOR
+# 1. 0–100 PERCENTILE RANK CALIBRATION PER DETECTOR
 # ------------------------------------------------------------
-# Rule score (0–35 scale) normalized to 0–100
-base["RULE_SCORE_CALIBRATED"] = np.clip(
-    (base["RULE_SCORE"] / 35.0) * 100.0,
-    0,
-    100.0
-)
+# Rule score percentile rank [0–100] within candidate distribution (0 for non-candidates)
+if "RULE_SCORE" in rules.columns and len(rules) > 0:
+    rule_ranks = rules.set_index("WORK_ID")["RULE_SCORE"].rank(pct=True, method="average") * 100.0
+    base["RULE_SCORE_CALIBRATED"] = base["WORK_ID"].map(rule_ranks).fillna(0.0)
+else:
+    base["RULE_SCORE_CALIBRATED"] = 0.0
 
-# Statistical IQR/Z-score (0–35 scale) normalized to 0–100
-base["STAT_SCORE_CALIBRATED"] = np.clip(
-    (base["STAT_SCORE"] / 35.0) * 100.0,
-    0,
-    100.0
-)
+# Statistical score percentile rank [0–100] within candidate distribution (0 for non-candidates)
+if "STAT_SCORE" in stats.columns and len(stats) > 0:
+    stat_ranks = stats.set_index("WORK_ID")["STAT_SCORE"].rank(pct=True, method="average") * 100.0
+    base["STAT_SCORE_CALIBRATED"] = base["WORK_ID"].map(stat_ranks).fillna(0.0)
+else:
+    base["STAT_SCORE_CALIBRATED"] = 0.0
 
 # ML Isolation Forest score (already 0–100 percentile rank)
-base["ML_SCORE_CALIBRATED"] = np.clip(
+base["ML_SCORE_CALIBRATED"] = number(
     base["ML_PERCENTILE"],
-    0,
-    100.0
+    0.0
 )
 
 # ------------------------------------------------------------
@@ -466,25 +465,42 @@ base["DATA_QUALITY_TIER"] = np.select(
 )
 
 # ------------------------------------------------------------
-# 4. WEIGHTED FUSION (0.35 RULES / 0.35 STATS / 0.30 ML)
+# 4. WEIGHTED FUSION WITH DYNAMIC PEER-SUFFICIENCY FALLBACK
 # ------------------------------------------------------------
-base["RULE_COMPONENT"] = base["RULE_SCORE_CALIBRATED"] * 0.35
-base["STAT_COMPONENT"] = base["STAT_SCORE_CALIBRATED"] * 0.35
-base["ML_COMPONENT"] = base["ML_SCORE_CALIBRATED"] * 0.30
+# Standard weights: 0.35 Rules / 0.35 Stats / 0.30 ML.
+# Fallback weights when PEER_DATA_SUFFICIENT=0: Stats neutralized (0.0),
+# rebalanced dynamically across Rules (0.538) and ML (0.462).
+sufficient_mask = base["PEER_DATA_SUFFICIENT"] == 1
+
+rule_weight = np.where(sufficient_mask, 0.35, 0.35 / (0.35 + 0.30))
+stat_weight = np.where(sufficient_mask, 0.35, 0.0)
+ml_weight = np.where(sufficient_mask, 0.30, 0.30 / (0.35 + 0.30))
+
+base["RULE_COMPONENT"] = np.round(base["RULE_SCORE_CALIBRATED"] * rule_weight, 2)
+base["STAT_COMPONENT"] = np.round(base["STAT_SCORE_CALIBRATED"] * stat_weight, 2)
+base["ML_COMPONENT"] = np.round(base["ML_SCORE_CALIBRATED"] * ml_weight, 2)
 
 # ------------------------------------------------------------
 # 5. DETECTOR AGREEMENT BONUS
 # ------------------------------------------------------------
-base["AGREEMENT_BONUS"] = np.select(
-    [
-        base["INDEPENDENT_SIGNAL_COUNT"] >= 3,
-        base["INDEPENDENT_SIGNAL_COUNT"] >= 2,
-    ],
-    [
+base["AGREEMENT_BONUS"] = np.where(
+    sufficient_mask,
+    np.select(
+        [
+            base["INDEPENDENT_SIGNAL_COUNT"] >= 3,
+            base["INDEPENDENT_SIGNAL_COUNT"] >= 2,
+        ],
+        [
+            10.0,
+            5.0,
+        ],
+        default=0.0
+    ),
+    np.where(
+        (base["RULE_CANDIDATE"] == 1) & (base["ML_CANDIDATE"] == 1),
         10.0,
-        5.0,
-    ],
-    default=0.0
+        0.0
+    )
 )
 
 # ------------------------------------------------------------

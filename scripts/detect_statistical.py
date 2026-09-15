@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import pandas as pd
 import numpy as np
 
@@ -7,12 +8,10 @@ import numpy as np
 # CONFIG
 # ============================================================
 
-INPUT_FILE = "data/outputs/rule_anomalies.csv"
-OUTPUT_DIR = "data/outputs"
-OUTPUT_FILE = os.path.join(
-    OUTPUT_DIR,
-    "statistical_anomalies.csv"
-)
+BASE_DIR = Path(__file__).resolve().parents[1]
+INPUT_FILE = BASE_DIR / "data" / "outputs" / "rule_anomalies.csv"
+OUTPUT_DIR = BASE_DIR / "data" / "outputs"
+OUTPUT_FILE = OUTPUT_DIR / "statistical_anomalies.csv"
 
 
 # ============================================================

@@ -1,5 +1,6 @@
 import os
 import warnings
+from pathlib import Path
 
 import joblib
 import numpy as np
@@ -17,30 +18,16 @@ warnings.filterwarnings("ignore")
 # CONFIG
 # ============================================================
 
-INPUT_FILE = "data/processed/mplads_features.csv"
+BASE_DIR = Path(__file__).resolve().parents[1]
+INPUT_FILE = BASE_DIR / "data" / "processed" / "mplads_features.csv"
 
-OUTPUT_DIR = "data/outputs"
-MODEL_DIR = "models"
+OUTPUT_DIR = BASE_DIR / "data" / "outputs"
+MODEL_DIR = BASE_DIR / "models"
 
-OUTPUT_FILE = os.path.join(
-    OUTPUT_DIR,
-    "isolation_forest_anomalies.csv"
-)
-
-MODEL_FILE = os.path.join(
-    MODEL_DIR,
-    "isolation_forest.pkl"
-)
-
-IMPUTER_FILE = os.path.join(
-    MODEL_DIR,
-    "isolation_forest_imputer.pkl"
-)
-
-SCALER_FILE = os.path.join(
-    MODEL_DIR,
-    "isolation_forest_scaler.pkl"
-)
+OUTPUT_FILE = OUTPUT_DIR / "isolation_forest_anomalies.csv"
+MODEL_FILE = MODEL_DIR / "isolation_forest_model.joblib"
+SCALER_FILE = MODEL_DIR / "isolation_forest_scaler.joblib"
+IMPUTER_FILE = MODEL_DIR / "isolation_forest_imputer.joblib"
 
 
 # ============================================================

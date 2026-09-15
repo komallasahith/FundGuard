@@ -2,8 +2,9 @@ import json
 import pandas as pd
 from pathlib import Path
 
-RAW_FILE = Path("data/raw/mplads_all_works.json")
-OUT_DIR = Path("data/processed")
+BASE_DIR = Path(__file__).resolve().parents[1]
+RAW_FILE = BASE_DIR / "data" / "raw" / "mplads_all_works.json"
+OUT_DIR = BASE_DIR / "data" / "processed"
 
 print("=" * 70)
 print("FUNDGUARD AI — NEW MPLADS DATA VALIDATION")

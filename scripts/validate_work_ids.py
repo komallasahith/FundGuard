@@ -2,7 +2,8 @@ import pandas as pd
 from pathlib import Path
 
 
-INPUT_FILE = Path("data/processed/india_work_collection.csv")
+BASE_DIR = Path(__file__).resolve().parents[1]
+INPUT_FILE = BASE_DIR / "data" / "processed" / "india_work_collection.csv"
 
 print("=" * 70)
 print("FUNDGUARD WORK ID VALIDATION")
