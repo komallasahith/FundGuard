@@ -13,6 +13,7 @@ OUT = BASE_DIR / "data" / "outputs"
 RULE_FILE = OUT / "india_rule_anomalies.csv"
 STAT_FILE = OUT / "india_statistical_anomalies.csv"
 ML_FILE = OUT / "india_ml_anomalies.csv"
+FEATURE_FILE = BASE_DIR / "data" / "processed" / "mplads_india_features.csv"
 
 HYBRID_FILE = OUT / "india_hybrid_risk.csv"
 SUMMARY_FILE = OUT / "india_hybrid_summary.csv"
@@ -188,24 +189,28 @@ context_columns = [
 
 base = ml[context_columns].copy()
 
+if FEATURE_FILE.exists():
+    try:
+        feat_df = pd.read_csv(FEATURE_FILE, usecols=lambda c: c in ["WORK_ID", "PEER_COUNT", "MISSING_FIELD_COUNT"], low_memory=False)
+        feat_df["WORK_ID"] = feat_df["WORK_ID"].astype(str).str.strip()
+        base = base.merge(feat_df, on="WORK_ID", how="left")
+    except Exception as e:
+        print(f"Warning loading features: {e}")
 
 base["ML_CANDIDATE"] = number(
     base["ML_ANOMALY"]
 ).astype(int)
-
 
 base["ML_PERCENTILE"] = number(
     base["ML_PERCENTILE"],
     np.nan
 )
 
-
 base["ML_SEVERITY"] = (
     base["ML_SEVERITY"]
     .fillna("NONE")
     .astype(str)
 )
-
 
 print(
     f"Base rows : {len(base):,}"
@@ -416,14 +421,15 @@ section("9. CALCULATING CALIBRATED HYBRID RISK SCORE")
 # ------------------------------------------------------------
 # 1. 0–100 PERCENTILE RANK CALIBRATION PER DETECTOR
 # ------------------------------------------------------------
-# Rule score percentile rank [0–100] within candidate distribution (0 for non-candidates)
+# Note on Calibration Interpretation (Interpretation 1):
+# Percentile rank is computed strictly within the detector-firing subset (RULE_SCORE > 0, STAT_SCORE > 0).
+# Non-firing works receive a clean 0.0. This guarantees mathematical stability across runs.
 if "RULE_SCORE" in rules.columns and len(rules) > 0:
     rule_ranks = rules.set_index("WORK_ID")["RULE_SCORE"].rank(pct=True, method="average") * 100.0
     base["RULE_SCORE_CALIBRATED"] = base["WORK_ID"].map(rule_ranks).fillna(0.0)
 else:
     base["RULE_SCORE_CALIBRATED"] = 0.0
 
-# Statistical score percentile rank [0–100] within candidate distribution (0 for non-candidates)
 if "STAT_SCORE" in stats.columns and len(stats) > 0:
     stat_ranks = stats.set_index("WORK_ID")["STAT_SCORE"].rank(pct=True, method="average") * 100.0
     base["STAT_SCORE_CALIBRATED"] = base["WORK_ID"].map(stat_ranks).fillna(0.0)
@@ -437,14 +443,23 @@ base["ML_SCORE_CALIBRATED"] = number(
 )
 
 # ------------------------------------------------------------
-# 2. PEER DATA SUFFICIENT FLAG
+# 2. PEER DATA SUFFICIENT FLAG & SCORE REGIME (OPTION B)
 # ------------------------------------------------------------
+# Works with >=10 peers use standard multi-detector cohort analysis.
+# Works with <10 peers are marked SCORE_REGIME="SPARSE_PEER" and evaluated without
+# uncalibrated weight inflation, preventing cross-region ranking distortion.
 if "PEER_COUNT" in base.columns:
     base["PEER_DATA_SUFFICIENT"] = (number(base["PEER_COUNT"]) >= 10).astype(int)
 elif "STAT_PEER_COUNT" in base.columns:
     base["PEER_DATA_SUFFICIENT"] = (number(base["STAT_PEER_COUNT"]) >= 10).astype(int)
 else:
     base["PEER_DATA_SUFFICIENT"] = 1
+
+base["SCORE_REGIME"] = np.where(
+    base["PEER_DATA_SUFFICIENT"] == 1,
+    "STANDARD",
+    "SPARSE_PEER"
+)
 
 # ------------------------------------------------------------
 # 3. DATA QUALITY TIER
@@ -465,42 +480,32 @@ base["DATA_QUALITY_TIER"] = np.select(
 )
 
 # ------------------------------------------------------------
-# 4. WEIGHTED FUSION WITH DYNAMIC PEER-SUFFICIENCY FALLBACK
+# 4. UNBIASED UNIFORM WEIGHTED FUSION (0.35 RULES / 0.35 STATS / 0.30 ML)
 # ------------------------------------------------------------
-# Standard weights: 0.35 Rules / 0.35 Stats / 0.30 ML.
-# Fallback weights when PEER_DATA_SUFFICIENT=0: Stats neutralized (0.0),
-# rebalanced dynamically across Rules (0.538) and ML (0.462).
-sufficient_mask = base["PEER_DATA_SUFFICIENT"] == 1
-
-rule_weight = np.where(sufficient_mask, 0.35, 0.35 / (0.35 + 0.30))
-stat_weight = np.where(sufficient_mask, 0.35, 0.0)
-ml_weight = np.where(sufficient_mask, 0.30, 0.30 / (0.35 + 0.30))
-
-base["RULE_COMPONENT"] = np.round(base["RULE_SCORE_CALIBRATED"] * rule_weight, 2)
-base["STAT_COMPONENT"] = np.round(base["STAT_SCORE_CALIBRATED"] * stat_weight, 2)
-base["ML_COMPONENT"] = np.round(base["ML_SCORE_CALIBRATED"] * ml_weight, 2)
+# Fixed, comparable weights across all regimes to prevent artificial sparse-peer inflation.
+# For sparse peers, statistical peer comparison is suppressed (0.0), while Rule and ML
+# maintain their exact, non-distorted weights (0.35 and 0.30).
+base["RULE_COMPONENT"] = np.round(base["RULE_SCORE_CALIBRATED"] * 0.35, 2)
+base["STAT_COMPONENT"] = np.where(
+    base["PEER_DATA_SUFFICIENT"] == 1,
+    np.round(base["STAT_SCORE_CALIBRATED"] * 0.35, 2),
+    0.0
+)
+base["ML_COMPONENT"] = np.round(base["ML_SCORE_CALIBRATED"] * 0.30, 2)
 
 # ------------------------------------------------------------
 # 5. DETECTOR AGREEMENT BONUS
 # ------------------------------------------------------------
-base["AGREEMENT_BONUS"] = np.where(
-    sufficient_mask,
-    np.select(
-        [
-            base["INDEPENDENT_SIGNAL_COUNT"] >= 3,
-            base["INDEPENDENT_SIGNAL_COUNT"] >= 2,
-        ],
-        [
-            10.0,
-            5.0,
-        ],
-        default=0.0
-    ),
-    np.where(
-        (base["RULE_CANDIDATE"] == 1) & (base["ML_CANDIDATE"] == 1),
+base["AGREEMENT_BONUS"] = np.select(
+    [
+        base["INDEPENDENT_SIGNAL_COUNT"] >= 3,
+        base["INDEPENDENT_SIGNAL_COUNT"] >= 2,
+    ],
+    [
         10.0,
-        0.0
-    )
+        5.0,
+    ],
+    default=0.0
 )
 
 # ------------------------------------------------------------
@@ -664,6 +669,7 @@ final_columns = [
     "ML_CANDIDATE",
 
     "PEER_DATA_SUFFICIENT",
+    "SCORE_REGIME",
     "DATA_QUALITY_TIER",
 
     "RULE_COMPONENT",

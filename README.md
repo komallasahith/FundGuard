@@ -147,19 +147,20 @@ npm run dev
 
 To ensure semantic compatibility across all three detection engines, raw detector signals are calibrated into **uniform percentile ranks [0, 100]** prior to consensus combination:
 
-$$\text{Rule}_{\text{cal}} = \text{PercentileRank}(\text{Rule Score}) \times 100 \quad (\text{if candidate}, 0 \text{ otherwise})$$
-$$\text{Stat}_{\text{cal}} = \text{PercentileRank}(\text{Stat Score}) \times 100 \quad (\text{if candidate}, 0 \text{ otherwise})$$
-$$\text{ML}_{\text{cal}} = \text{PercentileRank}(\text{Anomaly Strength}) \times 100 \quad [0, 100]$$
+$$\text{Rule}_{\text{cal}} = \text{PercentileRank}_{\text{firing}}(\text{Rule Score}) \times 100 \quad (\text{if } \text{Rule Score} > 0, 0 \text{ otherwise})$$
+$$\text{Stat}_{\text{cal}} = \text{PercentileRank}_{\text{firing}}(\text{Stat Score}) \times 100 \quad (\text{if } \text{Stat Score} > 0, 0 \text{ otherwise})$$
+$$\text{ML}_{\text{cal}} = \text{PercentileRank}_{\text{all}}(\text{Anomaly Strength}) \times 100 \quad [0, 100]$$
 
-### Weighted Multi-Detector Fusion & Fallback
-- **Standard Fusion (Peer Data Sufficient $\ge 10$)**:
-  $$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times \text{Stat}_{\text{cal}} + 0.30 \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
-  *Where Agreement Bonus = $+10.0$ if all 3 detectors agree, $+5.0$ if 2 detectors agree.*
+> [!NOTE]
+> **Calibration Subset Definition**: Percentile ranks for Rules and Statistics are computed strictly within their respective **detector-firing subsets** ($\text{Score} > 0$), and non-firing works receive $0.0$. This ensures calibration stability independent of downstream queue filtering.
 
-- **Dynamic Fallback (Peer Data Insufficient $< 10$)**:
-  When peer data is sparse, the statistical peer comparison is neutralized and weights dynamically rebalance across Rules (53.8%) and ML (46.2%):
-  $$\text{Hybrid Risk Score} = \frac{0.35}{0.65} \times \text{Rule}_{\text{cal}} + \frac{0.30}{0.65} \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
+### Unbiased Multi-Detector Fusion (Option B Score Regimes)
+To prevent systematic cross-region ranking distortion and avoid artificially over-rewarding sparse-cohort works:
+$$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times \text{Stat}_{\text{cal}} + 0.30 \times \text{ML}_{\text{cal}} + \text{Agreement Bonus}$$
+*Where Agreement Bonus = $+10.0$ if all 3 detectors agree, $+5.0$ if 2 detectors agree.*
 
+- **Standard Regime (`SCORE_REGIME="STANDARD"`, $\ge 10$ peers)**: Full 3-detector consensus analysis.
+- **Sparse Peer Regime (`SCORE_REGIME="SPARSE_PEER"`, $< 10$ peers)**: Statistical peer comparisons are suppressed ($\text{Stat}_{\text{cal}} = 0$) without artificially inflating Rule or ML weights, preserving cross-region comparability.
 - **ML Isolation Forest Contamination**:
   Configured with `contamination="auto"` (the established heuristic threshold from Liu et al., 2008), ensuring unconstrained outlier scoring on the multidimensional feature matrix.
 
@@ -168,7 +169,7 @@ $$\text{ML}_{\text{cal}} = \text{PercentileRank}(\text{Anomaly Strength}) \times
 ## 🔬 Peer Cohort Methodology & Limitations
 
 - **Grouping Hierarchy**: Works are categorized by `State` $\rightarrow$ `Work Category`.
-- **Sample Sufficiency**: Statistical IQR and Z-scores require $\ge 10$ peer records (`PEER_DATA_SUFFICIENT = True`). Works with $<10$ peers are flagged and evaluated via the Rule + ML fallback path.
+- **Sample Sufficiency**: Statistical IQR and Z-scores require $\ge 10$ peer records (`PEER_DATA_SUFFICIENT = True`). Works with $<10$ peers are categorized into `SPARSE_PEER` and evaluated via verified rule and ML signals.
 - **Data Quality Tiers**: Records are classified as `HIGH` (0 missing fields), `MEDIUM` (1 missing field), or `LOW` ($\ge 2$ missing fields) to signal data completeness to investigators.
 - **Methodological Limitation**: Peer comparisons do not dynamically model district-level construction cost index (CPWD DSR) or remote hill terrain material transport surcharges.
 
@@ -176,14 +177,17 @@ $$\text{ML}_{\text{cal}} = \text{PercentileRank}(\text{Anomaly Strength}) \times
 
 ## 🧪 Automated Unit & Golden Regression Test Suite
 
-FundGuard includes an automated test suite with CI validation covering score calibration, generalized deduplication, peer sufficiency fallback, data quality tiers, and golden snapshot regression:
+FundGuard includes an automated 18-test suite with CI validation covering score calibration, generalized deduplication, peer sufficiency, data quality tiers, and golden snapshot regression:
 
 ```bash
 python -m unittest discover tests/ -v
 ```
-*(All 17 test suites pass with 100% test coverage).*
+*(All 18 test suites pass with 100% test coverage).*
 
-- **Golden Regression**: Asserts top-10 flagged work snapshots (`313337`, `312966`, `284190`, etc.), consensus counts, and priority tiers remain deterministic across refactors.
+- **Golden Snapshot Tests**:
+  - **Top-10 Flagged Works**: Asserts snapshot integrity (`313337`, `312966`, `284190`, `298370`, `300408`, `290133`, `238085`, `301697`, `298371`, `166142`).
+  - **Tier Distribution**: Freezes candidate volume (7,521) and priority tiers: **P1** (1,818 - 24.2%), **P2** (2,049 - 27.2%), **P3** (3,588 - 47.7%), **P4** (66 - 0.9%).
+  - **Detector Consensus**: Asserts 597 3-engine consensus cases.
 - **Continuous Integration**: `.github/workflows/ci.yml` runs automated test matrix on Python 3.10/3.11/3.12 and verifies Vite frontend production builds on every push/PR.
 
 ---

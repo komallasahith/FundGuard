@@ -1523,6 +1523,7 @@ final_columns = [
     "INVESTIGATION_PRIORITY",
     "INVESTIGATION_CANDIDATE",
     "PEER_DATA_SUFFICIENT",
+    "SCORE_REGIME",
     "DATA_QUALITY_TIER",
 
     # Evidence

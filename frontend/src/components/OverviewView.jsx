@@ -31,10 +31,10 @@ export default function OverviewView({
   const paymentCoverage = overview?.payment_coverage_percent ?? 52.61;
 
   const totalCandidates = summary?.total_investigation_candidates ?? 7521;
-  const critical = summary?.risk_distribution?.critical ?? 1668;
-  const high = summary?.risk_distribution?.high ?? 677;
-  const medium = summary?.risk_distribution?.medium ?? 2613;
-  const low = summary?.risk_distribution?.low ?? 2563;
+  const critical = summary?.risk_distribution?.critical ?? 1818;
+  const high = summary?.risk_distribution?.high ?? 2049;
+  const medium = summary?.risk_distribution?.medium ?? 3588;
+  const low = summary?.risk_distribution?.low ?? 66;
   const allThree = summary?.detector_agreement?.all_three ?? 597;
   const twoMethods = summary?.detector_agreement?.two_methods ?? 2473;
   const oneMethod = summary?.detector_agreement?.one_method ?? 4451;

@@ -13,21 +13,15 @@ def calculate_hybrid_score(
 ):
     """
     Computes hybrid risk score using percentile-rank calibrated detector scores
-    with dynamic peer data fallback and detector agreement bonuses.
+    with unbiased uniform weighting (0.35 Rules / 0.35 Stats / 0.30 ML).
+    For sparse-peer works, statistical peer comparison is suppressed (0.0) without inflating Rules/ML.
     """
     signal_count = int(rule_candidate) + int(stat_candidate) + int(ml_candidate)
 
-    if peer_data_sufficient:
-        rule_w = 0.35
-        stat_w = 0.35
-        ml_w = 0.30
-        bonus = 10.0 if signal_count >= 3 else (5.0 if signal_count == 2 else 0.0)
-    else:
-        # Statistical peer comparison is neutralized; weights rebalanced to Rules and ML
-        rule_w = 0.35 / (0.35 + 0.30)
-        stat_w = 0.0
-        ml_w = 0.30 / (0.35 + 0.30)
-        bonus = 10.0 if (rule_candidate and ml_candidate) else 0.0
+    rule_w = 0.35
+    stat_w = 0.35 if peer_data_sufficient else 0.0
+    ml_w = 0.30
+    bonus = 10.0 if signal_count >= 3 else (5.0 if signal_count == 2 else 0.0)
 
     rule_comp = rule_score_calibrated * rule_w
     stat_comp = stat_score_calibrated * stat_w
@@ -106,22 +100,28 @@ class TestScoreCalibration(unittest.TestCase):
         # Assert ML-only is lower than 2-engine agreement
         self.assertLess(ml_only_score, two_engine_score)
 
-    def test_peer_data_insufficient_fallback_path(self):
-        # Work with PEER_DATA_SUFFICIENT=False should neutralize statistical detector
-        # and reweight Rule (53.8%) and ML (46.2%)
-        score_fallback = calculate_hybrid_score(
-            80.0, 100.0, 80.0,
+    def test_unbiased_sparse_peer_treatment(self):
+        """
+        Verify that sparse-peer works receive identical non-inflated scoring for identical evidence,
+        preventing artificial +18.8 point inflation across regional cohorts.
+        """
+        dense_rule_score = calculate_hybrid_score(
+            100.0, 0.0, 0.0,
+            peer_data_sufficient=True,
+            rule_candidate=True,
+            stat_candidate=False,
+            ml_candidate=False
+        )
+        sparse_rule_score = calculate_hybrid_score(
+            100.0, 0.0, 0.0,
             peer_data_sufficient=False,
             rule_candidate=True,
-            stat_candidate=True,
-            ml_candidate=True
+            stat_candidate=False,
+            ml_candidate=False
         )
-        # Rule: 80 * (0.35/0.65) = 43.08
-        # ML: 80 * (0.30/0.65) = 36.92
-        # Agreement bonus: 10.0
-        # Total: 43.08 + 36.92 + 10 = 90.0
-        self.assertEqual(score_fallback, 90.0)
-        self.assertEqual(get_priority_level(score_fallback), "P1")
+        # Both must produce identical 35.0 score
+        self.assertEqual(dense_rule_score, 35.0)
+        self.assertEqual(sparse_rule_score, 35.0)
 
 if __name__ == "__main__":
     unittest.main()

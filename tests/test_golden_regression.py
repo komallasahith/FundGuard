@@ -47,15 +47,39 @@ class TestGoldenRegression(unittest.TestCase):
         consensus_count = (self.queue["DETECTOR_AGREEMENT"] == "RULE + STATISTICAL + ML").sum()
         self.assertEqual(consensus_count, 597)
 
+    def test_golden_tier_counts_snapshot(self):
+        """
+        Frozen golden snapshot of investigation priority tier distribution
+        across all 7,521 candidates to catch calibration regressions.
+        """
+        priority_counts = self.queue["INVESTIGATION_PRIORITY"].value_counts().to_dict()
+        expected_tiers = {
+            "P1": 1818,
+            "P2": 2049,
+            "P3": 3588,
+            "P4": 66
+        }
+        self.assertEqual(
+            priority_counts,
+            expected_tiers,
+            f"Investigation priority tier distribution shifted!\nActual: {priority_counts}\nExpected: {expected_tiers}"
+        )
+
     def test_metadata_fields_integrity(self):
         self.assertIn("PEER_DATA_SUFFICIENT", self.queue.columns)
+        self.assertIn("SCORE_REGIME", self.queue.columns)
         self.assertIn("DATA_QUALITY_TIER", self.queue.columns)
 
         # Ensure no nulls in critical audit columns
         self.assertEqual(self.queue["PEER_DATA_SUFFICIENT"].isna().sum(), 0)
+        self.assertEqual(self.queue["SCORE_REGIME"].isna().sum(), 0)
         self.assertEqual(self.queue["DATA_QUALITY_TIER"].isna().sum(), 0)
 
-        # Ensure tiers are valid categories
+        # Ensure regimes and tiers are valid categories
+        valid_regimes = {"STANDARD", "SPARSE_PEER"}
+        actual_regimes = set(self.queue["SCORE_REGIME"].unique())
+        self.assertTrue(actual_regimes.issubset(valid_regimes))
+
         valid_tiers = {"HIGH", "MEDIUM", "LOW"}
         actual_tiers = set(self.queue["DATA_QUALITY_TIER"].unique())
         self.assertTrue(actual_tiers.issubset(valid_tiers))
