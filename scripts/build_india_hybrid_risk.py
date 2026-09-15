@@ -593,6 +593,21 @@ base.loc[
     "HYBRID_RISK_LEVEL"
 ] = "CRITICAL"
 
+# ============================================================
+# PIPELINE INTEGRITY ASSERTION
+# ============================================================
+# Fail loudly before writing any output if the consensus hard-override
+# is violated — e.g., by a future refactor that reorders operations.
+_consensus_mask = base["INDEPENDENT_SIGNAL_COUNT"] == 3
+_consensus_not_p1 = (_consensus_mask) & (base["INVESTIGATION_PRIORITY"] != "P1")
+if _consensus_not_p1.any():
+    _bad_ids = base.loc[_consensus_not_p1, "WORK_ID"].tolist()[:10]
+    raise AssertionError(
+        f"PIPELINE INTEGRITY FAILURE: {_consensus_not_p1.sum()} three-engine consensus "
+        f"works are NOT in P1. First offenders: {_bad_ids}. "
+        "Check that the consensus override has not been reordered or removed."
+    )
+
 
 # ============================================================
 # 12. AGREEMENT DESCRIPTION
@@ -1044,12 +1059,38 @@ for i in range(len(score_bins) - 1):
     lo = score_bins[i]
     hi = score_bins[i + 1]
     label = f"{lo}-{hi}"
-    n = int(((hybrid["HYBRID_RISK_SCORE"] >= lo) & (hybrid["HYBRID_RISK_SCORE"] < hi)).sum())
-    score_dist_rows.append({"BIN_LABEL": label, "SCORE_MIN": lo, "SCORE_MAX": hi, "WORK_COUNT": n})
+    mask = (hybrid["HYBRID_RISK_SCORE"] >= lo) & (hybrid["HYBRID_RISK_SCORE"] < hi)
+    cand_mask = mask & (hybrid["INVESTIGATION_CANDIDATE"] == 1)
+    n = int(mask.sum())
+    n_cand = int(cand_mask.sum())
+    s1 = int((cand_mask & (hybrid["INDEPENDENT_SIGNAL_COUNT"] == 1)).sum())
+    s2 = int((cand_mask & (hybrid["INDEPENDENT_SIGNAL_COUNT"] == 2)).sum())
+    s3 = int((cand_mask & (hybrid["INDEPENDENT_SIGNAL_COUNT"] == 3)).sum())
+    score_dist_rows.append({
+        "BIN_LABEL": label,
+        "SCORE_MIN": lo,
+        "SCORE_MAX": hi,
+        "WORK_COUNT": n,
+        "CANDIDATE_COUNT": n_cand,
+        "SIGNAL_1_COUNT": s1,
+        "SIGNAL_2_COUNT": s2,
+        "SIGNAL_3_COUNT": s3,
+    })
 
 # Final bucket: 100
-n_100 = int((hybrid["HYBRID_RISK_SCORE"] >= 100).sum())
-score_dist_rows.append({"BIN_LABEL": "100", "SCORE_MIN": 100, "SCORE_MAX": 100, "WORK_COUNT": n_100})
+mask_100 = hybrid["HYBRID_RISK_SCORE"] >= 100
+cand_100 = mask_100 & (hybrid["INVESTIGATION_CANDIDATE"] == 1)
+n_100 = int(mask_100.sum())
+score_dist_rows.append({
+    "BIN_LABEL": "100",
+    "SCORE_MIN": 100,
+    "SCORE_MAX": 100,
+    "WORK_COUNT": n_100,
+    "CANDIDATE_COUNT": int(cand_100.sum()),
+    "SIGNAL_1_COUNT": int((cand_100 & (hybrid["INDEPENDENT_SIGNAL_COUNT"] == 1)).sum()),
+    "SIGNAL_2_COUNT": int((cand_100 & (hybrid["INDEPENDENT_SIGNAL_COUNT"] == 2)).sum()),
+    "SIGNAL_3_COUNT": int((cand_100 & (hybrid["INDEPENDENT_SIGNAL_COUNT"] == 3)).sum()),
+})
 
 score_dist_df = pd.DataFrame(score_dist_rows)
 
@@ -1093,14 +1134,41 @@ print("-" * 65)
 print(f"{'TOTAL':<6} {n_cands:>8,} {'100.00%':>18}")
 
 print()
+
+# Override breakdown: how much work is each P1 criterion doing?
+n_p1_total = int(tier_counts.get("P1", 0))
+n_consensus = int((candidates_df["INDEPENDENT_SIGNAL_COUNT"] == 3).sum())
 consensus_in_p1 = int(
     ((candidates_df["INDEPENDENT_SIGNAL_COUNT"] == 3) &
      (candidates_df["INVESTIGATION_PRIORITY"] == "P1")).sum()
 )
+n_score_only_p1 = n_p1_total - consensus_in_p1
+
 print(
-    f"3-engine consensus in P1 : {consensus_in_p1:,} "
-    f"/ {int((candidates_df['INDEPENDENT_SIGNAL_COUNT'] == 3).sum()):,}"
+    f"P1 breakdown             : {n_p1_total:,} total"
+    f" = {consensus_in_p1:,} consensus override"
+    f" + {n_score_only_p1:,} score-threshold (>= {TIER_P1_SCORE_THRESHOLD})"
 )
+if n_score_only_p1 == 0:
+    print(
+        "  NOTE: The score threshold is entirely decorative at this setting."
+        " P1 == the consensus set."
+    )
+elif n_score_only_p1 < 100:
+    print(
+        f"  NOTE: Score threshold is contributing only {n_score_only_p1} works."
+        " P1 is primarily the consensus set."
+    )
+
+print(
+    f"Signal-count per tier    :"
+)
+for tier in ["P1", "P2", "P3", "P4"]:
+    tier_df = candidates_df[candidates_df["INVESTIGATION_PRIORITY"] == tier]
+    sc = tier_df["INDEPENDENT_SIGNAL_COUNT"].value_counts().sort_index()
+    breakdown = "  ".join(f"{k}-signal:{int(v):,}" for k, v in sc.items())
+    print(f"  {tier}: {breakdown}")
+
 p1_pct = tier_counts.get("P1", 0) / n_cands * 100 if n_cands > 0 else 0
 p2_pct = tier_counts.get("P2", 0) / n_cands * 100 if n_cands > 0 else 0
 p4_pct = tier_counts.get("P4", 0) / n_cands * 100 if n_cands > 0 else 0

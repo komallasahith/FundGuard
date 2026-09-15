@@ -164,17 +164,19 @@ $$\text{Hybrid Risk Score} = 0.35 \times \text{Rule}_{\text{cal}} + 0.35 \times 
 - **ML Isolation Forest Contamination**:
   Configured with `contamination="auto"` (the established heuristic threshold from Liu et al., 2008), ensuring unconstrained outlier scoring on the multidimensional feature matrix.
 
-### Batch 4 Pyramid Tier Thresholds
-Grid-search calibrated thresholds on 7,521 investigation candidates to produce a proper triage pyramid:
+### Batch 4 Pyramid Tier Thresholds & Framing (Option B Calibration)
+Grid-search calibrated thresholds across 7,521 investigation candidates to establish an operational triage pyramid:
 
-| Tier | Assignment Rule | Count | % |
-|:-----|:----------------|------:|--:|
-| **P1 — Critical** | 3-engine consensus **OR** score ≥ 90.4 | 684 | 9.1% |
-| **P2 — High** | Score 56.5–90.4 | 1,302 | 17.3% |
-| **P3 — Medium** | Score 35.0–56.5 | 2,415 | 32.1% |
-| **P4 — Low** | Score 0.1–35.0 | 3,120 | 41.5% |
+| Tier | Primary Driver & Assignment Rule | Count | % | Signal Composition |
+|:-----|:---------------------------------|------:|--:|:-------------------|
+| **P1 — Critical** | **3-Engine Consensus** (597) **+ Score ≥ 90.4 Tail** (87) | 684 | 9.1% | 597 3-signal + 87 2-signal |
+| **P2 — High** | Score 56.5–90.4 (High dual-engine deviations) | 1,302 | 17.3% | 1,250 2-signal + 52 1-signal |
+| **P3 — Medium** | Score 35.0–56.5 (Balanced anomaly signals) | 2,415 | 32.1% | 1,119 2-signal + 1,296 1-signal |
+| **P4 — Low** | Score 0.1–35.0 (Single-detector baseline signals) | 3,120 | 41.5% | 17 2-signal + 3,103 1-signal |
 
-> **Consensus Hard Override**: All 597 works where all three independent detectors (Rules, Statistical, ML) agree are unconditionally assigned to P1, regardless of their raw hybrid score.
+> [!NOTE]
+> **Architectural Framing (Option B)**:
+> P1 is defined primarily by **3-engine detector consensus** (all 597 works where Rules, Statistical, and ML engines concur are elevated unconditionally via a hard-override constraint). The 90.4 score threshold applies specifically to the non-consensus tail: works firing fewer than 3 detectors cannot reach this score without extreme dual-engine statistical and rule outlier values, contributing 87 additional high-priority candidates. This separation preserves score-based discrimination for future detector extensions while guaranteeing consensus works top priority.
 
 ---
 

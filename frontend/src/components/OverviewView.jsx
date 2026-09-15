@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { 
   Database, 
   FileSpreadsheet, 
@@ -22,6 +23,7 @@ export default function OverviewView({
   onSelectRisk, 
   onNavigateToTab 
 }) {
+  const [histMode, setHistMode] = useState('tier'); // 'tier' | 'signal'
   const rawRecords = overview?.source_records_collected ?? 297398;
   const totalWorks = overview?.unique_works_analyzed ?? 104517;
   const statesCovered = overview?.states_and_uts_covered ?? 36;
@@ -99,9 +101,9 @@ export default function OverviewView({
       id: 'CRITICAL',
       name: 'Critical Risk Candidates',
       count: critical.toLocaleString(),
-      pct: 'Consensus OR Score ≥ 90.4',
-      desc: 'Multi-detector severe anomalies — guaranteed for consensus works',
-      tag: 'Priority P1 — 9%',
+      pct: '597 Consensus + 87 Score ≥90.4',
+      desc: 'All 3-engine consensus works + top dual-engine outliers (90.4 threshold isolates tail)',
+      tag: 'Priority P1 — 9.1%',
       color: 'crit',
       icon: AlertTriangle
     },
@@ -110,8 +112,8 @@ export default function OverviewView({
       name: 'High Risk Candidates',
       count: high.toLocaleString(),
       pct: 'Hybrid Score 56.5–90.4',
-      desc: 'Substantial financial or peer deviation',
-      tag: 'Priority P2 — 17%',
+      desc: 'Substantial financial or peer deviation (1,250 dual-signal, 52 single-signal)',
+      tag: 'Priority P2 — 17.3%',
       color: 'high',
       icon: AlertCircle
     },
@@ -120,8 +122,8 @@ export default function OverviewView({
       name: 'Medium Risk Candidates',
       count: medium.toLocaleString(),
       pct: 'Hybrid Score 35.0–56.5',
-      desc: 'Notable implementation pattern anomaly',
-      tag: 'Priority P3 — 32%',
+      desc: 'Notable pattern anomaly (1,119 dual-signal, 1,296 single-signal)',
+      tag: 'Priority P3 — 32.1%',
       color: 'med',
       icon: Info
     },
@@ -130,37 +132,37 @@ export default function OverviewView({
       name: 'Low Risk / Single-Signal',
       count: low.toLocaleString(),
       pct: 'Hybrid Score 0.1–35.0',
-      desc: 'Single detector screening signal',
-      tag: 'Priority P4 — 41%',
+      desc: 'Single detector screening signal (3,103 single-signal, 17 dual-signal)',
+      tag: 'Priority P4 — 41.5%',
       color: 'low',
       icon: CheckCircle
     }
   ];
 
-  // Score histogram data — 5-point bins
+  // Score histogram data across 7,521 candidates with signal counts
   const scoreHistData = [
-    { bin: '0-5',   count: 0 },
-    { bin: '5-10',  count: 0 },
-    { bin: '10-15', count: 0 },
-    { bin: '15-20', count: 14 },
-    { bin: '20-25', count: 52 },
-    { bin: '25-30', count: 1547 },
-    { bin: '30-35', count: 1507 },
-    { bin: '35-40', count: 1286 },
-    { bin: '40-45', count: 700 },
-    { bin: '45-50', count: 429 },
-    { bin: '50-55', count: 0 },
-    { bin: '55-60', count: 0 },
-    { bin: '60-65', count: 0 },
-    { bin: '65-70', count: 0 },
-    { bin: '70-75', count: 0 },
-    { bin: '75-80', count: 0 },
-    { bin: '80-85', count: 0 },
-    { bin: '85-90', count: 0 },
-    { bin: '90-95', count: 679 },
-    { bin: '95-100', count: 5 },
+    { bin: '0-5',   total: 0,    s1: 0,    s2: 0,   s3: 0 },
+    { bin: '5-10',  total: 0,    s1: 0,    s2: 0,   s3: 0 },
+    { bin: '10-15', total: 29,   s1: 29,   s2: 0,   s3: 0 },
+    { bin: '15-20', total: 37,   s1: 37,   s2: 0,   s3: 0 },
+    { bin: '20-25', total: 202,  s1: 202,  s2: 0,   s3: 0 },
+    { bin: '25-30', total: 1233, s1: 1233, s2: 0,   s3: 0 },
+    { bin: '30-35', total: 1619, s1: 1602, s2: 17,  s3: 0 },
+    { bin: '35-40', total: 534,  s1: 400,  s2: 134, s3: 0 },
+    { bin: '40-45', total: 1068, s1: 567,  s2: 501, s3: 0 },
+    { bin: '45-50', total: 448,  s1: 241,  s2: 207, s3: 0 },
+    { bin: '50-55', total: 262,  s1: 36,   s2: 225, s3: 1 },
+    { bin: '55-60', total: 271,  s1: 104,  s2: 135, s3: 32 },
+    { bin: '60-65', total: 290,  s1: 0,    s2: 289, s3: 1 },
+    { bin: '65-70', total: 661,  s1: 0,    s2: 129, s3: 532 },
+    { bin: '70-75', total: 150,  s1: 0,    s2: 119, s3: 31 },
+    { bin: '75-80', total: 116,  s1: 0,    s2: 116, s3: 0 },
+    { bin: '80-85', total: 69,   s1: 0,    s2: 69,  s3: 0 },
+    { bin: '85-90', total: 437,  s1: 0,    s2: 437, s3: 0 },
+    { bin: '90-95', total: 95,   s1: 0,    s2: 95,  s3: 0 },
+    { bin: '95-100', total: 0,   s1: 0,    s2: 0,   s3: 0 },
   ];
-  const histMax = Math.max(...scoreHistData.map(d => d.count));
+  const histMax = Math.max(...scoreHistData.map(d => d.total));
 
   // Tier color by bin range
   const getBinColor = (bin) => {
@@ -290,40 +292,126 @@ export default function OverviewView({
 
       {/* Hybrid Risk Score Distribution Histogram */}
       <div className="section-block">
-        <div className="section-title-wrap">
-          <h2 className="section-title">Hybrid Risk Score Distribution</h2>
-          <span className="section-subtitle">
-            Score histogram across all 104,517 works — color-coded by investigation tier
-          </span>
+        <div className="section-title-wrap" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '12px' }}>
+          <div>
+            <h2 className="section-title">Hybrid Risk Score Distribution & Signal Overlay</h2>
+            <span className="section-subtitle">
+              Score histogram across 7,521 prioritized candidates — toggle between triage tiers and underlying detector signal count
+            </span>
+          </div>
+          <div className="hist-toggle-group">
+            <button
+              type="button"
+              className={`hist-toggle-btn ${histMode === 'tier' ? 'active' : ''}`}
+              onClick={() => setHistMode('tier')}
+            >
+              Priority Tiers
+            </button>
+            <button
+              type="button"
+              className={`hist-toggle-btn ${histMode === 'signal' ? 'active' : ''}`}
+              onClick={() => setHistMode('signal')}
+            >
+              Signal-Count Overlay
+            </button>
+          </div>
         </div>
         <div className="score-histogram-card">
-          <div className="hist-legend-row">
-            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#dc2626'}}></span>P1 Critical (≥90.4 or consensus)</span>
-            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#ea580c'}}></span>P2 High (56.5–90.4)</span>
-            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#ca8a04'}}></span>P3 Medium (35–56.5)</span>
-            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#16a34a'}}></span>P4 Low (0.1–35)</span>
-            <span className="hist-legend-item"><span className="hist-dot" style={{background:'#94a3b8'}}></span>No Signal</span>
-          </div>
+          {histMode === 'tier' ? (
+            <div className="hist-legend-row">
+              <span className="hist-legend-item">
+                <span className="hist-dot" style={{ background: '#dc2626' }}></span>
+                <strong>P1 Critical</strong> (684 works: 597 consensus + 87 score ≥ 90.4)
+              </span>
+              <span className="hist-legend-item">
+                <span className="hist-dot" style={{ background: '#ea580c' }}></span>
+                <strong>P2 High</strong> (1,302 works: 56.5–90.4)
+              </span>
+              <span className="hist-legend-item">
+                <span className="hist-dot" style={{ background: '#ca8a04' }}></span>
+                <strong>P3 Medium</strong> (2,415 works: 35.0–56.5)
+              </span>
+              <span className="hist-legend-item">
+                <span className="hist-dot" style={{ background: '#16a34a' }}></span>
+                <strong>P4 Low</strong> (3,120 works: 0.1–35.0)
+              </span>
+            </div>
+          ) : (
+            <div className="hist-legend-row">
+              <span className="hist-legend-item">
+                <span className="hist-dot" style={{ background: '#f43f5e' }}></span>
+                <strong>3-Engine Consensus</strong> (597 works — unconditional P1 triage override)
+              </span>
+              <span className="hist-legend-item">
+                <span className="hist-dot" style={{ background: '#f59e0b' }}></span>
+                <strong>2 Detectors Fired</strong> (2,473 works — spans 30–95; 87 reach P1 via score ≥90.4)
+              </span>
+              <span className="hist-legend-item">
+                <span className="hist-dot" style={{ background: '#38bdf8' }}></span>
+                <strong>1 Detector Fired</strong> (4,451 works — single-screening signals, primarily P4)
+              </span>
+            </div>
+          )}
+
           <div className="hist-bars-row">
             {scoreHistData.map((d) => {
-              const barHeight = histMax > 0 ? Math.max((d.count / histMax) * 140, d.count > 0 ? 4 : 0) : 0;
-              const color = getBinColor(d.bin);
+              const totalHeight = histMax > 0 ? Math.max((d.total / histMax) * 140, d.total > 0 ? 4 : 0) : 0;
+              const titleText = `Score ${d.bin}: ${d.total.toLocaleString()} works (1-sig: ${d.s1}, 2-sig: ${d.s2}, 3-sig consensus: ${d.s3})`;
+
               return (
-                <div key={d.bin} className="hist-bar-col" title={`Score ${d.bin}: ${d.count.toLocaleString()} works`}>
+                <div key={d.bin} className="hist-bar-col" title={titleText}>
                   <div className="hist-bar-wrap">
-                    <div
-                      className="hist-bar"
-                      style={{ height: `${barHeight}px`, background: color }}
-                    />
+                    {histMode === 'tier' ? (
+                      <div
+                        className="hist-bar"
+                        style={{ height: `${totalHeight}px`, background: getBinColor(d.bin) }}
+                      />
+                    ) : (
+                      <div className="hist-bar-stacked" style={{ height: `${totalHeight}px` }}>
+                        {d.s3 > 0 && (
+                          <div
+                            className="hist-bar-seg"
+                            style={{
+                              height: `${(d.s3 / d.total) * 100}%`,
+                              background: '#f43f5e',
+                            }}
+                            title={`Consensus (3 signals): ${d.s3}`}
+                          />
+                        )}
+                        {d.s2 > 0 && (
+                          <div
+                            className="hist-bar-seg"
+                            style={{
+                              height: `${(d.s2 / d.total) * 100}%`,
+                              background: '#f59e0b',
+                            }}
+                            title={`2 signals: ${d.s2}`}
+                          />
+                        )}
+                        {d.s1 > 0 && (
+                          <div
+                            className="hist-bar-seg"
+                            style={{
+                              height: `${(d.s1 / d.total) * 100}%`,
+                              background: '#38bdf8',
+                            }}
+                            title={`1 signal: ${d.s1}`}
+                          />
+                        )}
+                      </div>
+                    )}
                   </div>
                   <span className="hist-bar-label">{d.bin.split('-')[0]}</span>
                 </div>
               );
             })}
           </div>
+
           <div className="hist-footnote">
-            Bimodal structure: the central cluster (20–50) reflects the majority of MPLADS works with moderate evidence;
-            the right spike (90–100) is the P1 critical tier driven by score + consensus override.
+            <strong>Architectural Insight (Option B Calibration)</strong>: 
+            The bimodal score profile is structurally driven by independent signal count. 
+            All 597 three-engine consensus works cluster at scores 50–75 and are elevated unconditionally to P1 by policy override. 
+            The 90.4 score threshold selectively captures the extreme 87 dual-detector outliers that warrant urgent review, while single-signal works naturally form the P4 base (41.5%).
           </div>
         </div>
       </div>
